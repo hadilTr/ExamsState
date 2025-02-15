@@ -1,0 +1,26 @@
+<div class="card">
+  <p-table [value]="products" [tableStyle]="{ 'min-width': '50rem' }">
+    <ng-template pTemplate="header">
+      <tr>
+        <th>/</th>
+        <th>Groupe A</th>
+        <th>Groupe B</th>
+        <th>Groupe C</th>
+        <th>Groupe D</th>
+        <th>État</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-product>
+      <tr [ngClass]="rowClass(product)" [ngStyle]="rowStyle(product)">
+        <td>{{ product.nomProf }}</td>
+        <td>{{ product.nomMatiereGrpA }}</td>
+        <td>{{ product.nomMatiereGrpB }}</td>
+        <td>{{ product.nomMatiereGrpC }}</td>
+        <td>{{ product.nomMatiereGrpD }}</td>
+        <td>
+          <p-badge [value]="product.etat" [severity]="stockSeverity(product)"></p-badge>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>
