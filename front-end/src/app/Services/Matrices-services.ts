@@ -37,6 +37,15 @@ export class MatricesServices {
         nomMatiereGrpD: 'Analyse Numerique1',
         etat: "remis",
       },
+      {
+        id: '1000',
+        nomProf: 'jaidi',
+        nomMatiereGrpA: 'Analyse Numerique1',
+        nomMatiereGrpB: 'Analyse Numerique1',
+        nomMatiereGrpC: 'Analyse Numerique1',
+        nomMatiereGrpD: 'Analyse Numerique1',
+        etat: "remis",
+      }
 
     ];
   }
