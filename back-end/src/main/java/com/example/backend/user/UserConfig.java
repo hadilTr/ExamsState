@@ -1,0 +1,21 @@
+package com.example.backend.user;
+
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+import java.util.List;
+
+@Configuration
+public class UserConfig {
+
+    @Bean
+    CommandLineRunner commandLineRunner(UserRepository userRepository) {
+        return args -> {
+            User user1 = new User("mohamed","ben ali","medbenali@gmail.com","Chef departement info",55555555L,"med1","med123");
+            User user2 = new User("fatma","ben salah","fatmabensalah@gmail.com","Chef departement gsil",66666666L,"fatm1","fatm123");
+
+        userRepository.saveAll(List.of(user1,user2));
+        };
+    }
+}
