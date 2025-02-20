@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule, provideClientHydration, withEventReplay } from '@angular/platform-browser';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { providePrimeNG } from 'primeng/config';
-import Lara from '@primeng/themes/aura';
+import Lara from '@primeng/themes/lara';
 import { InputTextModule } from 'primeng/inputtext';
 import { ButtonModule } from 'primeng/button';
 import { CardModule } from 'primeng/card';
@@ -14,14 +14,21 @@ import {LoginComponent} from './Components/login/login.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {WindowMaximizeIcon} from 'primeng/icons';
 import {RippleModule} from 'primeng/ripple';
+import { HttpClientModule } from '@angular/common/http';
+import { DepartementsComponent } from './Components/departements/departements.component';
+
+
 
 @NgModule({
+  bootstrap: [AppComponent],
   declarations: [
     AppComponent,
-    LoginComponent
+    LoginComponent,
+    DepartementsComponent
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
     Button,
     BrowserModule,
@@ -42,7 +49,6 @@ import {RippleModule} from 'primeng/ripple';
         preset: Lara
       }
     })
-  ],
-  bootstrap: [AppComponent]
+  ]
 })
 export class AppModule { }
