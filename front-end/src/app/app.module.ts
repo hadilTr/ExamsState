@@ -16,6 +16,8 @@ import {WindowMaximizeIcon} from 'primeng/icons';
 import {RippleModule} from 'primeng/ripple';
 import { HttpClientModule } from '@angular/common/http';
 import { DepartementsComponent } from './Components/departements/departements.component';
+import { AddUserComponent } from './Components/add-user/add-user.component';
+import {DropdownModule} from 'primeng/dropdown';
 
 
 
@@ -24,7 +26,8 @@ import { DepartementsComponent } from './Components/departements/departements.co
   declarations: [
     AppComponent,
     LoginComponent,
-    DepartementsComponent
+    DepartementsComponent,
+    AddUserComponent
   ],
   imports: [
     BrowserModule,
@@ -39,7 +42,7 @@ import { DepartementsComponent } from './Components/departements/departements.co
     CardModule,
     PasswordModule,
     WindowMaximizeIcon,
-    ButtonModule, RippleModule
+    ButtonModule, RippleModule,  DropdownModule
   ],
   providers: [
     provideClientHydration(withEventReplay()),
