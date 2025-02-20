@@ -16,6 +16,8 @@ import {WindowMaximizeIcon} from 'primeng/icons';
 import {RippleModule} from 'primeng/ripple';
 import { HttpClientModule } from '@angular/common/http';
 import {DropdownModule} from 'primeng/dropdown';
+import { DepartementsComponent } from './Components/departements/departements.component';
+import { AddUserComponent } from './Components/add-user/add-user.component';
 
 
 
@@ -24,6 +26,8 @@ import {DropdownModule} from 'primeng/dropdown';
   declarations: [
     AppComponent,
     LoginComponent,
+    DepartementsComponent,
+    AddUserComponent
 
   ],
   imports: [
