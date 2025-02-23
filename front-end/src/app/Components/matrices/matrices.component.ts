@@ -17,7 +17,7 @@ import { InputIconModule } from 'primeng/inputicon';
 import { IconFieldModule } from 'primeng/iconfield';
 import { TagModule } from 'primeng/tag';
 import {Badge} from 'primeng/badge';
-import {MatricesServices} from '../../Services/Matrices-services';
+import {MatricesServices} from '../../Services/matrices/Matrices-services';
 
 interface ExpandedRows {
   [key: string]: boolean;
@@ -58,9 +58,7 @@ export class MatricesComponent implements OnInit {
   }
 
 
-      constructor( private matricesServices:MatricesServices ,
-               private cd: ChangeDetectorRef,
-  ) {}
+  constructor( private matricesServices:MatricesServices , private cd: ChangeDetectorRef) {}
 
 
 

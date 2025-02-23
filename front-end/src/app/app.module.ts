@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { MatricesComponent } from './Components/matrices/matrices.component';
 import {TableModule} from 'primeng/table';
 import {BadgeModule} from 'primeng/badge';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import {BadgeModule} from 'primeng/badge';
     TableModule,
     MatricesComponent,
     BadgeModule,
-    MatricesComponent
+    MatricesComponent,
+    HttpClientModule
   ],
   providers: [
     provideClientHydration(withEventReplay())

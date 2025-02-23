@@ -19,7 +19,7 @@ import Aura from '@primeng/themes/aura';
         preset: Aura,
         options: {
           prefix: 'p',
-          darkModeSelector: 'light',
+          darkModeSelector: 'system',
           cssLayer: false
         }
       }
