@@ -8,27 +8,21 @@ import { Router } from '@angular/router';
   standalone:false
 })
 export class LoginComponent {
-  nom: string | undefined;
-  mdp: string | undefined;
+  username: string = '';
+  password: string = '';
 
   constructor(private loginService: LoginService, private router: Router) {}
 
-  onLogin() {
-    if (this.nom && this.mdp) {
-      this.loginService.login(this.nom, this.mdp).subscribe({
-        next: (response) => {
-          console.log('Réponse du serveur :', response);
-          // Example: Save token to local storage
-          localStorage.setItem('token', response.token);
-          this.router.navigate(['/dashboard']);
-        },
-        error: (error) => {
-          console.error('Erreur de connexion :', error);
-          alert('Nom d\'utilisateur ou mot de passe incorrect');
-        }
-      });
-    } else {
-      alert('Veuillez remplir tous les champs.');
-    }
+  onSubmit() {
+    this.loginService.login(this.username, this.password).subscribe(
+      response => {
+        console.log('Login successful', response);
+        this.router.navigate(['/departments']);
+      },
+      error => {
+        console.error('Login failed', error);
+        alert('Invalid username or password');
+      }
+    );
   }
 }

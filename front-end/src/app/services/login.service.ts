@@ -6,12 +6,12 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class LoginService {
-  private apiUrl = 'http://localhost:8080/api/login'; // Spring Boot endpoint
+  private loginUrl = 'http://localhost:8082/api/auth/login'; // Spring Boot endpoint
 
   constructor(private http: HttpClient) {}
 
   login(nom: string, mdp: string): Observable<any> {
     const body = { nom, mdp };
-    return this.http.post(this.apiUrl, body);
+    return this.http.post(this.loginUrl, body);
   }
 }

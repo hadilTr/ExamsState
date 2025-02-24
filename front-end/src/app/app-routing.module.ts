@@ -6,7 +6,7 @@ import { DepartementsComponent } from './Components/departements/departements.co
 
 const routes: Routes = [{ path: 'login', component: LoginComponent },
   { path: '', redirectTo: '/login', pathMatch: 'full' },
-  { path: 'departments', component: DepartementsComponent }
+  { path: '/departments', component: DepartementsComponent }
  ];
 
 @NgModule({

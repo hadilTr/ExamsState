@@ -1,4 +1,4 @@
-package com.example.backend.user;
+package com.example.backend.models;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -21,7 +21,7 @@ public class User {
             generator ="user_sequence" )
 
     private Long id;
-    //@Transient in case i don't want the firstName to be saved in the DB
+    //@Transient in case  don't want the firstName to be saved in the DB
     private String firstName;
     private String lastName;
     private String email;

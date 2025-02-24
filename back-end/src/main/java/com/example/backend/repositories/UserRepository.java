@@ -1,5 +1,6 @@
-package com.example.backend.user;
+package com.example.backend.repositories;
 
+import com.example.backend.models.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -11,6 +12,6 @@ public interface UserRepository
         extends JpaRepository<User, Long> {
 
     //Select * from user where email=****
-    @Query("SELECT u FROM User u WHERE u.email=?1")
-    Optional<User> findUserByEmail(String email);
+    @Query("SELECT u FROM User u WHERE u.username=?1")
+    Optional<User> findUserByUsername(String username);
 }

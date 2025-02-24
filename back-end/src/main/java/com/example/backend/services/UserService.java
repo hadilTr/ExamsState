@@ -1,7 +1,8 @@
-package com.example.backend.user;
+package com.example.backend.services;
 
+import com.example.backend.models.User;
+import com.example.backend.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -21,12 +22,13 @@ public class UserService {
         return userRepository.findAll();
     }
 
-    public void addNewUser(User user) {
+    public void addNewUser(User user)
+    {
        Optional<User> userOptional = userRepository.
-               findUserByEmail(user.getEmail());
+               findUserByUsername(user.getUsername());
 
        if (userOptional.isPresent()) {
-           throw new IllegalStateException("email exists");
+           throw new IllegalStateException("username exists");
        }
         userRepository.save(user);
     }
