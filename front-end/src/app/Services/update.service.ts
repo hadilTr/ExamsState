@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Observable, of } from 'rxjs';
 
 export interface Update {
   level?: string;
@@ -8,53 +9,59 @@ export interface Update {
 }
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class UpdateService {
-  getUpdatesData(): Update[] {
-    return [
+  getUpdatesData(): Observable<Update[]> {
+    return of([
       {
         level: 'INFO 2',
         subject: 'French',
         validation_status: 'Yes',
-        verification_status: 'Yes'
+        verification_status: 'Yes',
       },
       {
         level: 'INFO 2',
         subject: 'French',
         validation_status: 'Yes',
-        verification_status: 'Yes'
-      },{
+        verification_status: 'Yes',
+      },
+      {
         level: 'INFO 2',
         subject: 'French',
         validation_status: 'Yes',
-        verification_status: 'Yes'
-      },{
+        verification_status: 'Yes',
+      },
+      {
         level: 'INFO 2',
         subject: 'French',
         validation_status: 'Yes',
-        verification_status: 'Yes'
-      },{
+        verification_status: 'Yes',
+      },
+      {
         level: 'INFO 2',
         subject: 'French',
         validation_status: 'Yes',
-        verification_status: 'Yes'
-      },{
+        verification_status: 'Yes',
+      },
+      {
         level: 'INFO 2',
         subject: 'French',
         validation_status: 'Yes',
-        verification_status: 'Yes'
-      },{
+        verification_status: 'Yes',
+      },
+      {
         level: 'INFO 2',
         subject: 'French',
         validation_status: 'Yes',
-        verification_status: 'Yes'
-      },{
+        verification_status: 'Yes',
+      },
+      {
         level: 'INFO 2',
         subject: 'French',
         validation_status: 'Yes',
-        verification_status: 'Yes'
-      }
-    ];
+        verification_status: 'Yes',
+      },
+    ]);
   }
 }
