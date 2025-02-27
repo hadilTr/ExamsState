@@ -4,7 +4,7 @@ import { TableModule } from 'primeng/table';
 import { ButtonModule } from 'primeng/button';
 import { CommonModule } from '@angular/common';
 import { CommandModule } from '@angular/cli/src/command-builder/command-module';
-import { Update, UpdateService } from '../../../service/update.service';
+import { Update, UpdateService } from '../../../../../Services/update.service';
 
 @Component({
   selector: 'app-history-widget',
