@@ -25,12 +25,15 @@ public class User {
     private String firstName;
     private String lastName;
     private String email;
-    private String role;
+
+    @Enumerated(EnumType.STRING)
+    private Role role;
+
     private Long phone ;
     private String username;
     private String password;
 
-    public User(String firstName, String lastName, String email, String role, Long phone, String username, String password) {
+    public User(String firstName, String lastName, String email, Role role, Long phone, String username, String password) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;

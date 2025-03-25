@@ -1,5 +1,6 @@
 package com.example.backend.config;
 
+import com.example.backend.models.Role;
 import com.example.backend.models.User;
 import com.example.backend.repositories.UserRepository;
 import org.springframework.boot.CommandLineRunner;
@@ -14,8 +15,8 @@ public class UserConfig {
     @Bean
     CommandLineRunner commandLineRunner(UserRepository userRepository) {
         return args -> {
-            User user1 = new User("mohamed","ben ali","medbenali@gmail.com","Chef departement info",55555555L,"med1","med123");
-            User user2 = new User("fatma","ben salah","fatmabensalah@gmail.com","Chef departement gsil",66666666L,"fatm1","fatm123");
+            User user1 = new User("mohamed","ben ali","medbenali@gmail.com", Role.Ched_Dep_electrique,55555555L,"med1","med123");
+            User user2 = new User("fatma","ben salah","fatmabensalah@gmail.com",Role.Ched_Dep_info,66666666L,"fatm1","fatm123");
 
         userRepository.saveAll(List.of(user1,user2));
         };
