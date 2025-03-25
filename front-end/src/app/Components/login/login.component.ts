@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { LoginService } from '../../services/login.service';
 import { Router } from '@angular/router';
+import {FormBuilder, Validators} from '@angular/forms';
+import {LoginRequest} from '../../models/login-request.model';
 
 @Component({
   selector: 'login',
@@ -8,21 +10,32 @@ import { Router } from '@angular/router';
   standalone:false
 })
 export class LoginComponent {
-  username: string = '';
-  password: string = '';
+  loginForm = this.fb.group({
+    username: ['', Validators.required],
+    password: ['', Validators.required],
+  });
 
-  constructor(private loginService: LoginService, private router: Router) {}
+  errorMessage: string | null = null;
 
-  onSubmit() {
-    this.loginService.login(this.username, this.password).subscribe(
-      response => {
-        console.log('Login successful', response);
-        this.router.navigate(['/departments']);
-      },
-      error => {
-        console.error('Login failed', error);
-        alert('Invalid username or password');
-      }
-    );
+  constructor(
+    private fb: FormBuilder,
+    private loginService: LoginService,
+    private router: Router
+  ) {}
+
+  onSubmit(): void {
+    if (this.loginForm.valid) {
+      this.loginService.login(this.loginForm.value as LoginRequest).subscribe({
+        next: (response) => {
+          // Store user data (simplified example)
+          localStorage.setItem('username', response.username);
+          localStorage.setItem('role', response.role);
+          this.router.navigate(['/dashboard']); // Redirect after login
+        },
+        error: (err) => {
+          this.errorMessage = 'Invalid username or password'; // Handle Spring Boot's RuntimeException
+        },
+      });
+    }
   }
 }

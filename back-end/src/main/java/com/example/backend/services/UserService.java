@@ -13,7 +13,7 @@ public class UserService {
 
     private final UserRepository userRepository;
 
-    @Autowired
+    @Autowired //permet d'injecter le repo dans le srrvice
     public UserService(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
@@ -31,5 +31,6 @@ public class UserService {
            throw new IllegalStateException("username exists");
        }
         userRepository.save(user);
+
     }
 }

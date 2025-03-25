@@ -1,17 +1,19 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import {LoginRequest} from '../models/login-request.model';
+import {LoginResponse} from '../models/login-response.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService {
-  private loginUrl = 'http://localhost:8082/api/auth/login'; // Spring Boot endpoint
+  private apiUrl = 'http://localhost:8082/api/auth/login'; // Spring Boot endpoint
 
   constructor(private http: HttpClient) {}
 
-  login(nom: string, mdp: string): Observable<any> {
-    const body = { nom, mdp };
-    return this.http.post(this.loginUrl, body);
+  login(credentials: LoginRequest): Observable<LoginResponse> {
+    return this.http.post<LoginResponse>(`${this.apiUrl}/login`, credentials);
+
   }
 }
