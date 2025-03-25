@@ -13,16 +13,20 @@ public class AuthService {
     private final UserRepository userRepository;
 
 
+
     @Autowired
     public AuthService(UserRepository userRepository) {this.userRepository = userRepository;}
 
     public LoginResponse login(LoginRequest loginRequest) {
+
+
 
         User user = userRepository.findUserByUsername(loginRequest.getUsername())
                 .orElseThrow(() -> new RuntimeException("User not found"));
         if (!user.getPassword().equals(loginRequest.getPassword())) {
             throw new RuntimeException("Wrong password");
         }
+
 
         return new LoginResponse(user.getUsername(), user.getRole());
     }

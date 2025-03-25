@@ -18,6 +18,8 @@ import { HttpClientModule } from '@angular/common/http';
 import {DropdownModule} from 'primeng/dropdown';
 import { DepartementsComponent } from './Components/departements/departements.component';
 import { AddUserComponent } from './Components/add-user/add-user.component';
+import {ToastModule} from 'primeng/toast';
+import {MessageService} from 'primeng/api';
 
 
 
@@ -43,7 +45,7 @@ import { AddUserComponent } from './Components/add-user/add-user.component';
     CardModule,
     PasswordModule,
     WindowMaximizeIcon,
-    ButtonModule, RippleModule,  DropdownModule
+    ButtonModule, RippleModule,  DropdownModule,ToastModule
   ],
   providers: [
     provideClientHydration(withEventReplay()),
@@ -52,7 +54,8 @@ import { AddUserComponent } from './Components/add-user/add-user.component';
       theme: {
         preset: Lara
       }
-    })
+    }),
+    MessageService
   ]
 })
 export class AppModule { }

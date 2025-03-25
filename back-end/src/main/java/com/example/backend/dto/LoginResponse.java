@@ -1,4 +1,5 @@
 package com.example.backend.dto;
+import com.example.backend.models.Role;
 import lombok.*;
 
 @Data
@@ -11,7 +12,7 @@ import lombok.*;
 public class LoginResponse {
     //private String token;     // JWT token for Angular to store
     private String username;  // Authenticated username
-    private String role;     // User roles for frontend authorization
+    private Role role;     // User roles for frontend authorization
 
 
 }

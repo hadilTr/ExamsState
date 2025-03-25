@@ -3,6 +3,7 @@ import { LoginService } from '../../services/login.service';
 import { Router } from '@angular/router';
 import {FormBuilder, Validators} from '@angular/forms';
 import {LoginRequest} from '../../models/login-request.model';
+import {MessageService} from 'primeng/api';
 
 @Component({
   selector: 'login',
@@ -10,32 +11,43 @@ import {LoginRequest} from '../../models/login-request.model';
   standalone:false
 })
 export class LoginComponent {
-  loginForm = this.fb.group({
-    username: ['', Validators.required],
-    password: ['', Validators.required],
-  });
-
-  errorMessage: string | null = null;
+  username: string = '';
+  password: string = '';
+  loading: boolean = false;
 
   constructor(
-    private fb: FormBuilder,
     private loginService: LoginService,
-    private router: Router
+    private router: Router,
+    private messageService: MessageService
   ) {}
 
-  onSubmit(): void {
-    if (this.loginForm.valid) {
-      this.loginService.login(this.loginForm.value as LoginRequest).subscribe({
-        next: (response) => {
-          // Store user data (simplified example)
-          localStorage.setItem('username', response.username);
-          localStorage.setItem('role', response.role);
-          this.router.navigate(['/dashboard']); // Redirect after login
-        },
-        error: (err) => {
-          this.errorMessage = 'Invalid username or password'; // Handle Spring Boot's RuntimeException
-        },
-      });
-    }
+  login() {
+    this.loading = true;
+
+    const loginRequest = {
+      username: this.username,
+      password: this.password
+    };
+
+    this.loginService.login(loginRequest).subscribe({
+      next: () => {
+        this.router.navigate(['departments']);
+        this.messageService.add({
+          severity: 'success',
+          summary: 'Connexion réussie',
+          life: 3000
+        });
+      },
+      error: (err) => {
+        this.loading = false;
+        this.messageService.add({
+          severity: 'error',
+          summary: 'Erreur',
+          detail: err.error?.message || 'Échec de connexion',
+          life: 5000
+        });
+      },
+      complete: () => this.loading = false
+    });
   }
 }
