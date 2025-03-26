@@ -1,4 +1,4 @@
-package com.example.backend.models;
+package com.example.backend.enums;
 
 
 public enum Role {

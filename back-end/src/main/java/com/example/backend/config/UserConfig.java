@@ -1,6 +1,6 @@
 package com.example.backend.config;
 
-import com.example.backend.models.Role;
+import com.example.backend.enums.Role;
 import com.example.backend.models.User;
 import com.example.backend.repositories.UserRepository;
 import org.springframework.boot.CommandLineRunner;

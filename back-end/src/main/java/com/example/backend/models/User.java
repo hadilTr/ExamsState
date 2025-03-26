@@ -1,5 +1,6 @@
 package com.example.backend.models;
 
+import com.example.backend.enums.Role;
 import jakarta.persistence.*;
 import lombok.*;
 
