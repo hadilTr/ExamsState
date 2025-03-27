@@ -1,1 +1,144 @@
-<p>add-user works!</p>
+<h2 class="flex md:justify-content-center ">Ajouter un nouveau utilisateur</h2>
+<div class="card grid grid-cols-1 md:grid-cols-2 gap-4 p-4 flex flex-column gap-3 justify-content-center align-items-center">
+  <!-- First Name -->
+  <div class="flex flex-column gap-3 justify-content-center align-items-center">
+  <p-inputgroup>
+    <p-inputgroup-addon>
+      <i class="pi pi-user"></i>
+    </p-inputgroup-addon>
+    <input
+      pInputText
+      [(ngModel)]="firstname"
+      placeholder="Prenom"
+      required
+      #firstName="ngModel"
+    />
+    <small *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)" class="p-error">
+      {{ firstName.errors?.['required'] ? 'First name is required' : '' }}
+    </small>
+  </p-inputgroup>
+
+  <!-- Last Name -->
+  <p-inputgroup>
+    <p-inputgroup-addon>
+      <i class="pi pi-user"></i>
+    </p-inputgroup-addon>
+    <input
+      pInputText
+      [(ngModel)]="lastname"
+      placeholder="Nom"
+      required
+      #lastName="ngModel"
+    />
+    <small *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)" class="p-error">
+      {{ lastName.errors?.['required'] ? 'Last name is required' : '' }}
+    </small>
+  </p-inputgroup>
+
+  <!-- Email -->
+  <p-inputgroup>
+    <p-inputgroup-addon>
+      <i class="pi pi-envelope"></i>
+    </p-inputgroup-addon>
+    <input
+      pInputText
+      [(ngModel)]="mail"
+      placeholder="Email"
+      type="email"
+      required
+      #email="ngModel"
+    />
+    <small *ngIf="email.invalid && (email.dirty || email.touched)" class="p-error">
+      {{ email.errors?.['required'] ? 'Email is required' : '' }}
+      {{ email.errors?.['email'] ? 'Invalid email format' : '' }}
+    </small>
+  </p-inputgroup>
+
+  <!-- Phone -->
+  <p-inputgroup>
+    <p-inputgroup-addon>
+      <i class="pi pi-phone"></i>
+    </p-inputgroup-addon>
+    <input
+      pInputText
+      [(ngModel)]="tel"
+      placeholder="Telephone"
+      type="tel"
+      #phone="ngModel"
+    />
+    <small *ngIf="phone.invalid && (phone.dirty || phone.touched)" class="p-error">
+      Invalid phone number format
+    </small>
+  </p-inputgroup>
+
+  <!-- Username -->
+  <p-inputgroup>
+    <p-inputgroup-addon>
+      <i class="pi pi-at"></i>
+    </p-inputgroup-addon>
+    <input
+      pInputText
+      [(ngModel)]="Username"
+      placeholder="Username"
+      required
+      minlength="4"
+      maxlength="20"
+      #username="ngModel"
+    />
+    <small *ngIf="username.invalid && (username.dirty || username.touched)" class="p-error">
+      {{ username.errors?.['required'] ? 'Username is required' : '' }}
+      {{ username.errors?.['minlength'] || username.errors?.['maxlength'] ?
+      'Username must be 4-20 characters' : '' }}
+    </small>
+  </p-inputgroup>
+
+  <!-- Password -->
+  <p-inputgroup>
+    <p-inputgroup-addon>
+      <i class="pi pi-lock"></i>
+    </p-inputgroup-addon>
+    <input
+      pInputText
+      [(ngModel)]="Password"
+      placeholder="Mot de passe"
+      type="password"
+      required
+      minlength="8"
+      #password="ngModel"
+    />
+    <small *ngIf="password.invalid && (password.dirty || password.touched)" class="p-error">
+      {{ password.errors?.['required'] ? 'Password is required' : '' }}
+      {{ password.errors?.['minlength'] ? 'Password must be at least 8 characters' : '' }}
+    </small>
+  </p-inputgroup>
+
+  <!-- Role -->
+  <p-inputgroup>
+    <p-inputgroup-addon>
+      <i class="pi pi-users"></i>
+    </p-inputgroup-addon>
+    <p-dropdown
+      [(ngModel)]="role"
+      [options]="roles"
+      optionLabel="name"
+      optionValue="value"
+      placeholder="Select Role"
+      required
+      #roleControl="ngModel"
+    ></p-dropdown>
+    <small *ngIf="roleControl.invalid && (roleControl.dirty || roleControl.touched)" class="p-error">
+      Role is required
+    </small>
+  </p-inputgroup>
+</div>
+</div>
+
+<div class="flex md:justify-content-center mt-5">
+  <button
+    pButton
+    type="button"
+    label="Ajouter"
+    icon="pi pi-check"
+    (click)="addnewuser()"
+  ></button>
+</div>

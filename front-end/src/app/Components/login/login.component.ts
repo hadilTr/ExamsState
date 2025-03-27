@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { LoginService } from '../../services/login.service';
 import { Router } from '@angular/router';
-import {FormBuilder, Validators} from '@angular/forms';
 import {LoginRequest} from '../../models/login-request.model';
 import {MessageService} from 'primeng/api';
 
@@ -24,7 +23,7 @@ export class LoginComponent {
   login() {
     this.loading = true;
 
-    const loginRequest = {
+    const loginRequest:LoginRequest = {
       username: this.username,
       password: this.password
     };

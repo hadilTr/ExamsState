@@ -20,6 +20,8 @@ import { DepartementsComponent } from './Components/departements/departements.co
 import { AddUserComponent } from './Components/add-user/add-user.component';
 import {ToastModule} from 'primeng/toast';
 import {MessageService} from 'primeng/api';
+import {InputGroup, InputGroupModule} from 'primeng/inputgroup';
+import {InputGroupAddon, InputGroupAddonModule} from 'primeng/inputgroupaddon';
 
 
 
@@ -45,7 +47,7 @@ import {MessageService} from 'primeng/api';
     CardModule,
     PasswordModule,
     WindowMaximizeIcon,
-    ButtonModule, RippleModule,  DropdownModule,ToastModule
+    ButtonModule, RippleModule, DropdownModule, ToastModule, InputGroupAddon, InputGroup
   ],
   providers: [
     provideClientHydration(withEventReplay()),
