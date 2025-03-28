@@ -22,6 +22,8 @@ import {ToastModule} from 'primeng/toast';
 import {MessageService} from 'primeng/api';
 import {InputGroup, InputGroupModule} from 'primeng/inputgroup';
 import {InputGroupAddon, InputGroupAddonModule} from 'primeng/inputgroupaddon';
+import { NiveauGroupeComponent } from './Components/niveau-groupe/niveau-groupe.component';
+import {Listbox} from 'primeng/listbox';
 
 
 
@@ -31,7 +33,8 @@ import {InputGroupAddon, InputGroupAddonModule} from 'primeng/inputgroupaddon';
     AppComponent,
     LoginComponent,
     DepartementsComponent,
-    AddUserComponent
+    AddUserComponent,
+    NiveauGroupeComponent
 
   ],
   imports: [
@@ -47,7 +50,7 @@ import {InputGroupAddon, InputGroupAddonModule} from 'primeng/inputgroupaddon';
     CardModule,
     PasswordModule,
     WindowMaximizeIcon,
-    ButtonModule, RippleModule, DropdownModule, ToastModule, InputGroupAddon, InputGroup
+    ButtonModule, RippleModule, DropdownModule, ToastModule, InputGroupAddon, InputGroup, Listbox
   ],
   providers: [
     provideClientHydration(withEventReplay()),
