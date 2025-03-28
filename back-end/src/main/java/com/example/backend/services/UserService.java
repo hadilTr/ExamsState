@@ -1,5 +1,6 @@
 package com.example.backend.services;
 
+import com.example.backend.Mappers.UserMapper;
 import com.example.backend.dto.AddUserRequest;
 import com.example.backend.dto.AddUserResponse;
 import com.example.backend.models.User;
@@ -18,11 +19,12 @@ import java.util.Optional;
 public class UserService {
 
     private final UserRepository userRepository;
+    private final UserMapper userMapper; // Injected mapper
 
-
-    @Autowired //permet d'injecter le repo dans le srrvice
-    public UserService(UserRepository userRepository) {
+    @Autowired
+    public UserService(UserRepository userRepository, UserMapper userMapper) {
         this.userRepository = userRepository;
+        this.userMapper = userMapper;
     }
 
     public List<User> getUsers() {
@@ -30,25 +32,18 @@ public class UserService {
     }
 
     @Transactional
-    public AddUserResponse addNewUser(@Valid AddUserRequest request)
-    {
-       Optional<User> userOptional = userRepository.
-               findUserByUsername(request.getUsername());
+    public AddUserResponse addNewUser(@Valid AddUserRequest request) {
+        Optional<User> userOptional = userRepository.findUserByUsername(request.getUsername());
 
-       if (userOptional.isPresent()) {
-           throw new IllegalStateException("username exists");
-       }
-        User user = new User();
-        user.setFirstName(request.getFirstName());
-        user.setLastName(request.getLastName());
-        user.setEmail(request.getEmail());
-        user.setRole(request.getRole());
-        user.setPhone(request.getPhone());
-        user.setUsername(request.getUsername());
-        user.setPassword(request.getPassword());
+        if (userOptional.isPresent()) {
+            throw new IllegalStateException("Username already exists!");
+        }
+
+        // Convert DTO to Entity using MapStruct
+        User user = userMapper.toEntity(request);
 
         userRepository.save(user);
 
-        return new AddUserResponse("added user!");
+        return new AddUserResponse("User added successfully!");
     }
 }

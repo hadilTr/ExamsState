@@ -5,8 +5,8 @@ import {addUserService } from '../../services/addUser.service';
 
 export enum Role {
   Responsable_etudes = 'Responsable_etudes',
-  Ched_Dep_info = 'Ched_Dep_info',
-  Ched_Dep_electrique = 'Ched_Dep_electrique',
+  Chef_Dep_info = 'Chef_Dep_info',
+  Chef_Dep_electrique = 'Chef_Dep_electrique',
   Responsable_examens = 'Responsable_examens',
   Responsable_Deliberation = 'Responsable_Deliberation'
 }
@@ -21,9 +21,9 @@ export class AddUserComponent {
   firstname: string = '';
   lastname: string = '';
   mail: string = '';
-  Password: string = '';
+  password: string = '';
   tel: string = '';
-  Username: string = '';
+  username: string = '';
 
   role: Role | null = null; // Currently selected role
   roles: any[] = [];
@@ -53,9 +53,9 @@ export class AddUserComponent {
       firstname: this.firstname,
       lastname: this.lastname,
       mail: this.mail,
-      Password: this.Password,
+      password: this.password,
       tel: this.tel,
-      Username: this.Username,
+      username: this.username,
       role: this.role
     }
     this.addUserService.adduser(adduserRequest).subscribe({

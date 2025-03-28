@@ -7,27 +7,30 @@ import jakarta.validation.constraints.*;
 import lombok.*;
 import org.antlr.v4.runtime.misc.NotNull;
 
-@Data // Generates getters, setters, toString, equals, hashCode
+@Data
+@Getter
+@Setter// Generates getters, setters, toString, equals, hashCode
 @NoArgsConstructor // For Jackson deserialization
 @AllArgsConstructor // For easy construction
-@Builder // For object creation with builder pattern
+@Builder
+// For object creation with builder pattern
 public class AddUserRequest {
 
     @NotBlank(message = "First name is required")
-    private String firstName;
+    private String firstname;
 
     @NotBlank(message = "Last name is required")
-    private String lastName;
+    private String lastname;
 
     @Email(message = "Invalid email format")
     @NotBlank
-    private String email;
+    private String mail;
 
 
     private Role role;
 
     @Digits(integer = 15, fraction = 0, message = "Invalid phone number format")
-    private Long phone;
+    private Long tel;
 
     @NotBlank
     @Size(min = 4, max = 20, message = "Username must be 4-20 characters")

@@ -6,16 +6,28 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-@Mapper(componentModel = "spring", uses = PasswordEncoder.class)
+@Mapper(
+        componentModel = "spring"
+
+)
 public interface UserMapper {
 
-    @Mapping(target = "password", ignore = true) // Skip plain password
-    User toUser(AddUserRequest request);
+    @Mapping(target = "id", ignore = true) // Ignore ID as it's auto-generated
+    @Mapping(source = "firstname", target = "firstname")
+    @Mapping(source = "lastname", target = "lastname")
+    @Mapping(source = "mail", target = "mail")
+    @Mapping(source = "role", target = "role")
+    @Mapping(source = "tel", target = "tel")
+    @Mapping(source = "username", target = "username")
+    @Mapping(source = "password", target = "password")
+    User toEntity(AddUserRequest dto);
 
-    // Helper method to encode password
-    default User toUserWithEncodedPassword(AddUserRequest request, PasswordEncoder encoder) {
-        User user = toUser(request);
-        user.setPassword(encoder.encode(request.getPassword()));
-        return user;
-    }
+    @Mapping(source = "firstname", target = "firstname")
+    @Mapping(source = "lastname", target = "lastname")
+    @Mapping(source = "mail", target = "mail")
+    @Mapping(source = "role", target = "role")
+    @Mapping(source = "tel", target = "tel")
+    @Mapping(source = "username", target = "username")
+    @Mapping(source = "password", target = "password")
+    AddUserRequest toDto(User entity);
 }

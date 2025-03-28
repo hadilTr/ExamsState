@@ -5,8 +5,8 @@ export interface AddUserRequest {
   firstname: string;
   lastname: string;
   mail: string;
-  Password: string;
+  password: string;
   tel: string;
-  Username: string;
+  username: string;
   role:Role ;
 }

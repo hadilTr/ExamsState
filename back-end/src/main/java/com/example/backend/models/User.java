@@ -23,23 +23,23 @@ public class User {
 
     private Long id;
     //@Transient in case  don't want the firstName to be saved in the DB
-    private String firstName;
-    private String lastName;
-    private String email;
+    private String firstname;
+    private String lastname;
+    private String mail;
 
     @Enumerated(EnumType.STRING)
     private Role role;
 
-    private Long phone ;
+    private Long tel ;
     private String username;
     private String password;
 
-    public User(String firstName, String lastName, String email, Role role, Long phone, String username, String password) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.email = email;
+    public User(String firstname, String lastname, String mail, Role role, Long tel, String username, String password) {
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.mail = mail;
         this.role = role;
-        this.phone = phone;
+        this.tel = tel;
         this.username = username;
         this.password = password;
     }

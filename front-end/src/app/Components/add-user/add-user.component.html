@@ -78,16 +78,16 @@
     </p-inputgroup-addon>
     <input
       pInputText
-      [(ngModel)]="Username"
+      [(ngModel)]="username"
       placeholder="Username"
       required
       minlength="4"
       maxlength="20"
-      #username="ngModel"
+      #username1="ngModel"
     />
-    <small *ngIf="username.invalid && (username.dirty || username.touched)" class="p-error">
-      {{ username.errors?.['required'] ? 'Username is required' : '' }}
-      {{ username.errors?.['minlength'] || username.errors?.['maxlength'] ?
+    <small *ngIf="username1.invalid && (username1.dirty || username1.touched)" class="p-error">
+      {{ username1.errors?.['required'] ? 'Username is required' : '' }}
+      {{ username1.errors?.['minlength'] || username1.errors?.['maxlength'] ?
       'Username must be 4-20 characters' : '' }}
     </small>
   </p-inputgroup>
@@ -99,16 +99,16 @@
     </p-inputgroup-addon>
     <input
       pInputText
-      [(ngModel)]="Password"
+      [(ngModel)]="password"
       placeholder="Mot de passe"
       type="password"
       required
       minlength="8"
-      #password="ngModel"
+      #password1="ngModel"
     />
-    <small *ngIf="password.invalid && (password.dirty || password.touched)" class="p-error">
-      {{ password.errors?.['required'] ? 'Password is required' : '' }}
-      {{ password.errors?.['minlength'] ? 'Password must be at least 8 characters' : '' }}
+    <small *ngIf="password1.invalid && (password1.dirty || password1.touched)" class="p-error">
+      {{ password1.errors?.['required'] ? 'Password is required' : '' }}
+      {{ password1.errors?.['minlength'] ? 'Password must be at least 8 characters' : '' }}
     </small>
   </p-inputgroup>
 
