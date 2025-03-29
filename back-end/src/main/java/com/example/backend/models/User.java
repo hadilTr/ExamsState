@@ -15,13 +15,9 @@ import lombok.*;
 @Table
 public class User {
     @Id
-    @SequenceGenerator(
-            name="user_sequence",sequenceName = "user_sequence",allocationSize=1)
-    @GeneratedValue(
-            strategy =GenerationType.SEQUENCE,
-            generator ="user_sequence" )
-
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     //@Transient in case  don't want the firstName to be saved in the DB
     private String firstname;
     private String lastname;

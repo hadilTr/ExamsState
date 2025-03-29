@@ -1,6 +1,7 @@
 package com.example.backend.enums;
 
-public enum Departements {
+public enum Departement {
     Informatique,
     Electrique,
+    Industriel
 }
