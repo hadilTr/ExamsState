@@ -26,6 +26,7 @@ public class EnseignantMapperImpl implements EnseignantMapper {
                 .email(enseignant.getEmail())
                 .matieres(enseignant.getMatieres())
                 .groupe(enseignant.getGroupe())
+                .niveau(enseignant.getNiveau())
                 .specialite(enseignant.getSpecialite())
                 .departement(enseignant.getDepartement())
                 .build();
@@ -42,6 +43,7 @@ public class EnseignantMapperImpl implements EnseignantMapper {
         enseignant.setNom(dto.getNom());
         enseignant.setEmail(dto.getEmail());
         enseignant.setGroupe(dto.getGroupe());
+        enseignant.setNiveau(dto.getNiveau());
         enseignant.setSpecialite(dto.getSpecialite());
         enseignant.setDepartement(dto.getDepartement());
 

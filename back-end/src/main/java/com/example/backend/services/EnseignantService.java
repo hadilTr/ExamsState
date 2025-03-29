@@ -34,6 +34,7 @@ public class EnseignantService {
         enseignant.setEmail(dto.getEmail());
         enseignant.setMatieres(dto.getMatiereNoms());
         enseignant.setGroupe(dto.getGroupe());
+        enseignant.setNiveau(dto.getNiveau());
         enseignant.setSpecialite(dto.getSpecialite());
         enseignant.setDepartement(dto.getDepartement());
 
