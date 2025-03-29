@@ -1,0 +1,105 @@
+<div class="form-container">
+  <h2 class="form-title">Ajouter un Enseignant</h2>
+
+  <form [formGroup]="enseignantForm" (ngSubmit)="onSubmit()">
+    <!-- Nom -->
+    <label for="nom">Nom & Prenom :</label>
+    <input type="text" id="nom" placeholder="Entrez le nom" formControlName="nom" required>
+
+    <!-- Prénom
+    <label for="prenom">Prénom :</label>
+    <input type="text" id="prenom" placeholder="Entrez le prénom" formControlName="prenom" required>-->
+
+    <!-- Email -->
+    <label for="email">Email :</label>
+    <input type="email" id="email" placeholder="Entrez l'email" formControlName="email" required>
+
+    <!-- Téléphone -->
+    <label for="telephone">Numéro de téléphone :</label>
+    <input type="tel" id="telephone" placeholder="Entrez le numéro de téléphone" formControlName="telephone" required>
+
+
+
+
+
+
+    <!-- Département     INFORMATIQUE, ELECTRIQUE, INDUS;-->
+    <label for="departement">Département :</label>
+    <select id="departement" formControlName="departement" required>
+      <option value="">Sélectionnez un département</option>
+      <option value="INFORMATIQUE">INFORMATIQUE</option>
+      <option value="ELECTRIQUE">ELECTRIQUE</option>
+      <option value="INDUS">INDUS</option>
+    </select>
+
+
+
+
+
+
+
+    <!-- Spécialité -->
+    <label for="specialite">Spécialité :</label>
+    <select id="specialite" formControlName="specialite" required>
+      <option value="">Sélectionnez une spécialité</option>
+      <option value="INFORMATIQUE">INFORMATIQUE</option>
+      <option value="MECATRONIQUE">MECATRONIQUE</option>
+      <option value="INDUS">INDUS</option>
+      <option value="INFOTRONIQUE">INFOTRONIQUE</option>
+    </select>
+
+
+
+    <!-- Niveau  -->
+    <label for="niveau">Niveau :</label>
+    <select id="niveau" formControlName="niveau" required>
+      <option value="">Sélectionnez un niveau</option>
+      <option value="NIVEAU_1">NIVEAU_1</option>
+      <option value="NIVEAU_2">NIVEAU_2</option>
+      <option value="NIVEAU_3">NIVEAU_3</option>
+    </select>
+
+    <!-- groupe  -->
+
+    <label for="groupe">Groupe :</label>
+    <select id="groupe" formControlName="groupe" required>
+      <option value="">Sélectionnez un Groupe</option>
+      <option value="Groupe_A">Groupe_A</option>
+      <option value="Groupe_B">Groupe_B</option>
+      <option value="Groupe_C">Groupe_C</option>
+      <option value="Groupe_D">Groupe_D</option>
+      <option value="Groupe_E">Groupe_E</option>
+    </select>
+
+
+
+
+
+
+
+    <!-- Matière enseignée -->
+    <label for="matiere">Matière enseignée :</label>
+    <input type="text" id="matiere" placeholder="Ex : AI, Programmation..." formControlName="matieres" required>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Date de recrutement -->
+    <!--<label for="date-recrutement">Date de recrutement :</label>
+    <input type="date" id="date-recrutement" formControlName="dateRecrutement" required>-->
+
+    <!-- Bouton de soumission -->
+    <button type="submit" [disabled]="enseignantForm.invalid">Ajouter l'enseignant</button>
+  </form>
+</div>
