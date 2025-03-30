@@ -24,6 +24,7 @@ import {InputGroup, InputGroupModule} from 'primeng/inputgroup';
 import {InputGroupAddon, InputGroupAddonModule} from 'primeng/inputgroupaddon';
 import { NiveauGroupeComponent } from './Components/niveau-groupe/niveau-groupe.component';
 import {Listbox} from 'primeng/listbox';
+import { DialogModule } from 'primeng/dialog';
 
 
 
@@ -38,6 +39,7 @@ import {Listbox} from 'primeng/listbox';
 
   ],
   imports: [
+    DialogModule,
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
