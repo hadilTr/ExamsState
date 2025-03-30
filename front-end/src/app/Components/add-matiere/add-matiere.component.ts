@@ -1,13 +1,11 @@
-
 import { Component, OnInit } from '@angular/core';
-
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatiereService} from '../../Services/matiere.service';
 import { EnseignantService} from '../../Services/enseignant.service';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'add-matiere',
+  selector: 'app-add-matiere',
   standalone:false,
   templateUrl: './add-matiere.component.html',
   styleUrls: ['./add-matiere.component.css']
@@ -54,30 +52,13 @@ export class AddMatiereComponent implements OnInit {
   }
 
   loadEnseignants(): void {
-    const { departement, specialite, niveau, groupe } = this.matiereForm.value;
-
-    if (departement && specialite && niveau && groupe) {
-      this.isLoading = true;
-
-      this.enseignantService.getEnseignantsByFilters(
-        departement.toUpperCase(), // Force uppercase pour correspondre à l'enum
-        specialite.toUpperCase(),
-        niveau.toUpperCase(),
-        groupe
-      ).subscribe({
-        next: (data) => {
-          console.log('Données reçues:', data);
-          this.filteredEnseignants = data;
-          this.isLoading = false;
-        },
-        error: (err) => {
-          console.error('Erreur:', err);
-          this.isLoading = false;
-        }
-      });
-    } else {
-      this.filteredEnseignants = [];
-    }
+    this.enseignantService.getAllEnseignants().subscribe({
+      next: (data) => {
+        this.enseignants = data;
+        this.filterEnseignants();
+      },
+      error: (err) => console.error(err)
+    });
   }
 
   filterEnseignants(): void {
@@ -94,17 +75,14 @@ export class AddMatiereComponent implements OnInit {
       this.filteredEnseignants = [];
     }
   }
-  isLoading = false;
-  isSubmitting = false; // Ajout pour gérer l'état de soumission
+
   onSubmit(): void {
     if (this.matiereForm.valid) {
-      this.isSubmitting = true;
       this.matiereService.saveMatiere(this.matiereForm.value).subscribe({
         next: () => {
           this.showNotification = true;
           this.isSuccess = true;
-          this.notificationMessage = 'Matière ajoutée avec succès!';
-          this.isSubmitting = false;
+          this.notificationMessage = 'La nouvelle matière a été ajoutée avec succès à la base de données.';
 
           setTimeout(() => {
             this.showNotification = false;
@@ -114,8 +92,7 @@ export class AddMatiereComponent implements OnInit {
         error: (err) => {
           this.showNotification = true;
           this.isSuccess = false;
-          this.notificationMessage = 'Erreur: ' + (err.error?.message || 'Échec de l\'ajout');
-          this.isSubmitting = false;
+          this.notificationMessage = err.error?.message || 'Une erreur est survenue lors de l\'ajout de la matière.';
 
           setTimeout(() => {
             this.showNotification = false;

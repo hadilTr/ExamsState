@@ -17,9 +17,4 @@ export class MatiereService {
   getAllMatieres(): Observable<any> {
     return this.http.get(this.apiUrl);
   }
-
-  // Optionnel: Pour filtrer par enseignant
-  getMatieresByEnseignant(enseignantId: number): Observable<any> {
-    return this.http.get(`${this.apiUrl}/enseignant/${enseignantId}`);
-  }
 }
