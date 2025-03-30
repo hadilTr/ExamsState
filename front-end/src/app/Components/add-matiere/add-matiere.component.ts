@@ -82,7 +82,7 @@ export class AddMatiereComponent implements OnInit {
         next: () => {
           this.showNotification = true;
           this.isSuccess = true;
-          this.notificationMessage = 'La nouvelle matière a été ajoutée avec succès à la base de données.';
+          this.notificationMessage = 'La nouvelle matière a été ajoutée avec succès à la Matrice.';
 
           setTimeout(() => {
             this.showNotification = false;
