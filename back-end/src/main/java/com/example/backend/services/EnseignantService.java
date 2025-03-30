@@ -1,4 +1,4 @@
-package com.example.backend.services;
+/*package com.example.backend.services;
 
 
 import com.example.backend.dto.request.EnseignantDTO;
@@ -68,9 +68,64 @@ public class EnseignantService {
 
 
 
-    public EnseignantResponseDTO getEnseignantById(Long id) {
-        return enseignantRepository.findById(id)
+    public EnseignantResponspository.findById(id)
                 .map(enseignantMapper::toResponseDTO) // Convertit Enseignant -> EnseignantResponseDTO
-                .orElseThrow(() -> new EntityNotFoundException("Enseignant non trouvé"));
+                .orElseThrow(eDTO getEnseignantById(Long id) {
+        return enseignantRe() -> new EntityNotFoundException("Enseignant non trouvé"));
+    }
+}
+
+
+ */
+
+package com.example.backend.services;
+
+import com.example.backend.dto.request.EnseignantDTO;
+import com.example.backend.dto.response.EnseignantResponseDTO;
+import com.example.backend.enumeration.*;
+import com.example.backend.mapper.EnseignantMapper;
+import com.example.backend.models.Enseignant;
+import com.example.backend.repositories.EnseignantRepository;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.stream.Collectors;
+
+@Service
+public class EnseignantService {
+    private final EnseignantRepository enseignantRepository;
+    private final EnseignantMapper enseignantMapper;
+
+    public EnseignantService(EnseignantRepository enseignantRepository,
+                             EnseignantMapper enseignantMapper) {
+        this.enseignantRepository = enseignantRepository;
+        this.enseignantMapper = enseignantMapper;
+    }
+
+    public EnseignantResponseDTO saveEnseignant(EnseignantDTO enseignantDTO) {
+        Enseignant enseignant = enseignantMapper.toEntity(enseignantDTO);
+        Enseignant savedEnseignant = enseignantRepository.save(enseignant);
+        return enseignantMapper.toResponseDTO(savedEnseignant);
+    }
+
+    public List<EnseignantResponseDTO> getEnseignantsByFilters(
+            DepartementEnum departement,
+            SpecialiteEnum specialite,
+            NiveauEnum niveau,
+            GroupeEnum groupe) {
+
+        List<Enseignant> enseignants = enseignantRepository.findByDepartementAndSpecialiteAndNiveauAndGroupe(
+                departement, specialite, niveau, groupe);
+
+        return enseignants.stream()
+                .map(enseignantMapper::toResponseDTO)
+                .collect(Collectors.toList());
+    }
+
+    public List<EnseignantResponseDTO> getAllEnseignants() {
+        return enseignantRepository.findAll().stream()
+                .map(enseignantMapper::toResponseDTO)
+                .collect(Collectors.toList());
     }
 }

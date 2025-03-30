@@ -1,4 +1,4 @@
-package com.example.backend.models;
+/*package com.example.backend.models;
 
 import com.example.backend.enumeration.DepartementEnum;
 import com.example.backend.enumeration.GroupeEnum;
@@ -25,15 +25,10 @@ public class Enseignant {
 
     private String email;
 
-   @ElementCollection
+    @ElementCollection
     @CollectionTable(name = "enseignant_matieres", joinColumns = @JoinColumn(name = "enseignant_nom"))
     @Column(name = "matiere_nom") // Nom de la colonne dans la table de jointure
     private List<String> matieres;
-
-
-  /*@OneToMany(cascade = CascadeType.ALL) // Cascade pour propager l'ajout/suppression des matières
-  @JoinColumn(name = "enseignant_id") // Colonne de jointure dans la table Matiere
-  private List<Matiere> matieres;*/
 
     @Enumerated(EnumType.STRING)
     private GroupeEnum groupe;
@@ -46,4 +41,39 @@ public class Enseignant {
 
     @Enumerated(EnumType.STRING)
     private DepartementEnum departement;
+}*/
+
+package com.example.backend.models;
+
+import com.example.backend.enumeration.*;
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Entity
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+public class Enseignant {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    private String nom;
+    private String email;
+
+    @Enumerated(EnumType.STRING)
+    private DepartementEnum departement;
+
+    @Enumerated(EnumType.STRING)
+    private SpecialiteEnum specialite;
+
+    @Enumerated(EnumType.STRING)
+    private NiveauEnum niveau;
+
+    @Enumerated(EnumType.STRING)
+    private GroupeEnum groupe;
 }
