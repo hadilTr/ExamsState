@@ -1,49 +1,58 @@
-import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Component } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { EnseignantService} from '../../Services/enseignant.service';
-import { Enseignant} from '../../models/enseignant.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'add-enseignant',
   standalone:false,
-  templateUrl: './add-enseignant.component.html',
+  templateUrl: 'add-enseignant.component.html',
   styleUrls: ['./add-enseignant.component.css']
 })
-export class AddEnseignantComponent implements OnInit {
-
+export class AddEnseignantComponent {
   enseignantForm: FormGroup;
+  departements = ['INFORMATIQUE', 'ELECTRIQUE', 'INDUS'];
+  specialites = ['INFORMATIQUE', 'MECATRONIQUE', 'INDUS', 'INFOTRONIQUE'];
+  niveaux = ['NIVEAU_1', 'NIVEAU_2', 'NIVEAU_3'];
+  groupes = ['Groupe_A', 'Groupe_B', 'Groupe_C', 'Groupe_D', 'Groupe_E'];
 
   constructor(
     private fb: FormBuilder,
-    private enseignantService: EnseignantService
+    private enseignantService: EnseignantService,
+    private router: Router
   ) {
-    // Initialisation de enseignantForm dans le constructeur
     this.enseignantForm = this.fb.group({
       nom: ['', Validators.required],
-     // prenom: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      telephone: ['', Validators.required],
       departement: ['', Validators.required],
       specialite: ['', Validators.required],
       niveau: ['', Validators.required],
-      groupe: ['', Validators.required],
-      matieres: ['', Validators.required],
-      //dateRecrutement: ['', Validators.required]
+      groupe: ['', Validators.required]
     });
   }
+  showSuccessNotification = false;
+  notificationMessage = '';
 
-  ngOnInit(): void {}
-
-  onSubmit(): void {
+  onSubmit() {
     if (this.enseignantForm.valid) {
-      const newEnseignant: Enseignant = this.enseignantForm.value;
-      newEnseignant.matieres = this.enseignantForm.value.matieres.split(',').map((m: string) => m.trim());
+      this.enseignantService.saveEnseignant(this.enseignantForm.value).subscribe({
+        next: (response) => {
+          this.notificationMessage = 'Enseignant enregistré avec succès !';
+          this.showSuccessNotification = true;
 
-      this.enseignantService.createEnseignant(newEnseignant).subscribe({
-        next: () => alert('Enseignant ajouté avec succès !'),
+          setTimeout(() => {
+            this.showSuccessNotification = false;
+            this.router.navigate(['/enseignants']);
+          }, 3000);
+        },
         error: (err) => {
-          alert('Erreur : ' + err.message);
-          console.error(err);
+          this.notificationMessage = 'Erreur lors de l\'enregistrement: ' +
+            (err.error?.message || 'Veuillez réessayer');
+          this.showSuccessNotification = true;
+
+          setTimeout(() => {
+            this.showSuccessNotification = false;
+          }, 3000);
         }
       });
     }

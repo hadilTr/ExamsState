@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import {catchError, Observable, throwError} from 'rxjs';
-import { Enseignant } from '../models/enseignant.model';
+import {catchError, Observable, tap, throwError} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -9,26 +8,39 @@ import { Enseignant } from '../models/enseignant.model';
 export class EnseignantService {
   private apiUrl = 'http://localhost:8082/api/enseignants';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
-  getAllEnseignants(): Observable<Enseignant[]> {
-    return this.http.get<Enseignant[]>(this.apiUrl);
+  // Ajoutez cette méthode manquante
+  getAllEnseignants(): Observable<any> {
+    return this.http.get(this.apiUrl);
+  }
+  // Vos autres méthodes existantes2
+  saveEnseignant(enseignant: any): Observable<any> {
+    return this.http.post(this.apiUrl, enseignant);
   }
 
-  getEnseignantById(id: number): Observable<Enseignant> {
-    return this.http.get<Enseignant>(`${this.apiUrl}/${id}`);
-  }
+  getEnseignantsByFilters(
+    departement: string,
+    specialite: string,
+    niveau: string,
+    groupe: string
+  ): Observable<any> {
+    // Ajoutez des logs pour débogage
+    console.log('Params envoyés:', { departement, specialite, niveau, groupe });
 
-  createEnseignant(enseignant: Enseignant): Observable<Enseignant> {
-    return this.http.post<Enseignant>(this.apiUrl, enseignant).pipe(
-      catchError((err) => {
-        console.error('Erreur lors de l\'ajout de l\'enseignant:', err);  // Ajoutez un log ici pour afficher l'erreur
-        return throwError(err);
+    return this.http.get(`${this.apiUrl}/filter`, {
+      params: {
+        departement: departement,
+        specialite: specialite,
+        niveau: niveau,
+        groupe: groupe
+      }
+    }).pipe(
+      tap(response => console.log('Réponse API:', response)),
+      catchError(error => {
+        console.error('Erreur API:', error);
+        return throwError(error);
       })
     );
-  }
-
-  deleteEnseignant(id: number): Observable<void> {
-    return this.http.delete<void>(`${this.apiUrl}/${id}`);
   }
 }

@@ -1,0 +1,101 @@
+<div class="form-container">
+  <!-- Notification -->
+  <div class="notification"
+       [class.show]="showNotification"
+       [class.success]="isSuccess"
+       [class.error]="!isSuccess && showNotification">
+    <span class="notification-icon">{{ isSuccess ? '✓' : '✗' }}</span>
+    <span>{{ notificationMessage }}</span>
+    <div class="notification-progress" *ngIf="showNotification"></div>
+  </div>
+
+  <h2 class="form-title">Ajouter une Nouvelle Matière</h2>
+
+  <form [formGroup]="matiereForm" (ngSubmit)="onSubmit()">
+    <!-- Nom de la matière -->
+    <div class="form-group">
+      <label for="nomMatiere">Nom de la matière</label>
+      <input type="text" id="nomMatiere" formControlName="nomMatiere"
+             placeholder="Ex: Algorithmique Avancée"
+             [class.error]="matiereForm.get('nomMatiere')?.invalid && matiereForm.get('nomMatiere')?.touched">
+      <div *ngIf="matiereForm.get('nomMatiere')?.invalid && matiereForm.get('nomMatiere')?.touched"
+           class="error-message">
+        Le nom est obligatoire
+      </div>
+    </div>
+
+    <!-- Filtres -->
+    <div class="form-grid">
+      <div class="form-group">
+        <label for="departement">Département</label>
+        <select id="departement" formControlName="departement">
+          <option value="" disabled selected>Sélectionnez un département</option>
+          <option *ngFor="let dep of departements" [value]="dep">{{dep}}</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="specialite">Spécialité</label>
+        <select id="specialite" formControlName="specialite">
+          <option value="" disabled selected>Sélectionnez une spécialité</option>
+          <option *ngFor="let spec of specialites" [value]="spec">{{spec}}</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="form-grid">
+      <div class="form-group">
+        <label for="niveau">Niveau</label>
+        <select id="niveau" formControlName="niveau">
+          <option value="" disabled selected>Sélectionnez un niveau</option>
+          <option *ngFor="let niv of niveaux" [value]="niv">{{niv}}</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="groupe">Groupe</label>
+        <select id="groupe" formControlName="groupe">
+          <option value="" disabled selected>Sélectionnez un groupe</option>
+          <option *ngFor="let grp of groupes" [value]="grp">{{grp}}</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Enseignant -->
+    <div class="form-group">
+      <label for="enseignantId">Enseignant Responsable</label>
+      <select id="enseignantId" formControlName="enseignantId"
+              [disabled]="!filteredEnseignants.length">
+        <option value="" disabled selected>
+          {{ filteredEnseignants.length ? 'Sélectionnez un enseignant' : 'Choisissez d\'abord les critères' }}
+        </option>
+        <option *ngFor="let ens of filteredEnseignants" [value]="ens.id">
+          {{ ens.nom }} ({{ ens.email }})
+        </option>
+      </select>
+      <small *ngIf="!filteredEnseignants.length" class="text-muted">
+        {{ matiereForm.get('departement')?.value &&
+      matiereForm.get('specialite')?.value &&
+      matiereForm.get('niveau')?.value &&
+      matiereForm.get('groupe')?.value
+        ? 'Aucun enseignant disponible'
+        : 'Sélectionnez département, spécialité, niveau et groupe' }}
+      </small>
+      <div *ngIf="isLoading" class="spinner-border text-primary" role="status">
+        <span class="visually-hidden">Chargement...</span>
+      </div>
+    </div>
+
+    <!-- Boutons -->
+    <div class="button-group">
+      <button type="submit" class="submit-btn" [disabled]="!matiereForm.valid">
+        <span *ngIf="!isLoading">Enregistrer la Matière</span>
+        <span *ngIf="isLoading">Enregistrement en cours...</span>
+      </button>
+
+      <button type="button" class="cancel-btn" routerLink="/matieres">
+        Annuler
+      </button>
+    </div>
+  </form>
+</div>

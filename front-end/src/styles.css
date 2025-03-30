@@ -1,2 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
 @import "primeflex/primeflex.css";
+/* Import de polices Google */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+/* Application de la police */
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #f5f7fa;
+  color: #333;
+  line-height: 1.6;
+}
