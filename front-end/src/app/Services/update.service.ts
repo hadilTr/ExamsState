@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
-
 export interface Update {
   level?: string;
   subject?: string;
@@ -11,57 +11,11 @@ export interface Update {
 @Injectable({
   providedIn: 'root',
 })
-export class UpdateService {
-  getUpdatesData(): Observable<Update[]> {
-    return of([
-      {
-        level: 'INFO 2',
-        subject: 'French',
-        validation_status: 'Yes',
-        verification_status: 'Yes',
-      },
-      {
-        level: 'INFO 2',
-        subject: 'French',
-        validation_status: 'Yes',
-        verification_status: 'Yes',
-      },
-      {
-        level: 'INFO 2',
-        subject: 'French',
-        validation_status: 'Yes',
-        verification_status: 'Yes',
-      },
-      {
-        level: 'INFO 2',
-        subject: 'French',
-        validation_status: 'Yes',
-        verification_status: 'Yes',
-      },
-      {
-        level: 'INFO 2',
-        subject: 'French',
-        validation_status: 'Yes',
-        verification_status: 'Yes',
-      },
-      {
-        level: 'INFO 2',
-        subject: 'French',
-        validation_status: 'Yes',
-        verification_status: 'Yes',
-      },
-      {
-        level: 'INFO 2',
-        subject: 'French',
-        validation_status: 'Yes',
-        verification_status: 'Yes',
-      },
-      {
-        level: 'INFO 2',
-        subject: 'French',
-        validation_status: 'Yes',
-        verification_status: 'Yes',
-      },
-    ]);
+export class UpdateService  {
+  private apiUrl = 'http://localhost:8080/api/history-widget';
+  constructor(private http:HttpClient) {}
+
+  getHistoriques():Observable<Update[]>{
+    return this.http.get<Update[]>(this.apiUrl);
   }
 }

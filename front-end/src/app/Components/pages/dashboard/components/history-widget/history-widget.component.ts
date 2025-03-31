@@ -1,9 +1,4 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
-import { RippleModule } from 'primeng/ripple';
-import { TableModule } from 'primeng/table';
-import { ButtonModule } from 'primeng/button';
-import { CommonModule } from '@angular/common';
-import { CommandModule } from '@angular/cli/src/command-builder/command-module';
 import { Update, UpdateService } from '../../../../../Services/update.service';
 
 @Component({
@@ -13,13 +8,13 @@ import { Update, UpdateService } from '../../../../../Services/update.service';
   styleUrl: './history-widget.component.css',
 })
 export class HistoryWidgetComponent implements OnInit {
-  updates: Update[] = []; // Declare updates as an array of Update
+  updates: Update[] = [];
 
   constructor(private updateService: UpdateService) {}
 
   ngOnInit(): void {
-    this.updateService.getUpdatesData().subscribe((data) => {
-      this.updates = data; // Fetch data properly
+    this.updateService.getHistoriques().subscribe((data) => {
+      this.updates = data;
     });
   }
 }
