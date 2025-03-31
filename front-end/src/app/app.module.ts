@@ -21,16 +21,16 @@ import {WindowMaximizeIcon} from 'primeng/icons';
 import {RippleModule} from 'primeng/ripple';
 import {ToastModule} from 'primeng/toast';
 import {Listbox} from 'primeng/listbox';
-import { ListEnseignantsComponent } from './Components/list-enseignants/list-enseignants.component';
 import { AddMatiereComponent } from './Components/add-matiere/add-matiere.component';
+import { ListMatieresComponent } from './Components/list-matieres/list-matieres.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     AddEnseignantComponent,
-    ListEnseignantsComponent,
-    AddMatiereComponent
+    AddMatiereComponent,
+    ListMatieresComponent
 
   ],
   imports: [

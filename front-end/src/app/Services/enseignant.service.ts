@@ -6,7 +6,7 @@ import {catchError, Observable, tap, throwError} from 'rxjs';
   providedIn: 'root'
 })
 export class EnseignantService {
-  private apiUrl = 'http://localhost:8082/api/enseignants';
+  private apiUrl = 'http://localhost:8083/api/enseignants';
 
   constructor(private http: HttpClient) { }
 

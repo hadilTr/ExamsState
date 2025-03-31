@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import {AddEnseignantComponent} from './Components/add-enseignant/add-enseignant.component';
 import {AddMatiereComponent} from './Components/add-matiere/add-matiere.component';
+import {ListMatieresComponent} from './Components/list-matieres/list-matieres.component';
 
 const routes: Routes = [
 
@@ -10,6 +11,10 @@ const routes: Routes = [
   { path: 'add-enseignant', component: AddEnseignantComponent },
 
   { path: 'add-matiere', component: AddMatiereComponent },
+
+  { path: 'list-matiere', component: ListMatieresComponent }
+
+
 
 
 ];
