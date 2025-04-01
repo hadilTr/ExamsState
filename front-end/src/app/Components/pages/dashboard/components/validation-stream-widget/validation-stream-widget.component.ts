@@ -5,6 +5,7 @@ import {
   PLATFORM_ID,
   Inject,
 } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { debounceTime, Subscription } from 'rxjs';
 import { LayoutService } from '../../../../layout/layout.service';
 import { isPlatformBrowser } from '@angular/common';
@@ -13,14 +14,16 @@ import { isPlatformBrowser } from '@angular/common';
   selector: 'app-validation-stream-widget',
   standalone: false,
   templateUrl: './validation-stream-widget.component.html',
-  styleUrl: './validation-stream-widget.component.css',
+  styleUrls: ['./validation-stream-widget.component.css'],
 })
 export class ValidationStreamWidgetComponent implements OnInit, OnDestroy {
   chartData: any;
   chartOptions: any;
   subscription!: Subscription;
+  apiUrl = 'http://localhost:8083/api/matieres/valides';
 
   constructor(
+    private http: HttpClient,
     public layoutService: LayoutService,
     @Inject(PLATFORM_ID) private platformId: Object,
   ) {
@@ -33,8 +36,59 @@ export class ValidationStreamWidgetComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     if (isPlatformBrowser(this.platformId)) {
-      this.initChart();
+      this.fetchData();
     }
+  }
+
+  fetchData() {
+    this.http.get<any[]>(this.apiUrl).subscribe(
+      (data) => {
+        this.processChartData(data);
+      },
+      (error) => {
+        console.error('Erreur lors de la récupération des données:', error);
+      }
+    );
+  }
+
+  processChartData(data: any[]) {
+    const labels: string[] = [];
+    const datasets: any[] = [];
+    const niveauMap = new Map<string, number[]>();
+
+    data.forEach((item) => {
+      const departement = item.departement || 'Non spécifié';
+      const niveau = item.niveau || 'Non spécifié';
+      const total = item.total || 0;
+
+      if (!labels.includes(departement)) {
+        labels.push(departement);
+      }
+
+      if (!niveauMap.has(niveau)) {
+        niveauMap.set(niveau, Array(labels.length).fill(0));
+      }
+
+      const index = labels.indexOf(departement);
+      niveauMap.get(niveau)![index] = total;
+    });
+
+    const colors = ['#A3E0B9', '#77C77F', '#55B35C', '#3E8E41'];
+    let colorIndex = 0;
+
+    niveauMap.forEach((values, niveau) => {
+      datasets.push({
+        type: 'bar',
+        label: niveau,
+        backgroundColor: colors[colorIndex % colors.length],
+        data: values,
+        barThickness: 32,
+      });
+      colorIndex++;
+    });
+
+    this.chartData = { labels, datasets };
+    this.initChart();
   }
 
   initChart() {
@@ -42,75 +96,26 @@ export class ValidationStreamWidgetComponent implements OnInit, OnDestroy {
       const documentStyle = getComputedStyle(document.documentElement);
       const textColor = documentStyle.getPropertyValue('--text-color');
       const borderColor = documentStyle.getPropertyValue('--surface-border');
-      const textMutedColor = documentStyle.getPropertyValue(
-        '--text-color-secondary',
-      );
-
-      this.chartData = {
-        labels: ['Computer science', 'Mecatronics', 'Infotronics', 'Gsil'],
-        datasets: [
-          {
-            type: 'bar',
-            label: '1st',
-            backgroundColor: documentStyle.getPropertyValue('--p-primary-400'),
-            data: [20, 45, 55, 76],
-            barThickness: 32,
-          },
-          {
-            type: 'bar',
-            label: '2nd',
-            backgroundColor: documentStyle.getPropertyValue('--p-primary-300'),
-            data: [35, 56, 67, 87],
-            barThickness: 32,
-          },
-          {
-            type: 'bar',
-            label: '3rd',
-            backgroundColor: documentStyle.getPropertyValue('--p-primary-200'),
-            data: [55, 65, 34, 87],
-            borderRadius: {
-              topLeft: 8,
-              topRight: 8,
-              bottomLeft: 0,
-              bottomRight: 0,
-            },
-            borderSkipped: false,
-            barThickness: 32,
-          },
-        ],
-      };
+      const textMutedColor = documentStyle.getPropertyValue('--text-color-secondary');
 
       this.chartOptions = {
         maintainAspectRatio: false,
         aspectRatio: 0.8,
         plugins: {
           legend: {
-            labels: {
-              color: textColor,
-            },
+            labels: { color: textColor },
           },
         },
         scales: {
           x: {
             stacked: true,
-            ticks: {
-              color: textMutedColor,
-            },
-            grid: {
-              color: 'transparent',
-              borderColor: 'transparent',
-            },
+            ticks: { color: textMutedColor },
+            grid: { color: 'transparent', borderColor: 'transparent' },
           },
           y: {
             stacked: true,
-            ticks: {
-              color: textMutedColor,
-            },
-            grid: {
-              color: borderColor,
-              borderColor: 'transparent',
-              drawTicks: false,
-            },
+            ticks: { color: textMutedColor },
+            grid: { color: borderColor, borderColor: 'transparent', drawTicks: false },
           },
         },
       };

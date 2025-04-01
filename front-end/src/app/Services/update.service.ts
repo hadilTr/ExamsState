@@ -12,7 +12,7 @@ export interface Update {
   providedIn: 'root',
 })
 export class UpdateService  {
-  private apiUrl = 'http://localhost:8080/api/history-widget';
+  private apiUrl = '';
   constructor(private http:HttpClient) {}
 
   getHistoriques():Observable<Update[]>{

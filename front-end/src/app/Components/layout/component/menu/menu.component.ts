@@ -15,99 +15,49 @@ export class MenuComponent {
       {
         label: 'Home',
         items: [
-          { label: 'Dashboard', icon: 'pi pi-fw pi-home', routerLink: ['/'] },
+          { label: 'Dashboard', icon: 'pi pi-fw pi-home', routerLink: ['/layout'] },
         ],
       },
-      {
-        label: 'UI Components',
+      /*{
+        label: 'Subjects',
         items: [
           {
-            label: 'Form Layout',
-            icon: 'pi pi-fw pi-id-card',
-            routerLink: ['/uikit/formlayout'],
+            label: 'Add Subject',
+            icon: 'pi pi-fw pi-plus',
+            routerLink: ['/add-matiere'],
+          }
+        ],
+      },*/
+      {
+        label: 'Teachers',
+        items: [
+          {
+            label: 'Add Teacher',
+            icon: 'pi pi-fw pi-plus',
+            routerLink: ['/add-enseignant'],
           }
         ],
       },
       {
-        label: 'Pages',
-        icon: 'pi pi-fw pi-briefcase',
-        routerLink: ['/pages'],
+        label: 'Matrix',
         items: [
           {
-            label: 'Landing',
-            icon: 'pi pi-fw pi-globe',
-            routerLink: ['/landing'],
-          },
-          {
-            label: 'Auth',
-            icon: 'pi pi-fw pi-user',
-            items: [
-              {
-                label: 'Login',
-                icon: 'pi pi-fw pi-sign-in',
-                routerLink: ['/auth/login'],
-              }
-            ],
-          },
-        ],
-      },
-      {
-        label: 'Hierarchy',
-        items: [
-          {
-            label: 'Submenu 1',
-            icon: 'pi pi-fw pi-bookmark',
-            items: [
-              {
-                label: 'Submenu 1.1',
-                icon: 'pi pi-fw pi-bookmark',
-                items: [
-                  { label: 'Submenu 1.1.1', icon: 'pi pi-fw pi-bookmark' },
-                  { label: 'Submenu 1.1.2', icon: 'pi pi-fw pi-bookmark' },
-                  { label: 'Submenu 1.1.3', icon: 'pi pi-fw pi-bookmark' },
-                ]
-              },
-            ],
-          },
-          {
-            label: 'Submenu 2',
-            icon: 'pi pi-fw pi-bookmark',
-            items: [
-              {
-                label: 'Submenu 2.1',
-                icon: 'pi pi-fw pi-bookmark',
-                items: [
-                  { label: 'Submenu 2.1.1', icon: 'pi pi-fw pi-bookmark' },
-                  { label: 'Submenu 2.1.2', icon: 'pi pi-fw pi-bookmark' },
-                ],
-              },
-              {
-                label: 'Submenu 2.2',
-                icon: 'pi pi-fw pi-bookmark',
-                items: [
-                  { label: 'Submenu 2.2.1', icon: 'pi pi-fw pi-bookmark' },
-                ],
-              },
-            ],
-          },
-        ],
-      },
-      {
-        label: 'Get Started',
-        items: [
-          {
-            label: 'Documentation',
+            label: 'Matrix Consultation',
             icon: 'pi pi-fw pi-book',
-            routerLink: ['/documentation'],
-          },
-          {
-            label: 'View Source',
-            icon: 'pi pi-fw pi-github',
-            url: 'https://github.com/hadilTr/ExamsState.git',
-            target: '_blank',
-          },
+            routerLink: ['/list-matiere'],
+          }
         ],
       },
+      {
+        label: 'Departments',
+        items: [
+          {
+            label: 'Info',
+            icon: 'pi pi-fw pi-book',
+            routerLink: ['/lchartinfo'],
+          }
+        ],
+      }
     ];
   }
 }

@@ -1,21 +1,18 @@
-import { NgModule } from '@angular/core';
-import {
-  BrowserModule,
-  provideClientHydration,
-  withEventReplay,
-} from '@angular/platform-browser';
-import {ReactiveFormsModule} from '@angular/forms';
 import { provideHttpClient, withFetch } from '@angular/common/http';
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
 import { TopbarComponent } from './Components/layout/component/topbar/topbar.component';
 import { SidebarComponent } from './Components/layout/component/sidebar/sidebar.component';
 import { MenuitemComponent } from './Components/layout/component/menuitem/menuitem.component';
 import { MenuComponent } from './Components/layout/component/menu/menu.component';
 import { FooterComponent } from './Components/layout/component/footer/footer.component';
 import Lara from '@primeng/themes/lara';
+import { NgModule } from '@angular/core'
+import { BrowserModule, provideClientHydration, withEventReplay } from '@angular/platform-browser';
+import {ReactiveFormsModule,FormsModule} from '@angular/forms';
+
+import { AppRoutingModule } from './app-routing.module';
 import {BadgeModule} from 'primeng/badge';
 import {HttpClientModule} from '@angular/common/http';
+
 import {InputTextModule} from 'primeng/inputtext';
 import {MultiSelectModule} from 'primeng/multiselect';
 import {DropdownModule} from 'primeng/dropdown';
@@ -45,11 +42,13 @@ import { FeatureswidgetComponent } from './Components/pages/landing/components/f
 import { FooterwidgetComponent } from './Components/pages/landing/components/footerwidget/footerwidget.component';
 import { TopbarwidgetComponent } from './Components/pages/landing/components/topbarwidget/topbarwidget.component';
 import { StyleClass } from 'primeng/styleclass';
-import { FormsModule } from '@angular/forms';
 import { SelectButton } from 'primeng/selectbutton';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { Ripple, RippleModule } from 'primeng/ripple';
 import { InputGroup, InputGroupModule } from 'primeng/inputgroup';
+import { AppComponent } from './app.component';
+import { ChartInfoComponent } from './Components/pages/Departments/dep-info/chart-info/chart-info.component';
+import { Fluid } from 'primeng/fluid';
 
 @NgModule({
   declarations: [
@@ -71,17 +70,26 @@ import { InputGroup, InputGroupModule } from 'primeng/inputgroup';
     FeatureswidgetComponent,
     FooterwidgetComponent,
     TopbarwidgetComponent,
-    AppComponent,
     AddEnseignantComponent,
     AddMatiereComponent,
-    ListMatieresComponent
+    ListMatieresComponent,
+    AddEnseignantComponent,
+    AddMatiereComponent,
+    ListMatieresComponent,
+    ChartInfoComponent
+
   ],
   imports: [
+
     BrowserModule,
     BrowserAnimationsModule,
-    AppRoutingModule,
+
     Button,
     BadgeModule,
+    AppRoutingModule,
+    TableModule,
+    BadgeModule,
+    FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
     DropdownModule,
@@ -95,11 +103,11 @@ import { InputGroup, InputGroupModule } from 'primeng/inputgroup';
     FormsModule,
     SelectButton,
     Ripple,
+    ButtonModule,
     InputGroupModule,
     InputGroupAddonModule,
     BrowserModule,
     HttpClientModule,
-    AppRoutingModule,
     Button,
     BrowserModule,
     FormsModule,
@@ -109,7 +117,7 @@ import { InputGroup, InputGroupModule } from 'primeng/inputgroup';
     CardModule,
     PasswordModule,
     WindowMaximizeIcon,
-    ButtonModule, RippleModule, DropdownModule, ToastModule, InputGroupAddon, InputGroup, Listbox
+    ButtonModule, RippleModule, DropdownModule, ToastModule, InputGroupAddon, InputGroup, Listbox, Fluid
 
 
   ],

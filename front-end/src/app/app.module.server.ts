@@ -2,15 +2,16 @@ import { NgModule } from '@angular/core';
 import { ServerModule } from '@angular/platform-server';
 import { provideServerRoutesConfig } from '@angular/ssr';
 import { AppComponent } from './app.component';
-import { AppModule } from './app.module';
 import { serverRoutes } from './app.routes.server';
 import {provideAnimationsAsync} from '@angular/platform-browser/animations/async';
 import {providePrimeNG} from 'primeng/config';
 import Aura from '@primeng/themes/aura';
+import { AppModule } from './app.module';
 
 
 @NgModule({
   imports: [AppModule, ServerModule],
+
   providers: [
     provideServerRoutesConfig(serverRoutes),
     provideAnimationsAsync(),
@@ -19,7 +20,7 @@ import Aura from '@primeng/themes/aura';
         preset: Aura,
         options: {
           prefix: 'p',
-          darkModeSelector: 'light',
+          darkModeSelector: 'dark',
           cssLayer: false
         }
       }

@@ -32,10 +32,8 @@
             ],
             "tsConfig": "tsconfig.app.json",
             "assets": [
-              {
-                "glob": "**/*",
-                "input": "public"
-              }
+              "src/assets",
+              "src/favicon.ico"
             ],
             "styles": [
               "src/styles.scss"
@@ -61,7 +59,7 @@
                   "maximumError": "8kB"
                 }
               ],
-              "outputHashing": "all"
+              "outputHashing": "media"
             },
             "development": {
               "optimization": false,
@@ -103,17 +101,30 @@
             ],
             "styles": [
               "src/styles.scss",
+              "src/styles.css",
               "node_modules/primeng/themes/lara-light-blue/theme.css",
               "node_modules/primeng/primeng.min.css",
               "node_modules/primeicons/primeicons.css"
             ],
             "scripts": []
           }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "src/**/*.ts",
+              "src/**/*.html"
+            ]
+          }
         }
       }
     }
   },
   "cli": {
-    "analytics": "592ee3fc-5042-4ab0-89e7-7013b4e1f92c"
+    "analytics": "592ee3fc-5042-4ab0-89e7-7013b4e1f92c",
+    "schematicCollections": [
+      "angular-eslint"
+    ]
   }
 }

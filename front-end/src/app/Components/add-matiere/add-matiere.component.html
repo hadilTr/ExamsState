@@ -1,0 +1,112 @@
+<div class="form-container">
+  <!-- Notification -->
+  <div class="notification"
+       [class.show]="showNotification"
+       [class.success]="isSuccess"
+       [class.error]="!isSuccess && showNotification">
+    <span class="notification-icon">{{ isSuccess ? '✓' : '✗' }}</span>
+    <div class="notification-content">
+      <div class="notification-title">
+        {{ isSuccess ? 'Succès' : 'Erreur' }}
+      </div>
+      <div class="notification-message">
+        {{ notificationMessage }}
+      </div>
+    </div>
+    <div class="notification-progress" *ngIf="showNotification"></div>
+  </div>
+
+  <h2 class="form-title">Ajouter une Nouvelle Matière</h2>
+
+  <form [formGroup]="matiereForm" (ngSubmit)="onSubmit()">
+    <!-- Nom de la matière -->
+    <div class="form-group">
+      <label for="nomMatiere">
+        <span class="emoji-label">📚</span>
+        Nom de la matière
+      </label>
+      <input type="text" id="nomMatiere" formControlName="nomMatiere"
+             placeholder="Algorithmique avancée"
+             [class.error]="matiereForm.get('nomMatiere')?.invalid && matiereForm.get('nomMatiere')?.touched">
+    </div>
+
+    <!-- Filtres -->
+    <div class="form-grid">
+      <div class="form-group">
+        <label for="departement">
+          <span class="emoji-label">🏛️</span>
+          Département
+        </label>
+        <select id="departement" formControlName="departement">
+          <option value="" disabled selected>Choisir un département</option>
+          <option *ngFor="let dep of departements" [value]="dep">{{dep}}</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="specialite">
+          <span class="emoji-label">🎯</span>
+          Spécialité
+        </label>
+        <select id="specialite" formControlName="specialite">
+          <option value="" disabled selected>Choisir une spécialité</option>
+          <option *ngFor="let spec of specialites" [value]="spec">{{spec}}</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="form-grid">
+      <div class="form-group">
+        <label for="niveau">
+          <span class="emoji-label">📶</span>
+          Niveau
+        </label>
+        <select id="niveau" formControlName="niveau">
+          <option value="" disabled selected>Choisir un niveau</option>
+          <option *ngFor="let niv of niveaux" [value]="niv">{{niv}}</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="groupe">
+          <span class="emoji-label">👥</span>
+          Groupe
+        </label>
+        <select id="groupe" formControlName="groupe">
+          <option value="" disabled selected>Choisir un groupe</option>
+          <option *ngFor="let grp of groupes" [value]="grp">{{grp}}</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Section Enseignant -->
+    <div class="enseignant-section">
+      <div class="form-group">
+        <label for="enseignantId">
+          <span class="emoji-label">👨‍🏫</span>
+          Enseignant Responsable
+        </label>
+        <select id="enseignantId" formControlName="enseignantId"
+                [disabled]="filteredEnseignants.length === 0">
+          <option value="" disabled selected>
+            {{ filteredEnseignants.length ? 'Choisir un enseignant' : 'Sélectionnez d\'abord les critères' }}
+          </option>
+          <option *ngFor="let ens of filteredEnseignants" [value]="ens.id">
+            {{ ens.nom }} ({{ ens.email }})
+          </option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Boutons avec emojis -->
+    <div class="button-group">
+      <button type="submit" class="submit-btn" [disabled]="!matiereForm.valid">
+        💾 Enregistrer
+      </button>
+
+      <button type="button" class="cancel-btn" routerLink="/matieres">
+        ✖ Annuler
+      </button>
+    </div>
+  </form>
+</div>

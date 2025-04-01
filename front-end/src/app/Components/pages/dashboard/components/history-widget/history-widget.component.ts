@@ -9,7 +9,6 @@ import { Update, UpdateService } from '../../../../../Services/update.service';
 })
 export class HistoryWidgetComponent implements OnInit {
   updates: Update[] = [];
-
   constructor(private updateService: UpdateService) {}
 
   ngOnInit(): void {
@@ -17,4 +16,5 @@ export class HistoryWidgetComponent implements OnInit {
       this.updates = data;
     });
   }
+
 }
