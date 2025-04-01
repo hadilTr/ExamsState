@@ -29,7 +29,7 @@
         <label for="speciality">Spécialité</label>
         <p-dropdown
           id="speciality"
-          [(ngModel)]="speciliaty"
+          [(ngModel)]="speciality"
           [options]="specialities"
           optionLabel="name"
           optionValue="value"
@@ -65,10 +65,10 @@
         <label for="department">Département</label>
         <p-dropdown
           id="department"
-          [(ngModel)]="department"
+          [(ngModel)]="departement"
           [options]="departments"
           optionLabel="name"
-          optionValue="value"
+          optionValue="value1"
           placeholder="Sélectionnez un département"
           required
           #departmentControl="ngModel"
@@ -91,7 +91,7 @@
         (click)="saveGroup()"
         label="Enregistrer"
         icon="pi pi-check"
-        [disabled]="!name || !speciliaty || !level || !department">
+        [disabled]="!name || !speciality || !level || !departement">
       </p-button>
     </ng-template>
   </p-dialog>

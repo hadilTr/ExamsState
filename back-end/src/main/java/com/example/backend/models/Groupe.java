@@ -2,10 +2,7 @@ package com.example.backend.models;
 import com.example.backend.enums.Departement;
 import com.example.backend.enums.Level;
 import com.example.backend.enums.Speciality;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 
 @Entity
@@ -23,8 +20,11 @@ public class Groupe {
     private int id;
 
     private String name;
+    @Enumerated(EnumType.STRING)
     private Speciality speciality;
+    @Enumerated(EnumType.STRING)
     private Departement departement;
+    @Enumerated(EnumType.STRING)
     private Level level;
 
 }

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {Router} from '@angular/router';
-import {Role} from '../add-user/add-user.component';
+import {AddGroupeRequest} from '../../models/AddGroupe-request.model';
+import {addGroupeService} from '../../services/addGroupe.service';
 
 export enum  Speciality {
     Mécatronique="Mécatronique",
@@ -13,7 +14,7 @@ export enum Level {
   Deuxieme="Deuxieme",
   Troisieme="Troisieme"
 }
-enum Departement {
+export enum Departement {
   Informatique="Informatique",
   Electrique="Electrique",
   Industriel="Industriel"
@@ -37,7 +38,8 @@ export class NiveauGroupeComponent {
   ];
 
   constructor(
-    private router: Router,) {
+    private router: Router,
+    private addGroupeservice:addGroupeService) {
 
     // Convert enum to array of objects for dropdown
     this.specialities = Object.keys(Speciality).map(key => ({
@@ -52,7 +54,7 @@ export class NiveauGroupeComponent {
 
     this.departments=Object.keys(Departement).map(key => ({
       name:this.formatDepartmentsName(key),
-      value:Departement[key as keyof typeof Departement]
+      value1:Departement[key as keyof typeof Departement]
     }));
 
 
@@ -70,11 +72,11 @@ export class NiveauGroupeComponent {
 
   displayBasic: boolean = false;
   name: any;
-  speciliaty: Speciality;
+  speciality: Speciality;
   specialities: any[] = [];
   level:Level;
   levels: any[] = [];
-  department:Departement;
+  departement:Departement;
   departments:any[]=[];
 
 
@@ -95,6 +97,18 @@ export class NiveauGroupeComponent {
   }
 
   saveGroup() {
+    const addgroupeRequest: AddGroupeRequest = {
+      name: this.name,
+      speciality:this.speciality,
+      departement:this.departement,
+      level:this.level
+    }
+    this.addGroupeservice.saveGroup(addgroupeRequest).subscribe({
+      next: (response) => {
+        console.log("groupe added!",response);
+      },
+      error: (err) => {console.error('Error adding groupe:', err);}
+    })
 
   }
 }

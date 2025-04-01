@@ -29,7 +29,12 @@ public class GroupeService {
 
     @Transactional
     public AddGroupeResponse addgroupe(@Valid AddGroupeRequest request) {
-        Optional<Groupe> groupeOptional = groupeRepository.findByName(request.getName());
+        Optional<Groupe> groupeOptional = groupeRepository.findByNameAndSpecialityAndLevelAndDepartement(
+                request.getName(),
+                request.getSpeciality(),
+                request.getLevel(),
+                request.getDepartement()
+        );
 
         if (groupeOptional.isPresent()) {
             throw new IllegalStateException("Group already exists!");
