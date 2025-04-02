@@ -10,7 +10,7 @@ import {AddGroupeResponse} from '../models/AddGroupe-response.model';
   providedIn: 'root'
 })
 export class addGroupeService {
-  private apiUrl = 'http://localhost:8082/api/groupe'; // Spring Boot endpoint
+  private apiUrl = 'http://localhost:8083/api/groupe'; // Spring Boot endpoint
 
   constructor(private http: HttpClient) {}
 

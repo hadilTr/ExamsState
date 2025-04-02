@@ -8,7 +8,7 @@ import {LoginResponse} from '../models/login-response.model';
   providedIn: 'root'
 })
 export class LoginService {
-  private apiUrl = 'http://localhost:8082/api/auth/login'; // Spring Boot endpoint
+  private apiUrl = 'http://localhost:8083/api/auth/login'; // Spring Boot endpoint
 
   constructor(private http: HttpClient) {}
 

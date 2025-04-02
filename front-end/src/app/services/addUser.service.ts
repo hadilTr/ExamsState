@@ -8,7 +8,7 @@ import {AddUserResponse} from '../models/AddUserResponse.model';
   providedIn: 'root'
 })
 export class addUserService {
-  private apiUrl = 'http://localhost:8082/api/user'; // Spring Boot endpoint
+  private apiUrl = 'http://localhost:8083/api/user'; // Spring Boot endpoint
 
   constructor(private http: HttpClient) {}
 
