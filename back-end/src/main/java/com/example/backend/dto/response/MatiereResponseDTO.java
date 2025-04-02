@@ -2,6 +2,8 @@ package com.example.backend.dto.response;
 
 import lombok.Data;
 
+import java.time.LocalDateTime;
+
 @Data
 public class MatiereResponseDTO {
     private Long id;
@@ -15,5 +17,6 @@ public class MatiereResponseDTO {
     private String enseignantEmail;
     private Boolean recu ;
     private Boolean valide ;
+    private LocalDateTime updatedAt;
 
 }

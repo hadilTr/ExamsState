@@ -1,6 +1,9 @@
 package com.example.backend.dto.request;
 
 import lombok.Data;
+import org.hibernate.annotations.UpdateTimestamp;
+
+import java.time.LocalDateTime;
 
 @Data
 public class MatiereDTO {
@@ -12,4 +15,5 @@ public class MatiereDTO {
     private Long enseignantId;
     private Boolean recu ;
     private Boolean valide ;
+    private LocalDateTime updatedAt;
 }

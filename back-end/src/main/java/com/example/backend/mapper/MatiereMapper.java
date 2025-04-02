@@ -1,11 +1,15 @@
 package com.example.backend.mapper;
 
+import com.example.backend.dto.request.MatiereDTO;
 import com.example.backend.dto.response.MatiereResponseDTO;
 import com.example.backend.models.Matiere;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Named;
 import org.mapstruct.factory.Mappers;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Mapper(componentModel = "spring")
 public interface MatiereMapper {
@@ -39,4 +43,6 @@ public interface MatiereMapper {
     default String mapGroupe(Matiere matiere) {
         return matiere.getGroupe() != null ? matiere.getGroupe().name() : null;
     }
+
+
 }

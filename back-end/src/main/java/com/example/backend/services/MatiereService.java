@@ -1,4 +1,5 @@
 package com.example.backend.services;
+import org.springframework.http.ResponseEntity;
 import org.springframework.scheduling.annotation.Scheduled;
 import com.example.backend.dto.request.MatiereDTO;
 import com.example.backend.dto.response.MatiereResponseDTO;
@@ -60,6 +61,7 @@ public class MatiereService {
     }
 
     /// Asma Update
+    ///
      public List<Map<String,Object>> getFormattedMatiereStats(){
          List<Object[]> results = matiereRepository.getMatiereValideByDepartementAndNiveau();
          List<Map<String,Object>> formattedResults = new ArrayList<>();
@@ -74,17 +76,9 @@ public class MatiereService {
          return formattedResults;
      }
 
-    /*@Scheduled(fixedRate = 10000)  // Toutes les 10s
-        public void detectRecentUpdates() {
-        List<Matiere> updatedMatieres = matiereRepository.findRecentValidatedOrReceived();
-
-        for (Matiere matiere : updatedMatieres) {
-            if (!recentMatieres.contains(matiere)) {
-                recentMatieres.add(matiere);
-            }
-        }
+    // Récupérer toutes les matières mises à jour récemment
+    public List<Matiere> findRecentUpdates() {
+        return matiereRepository.findByRecuTrueOrValideTrueOrderByUpdatedAtDesc();
     }
-    public List<Matiere> getRecentValidatedOrReceived() {
-        return matiereRepository.findRecentValidatedOrReceived();
-    }*/
+
 }

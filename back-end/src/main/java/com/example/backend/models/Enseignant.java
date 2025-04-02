@@ -52,6 +52,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDateTime;
+
 @Entity
 @Data
 @NoArgsConstructor
@@ -76,4 +78,7 @@ public class Enseignant {
 
     @Enumerated(EnumType.STRING)
     private GroupeEnum groupe;
+
+    // Asma Update
+
 }

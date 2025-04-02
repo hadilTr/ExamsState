@@ -13,6 +13,8 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/api/matieres")
+@CrossOrigin("*") // Autoriser les requêtes du frontend Angular
+
 public class MatiereController {
     private final MatiereService matiereService;
     private final MatiereMapper matiereMapper;
@@ -45,10 +47,13 @@ public class MatiereController {
         return ResponseEntity.ok(matiereService.getFormattedMatiereStats());
     }
 
-    // Endpoint pour recuperer les matieres recemment validees ou recues
-    /*@GetMapping("/recent")
-    public ResponseEntity<List<Matiere>> getRecentMatieres() {
-        return ResponseEntity.ok(matiereService.getRecentValidatedOrReceived());
-    }*/
+    // Endpoint pour récupérer les matières récemment mises à jour
+    @GetMapping("/recent")
+    public ResponseEntity<List<Matiere>> getRecentUpdates() {
+        List<Matiere> recentMatieres = matiereService.findRecentUpdates();
+        return ResponseEntity.ok(recentMatieres);
+    }
+
+
 }
 

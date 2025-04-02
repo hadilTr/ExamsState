@@ -2,7 +2,9 @@ package com.example.backend.repositories;
 
 import com.example.backend.models.Matiere;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 import java.util.Map;
@@ -23,9 +25,16 @@ public interface MatiereRepository extends JpaRepository<Matiere, Long> {
             "GROUP BY m.departement, m.niveau " +
             "ORDER BY m.departement, m.niveau")
     List<Object[]> getMatiereValideByDepartementAndNiveau();
+    @Modifying
+    @Query("UPDATE Matiere m SET m.nomMatiere = :nomMatiere, m.updatedAt = CURRENT_TIMESTAMP WHERE m.id = :id")
+    void updateMatiere(@Param("id") Long id, @Param("nomMatiere") String nomMatiere);
 
+    List<Matiere> findByRecuTrueOrValideTrueOrderByUpdatedAtDesc();
 
-    @Query("SELECT m FROM Matiere m WHERE m.recu = true OR m.valide = true ORDER BY m.id DESC")
-    List<Matiere> findRecentValidatedOrReceived();
+    @Query("SELECT COUNT(m) FROM Matiere m WHERE m.valide = false")
+    long countUnvalidatedSubjects();
+    @Query("SELECT COUNT(m) FROM Matiere m WHERE m.recu = false")
+    long countUnsubmittedSubjects();
+
 
 }
