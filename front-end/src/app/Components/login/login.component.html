@@ -1,0 +1,16 @@
+<div class="flex md:justify-content-center align-items-center min-h-screen">
+<p-card header=""  [style]="{width:'300px'}">
+   <h2 class="flex md:justify-content-center ">Connexion</h2>
+
+  <div class="flex flex-column gap-3 justify-content-center align-items-center">
+    <input pInputText [(ngModel)]="username" class="ng-invalid ng-dirty mt-3" placeholder="Nom d'utilisateur" [ngStyle]="{ 'width.px': 250 }" />
+    <p-password [(ngModel)]="password" class=" ng-invalid ng-dirty mt-2" placeholder="Mot de passe" [toggleMask]="true" />
+  </div>
+
+
+  <div class="flex md:justify-content-center mt-5">
+    <p-button label="Se connecter" (onClick)="login()" />
+  </div>
+</p-card>
+</div>
+
