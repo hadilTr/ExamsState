@@ -25,8 +25,8 @@ public class Matiere {
 
     @Enumerated(EnumType.STRING)
     private SpecialiteEnum specialite;
-    private Boolean recu ;
-    private Boolean valide ;
+    private Boolean recu = false;
+    private Boolean valide = false;
 
     @Enumerated(EnumType.STRING)
     private NiveauEnum niveau;
