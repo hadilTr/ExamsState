@@ -8,6 +8,8 @@ export interface MatiereBackend {
   enseignantId: number;
   enseignantNom: string;
   enseignantEmail: string;
+  recu?: boolean;
+  valide?: boolean;
 }
 
 export interface EnseignantInMatiere {
@@ -24,6 +26,8 @@ export interface MatiereFrontend {
   niveau: string;
   groupe: string;
   enseignant: EnseignantInMatiere;
+  recu: boolean;
+  valide: boolean;
 }
 
 

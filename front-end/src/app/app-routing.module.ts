@@ -26,8 +26,13 @@ const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent },
 
   // Other routes
+  { path: 'enseignants', component: AddEnseignantComponent },
+
   { path: 'add-enseignant', component: AddEnseignantComponent },
+
   { path: 'add-matiere', component: AddMatiereComponent },
+  { path: 'matieres', component: AddMatiereComponent },
+
   { path: 'list-matiere', component: ListMatieresComponent },
   { path: 'chartinfo', component: ChartInfoComponent }
 ];

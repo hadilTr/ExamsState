@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MatiereService} from '../../services/matiere.service';
-import { EnseignantService} from '../../services/enseignant.service';
+import { MatiereService} from "../../Services/matiere.service";
+import { EnseignantService} from "../../Services/enseignant.service";
 import { Router } from '@angular/router';
 
 @Component({

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { MatiereService } from '../../services/matiere.service';
-import { EnseignantService } from '../../services/enseignant.service';
+import { MatiereService} from "../../Services/matiere.service";
+import { EnseignantService} from "../../Services/enseignant.service";
 import { Router } from '@angular/router';
 import { forkJoin } from 'rxjs';
 import {Enseignant} from '../../models/enseignant.model';
@@ -78,6 +78,9 @@ export class ListMatieresComponent implements OnInit {
       specialite: matiere.specialite,
       niveau: matiere.niveau,
       groupe: matiere.groupe,
+      recu: matiere.recu ?? false, // Initialisé à false si undefined/null
+      valide: matiere.valide ?? false, // Initialisé à false si undefined/null
+
       enseignant: {
         id: matiere.enseignantId,
         nom: matiere.enseignantNom,
@@ -158,7 +161,73 @@ export class ListMatieresComponent implements OnInit {
     return matieres.filter(m => m.enseignant && m.enseignant.id === enseignantId);
   }
 
+
   navigateToAddMatiere(): void {
     this.router.navigate(['/add-matiere']);
+  }
+
+// Initialisation garantissant false par défaut
+  getMatiereStatus(matieres: MatiereFrontend[], enseignantId: number): { recu: boolean, valide: boolean } {
+    const matiere = matieres.find(m => m.enseignant.id === enseignantId);
+    return {
+      recu: matiere?.recu ?? false,
+      valide: matiere?.valide ?? false
+    };
+  }
+
+// Méthode de basculement
+  toggleStatus(type: 'recu'|'valide', matieres: MatiereFrontend[], enseignantId: number): void {
+    const matiere = matieres.find(m => m.enseignant.id === enseignantId);
+
+    if (!matiere || (type === 'valide' && !matiere.recu)) return;
+
+    matiere[type] = !matiere[type];
+
+    // Si on désactive "Recu", on désactive aussi "Validé"
+    if (type === 'recu' && !matiere.recu) {
+      matiere.valide = false;
+    }
+
+    this.matiereService.updateMatiereStatus(matiere.id, matiere.recu, matiere.valide).subscribe({
+      next: () => console.log('Statut mis à jour'),
+      error: (err) => console.error('Erreur', err)
+    });
+  }
+  updateRecuStatus(event: any, matieres: MatiereFrontend[], enseignantId: number): void {
+    const isChecked = event.target.checked;
+    const matiere = matieres.find(m => m.enseignant.id === enseignantId);
+
+    if (matiere) {
+      matiere.recu = isChecked;
+      // Si on décoche "Recu", on décoche aussi "Valide"
+      if (!isChecked) {
+        matiere.valide = false;
+      }
+      this.matiereService.updateMatiereStatus(matiere.id, isChecked, matiere.valide).subscribe({
+        next: () => {
+          console.log('Statut Reçu mis à jour avec succès');
+        },
+        error: (err) => {
+          console.error('Erreur lors de la mise à jour du statut Reçu', err);
+        }
+      });
+    }
+  }
+
+  updateValideStatus(event: any, matieres: MatiereFrontend[], enseignantId: number): void {
+    const isChecked = event.target.checked;
+    const matiere = matieres.find(m => m.enseignant.id === enseignantId);
+
+    if (matiere) {
+      matiere.valide = isChecked;
+      this.matiereService.updateMatiereStatus(matiere.id, matiere.recu, isChecked).subscribe({
+        next: () => {
+          console.log('Statut Validé mis à jour avec succès');
+        },
+        error: (err) => {
+          console.error('Erreur lors de la mise à jour du statut Validé', err);
+        }
+      });
+    }
   }
 }

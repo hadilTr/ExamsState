@@ -85,6 +85,9 @@
             <th>👤 Enseignants</th>
             <th>✉️ Email</th>
             <th>📋 Matières-Enseigner</th>
+            <th>✅ Reçu</th>
+            <th>✔️ Validé</th>
+
           </tr>
           </thead>
           <tbody>
@@ -109,6 +112,17 @@
                 ID Enseignant: {{ens.id}} |
                 Matches: {{getMatieresForEnseignant(group.matieres, ens.id).length}}
               </div>
+            </td>
+            <td class="status-cell"
+                [class.false]="!getMatiereStatus(group.matieres, ens.id)?.recu"
+                (click)="toggleStatus('recu', group.matieres, ens.id)">
+              {{getMatiereStatus(group.matieres, ens.id)?.recu ? 'Vrai' : 'Faux'}}
+            </td>
+            <td class="status-cell"
+                [class.false]="!getMatiereStatus(group.matieres, ens.id)?.valide"
+                [class.disabled]="!getMatiereStatus(group.matieres, ens.id)?.recu"
+                (click)="toggleStatus('valide', group.matieres, ens.id)">
+              {{getMatiereStatus(group.matieres, ens.id)?.valide ? 'Vrai' : 'Faux'}}
             </td>
           </tr>
           </tbody>

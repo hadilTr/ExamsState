@@ -36,4 +36,8 @@ export class MatiereService {
       }
     });
   }
+
+  updateMatiereStatus(id: number, recu: boolean, valide: boolean): Observable<any> {
+    return this.http.put(`${this.apiUrl}/${id}/status`, { recu, valide });
+  }
 }

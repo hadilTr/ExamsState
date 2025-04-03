@@ -287,3 +287,89 @@ tr:hover {
 .group-header h3 {
   margin: 0;
 }
+/* Ajoutez à votre fichier CSS */
+.matieres-table input[type="checkbox"] {
+  transform: scale(1.5);
+  cursor: pointer;
+}
+
+.matieres-table td {
+  text-align: center;
+  vertical-align: middle;
+}
+/* Style spécifique pour le tableau des matières */
+.matieres-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.matieres-table th,
+.matieres-table td {
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+.matieres-table th {
+  background-color: #f2f2f2;
+  font-weight: 600;
+}
+
+/* Style spécifique pour les colonnes Recu/Validé */
+.matieres-table th:nth-child(4),
+.matieres-table th:nth-child(5),
+.matieres-table td:nth-child(4),
+.matieres-table td:nth-child(5) {
+  text-align: center;
+  width: 120px; /* Largeur fixe pour ces colonnes */
+}
+
+/* Style pour les valeurs booléennes */
+.status-value {
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: normal;
+}
+
+.status-value.false {
+  font-weight: bold;
+  color: #d32f2f; /* Rouge pour "Faux" */
+}
+
+.status-value.true {
+  color: #388e3c; /* Vert pour "Vrai" */
+}
+
+/* Style pour les lignes */
+.matieres-table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.matieres-table tr:hover {
+  background-color: #f1f1f1;
+}
+.status-cell {
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s;
+  padding: 12px 15px;
+}
+
+.status-cell.false {
+  font-weight: bold;
+  color: #d32f2f; /* Rouge pour Faux */
+}
+
+.status-cell:not(.false) {
+  color: #388e3c; /* Vert pour Vrai */
+}
+
+.status-cell.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.status-cell:hover:not(.disabled) {
+  background-color: #f0f0f0;
+}
