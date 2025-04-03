@@ -1,68 +1,123 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule, provideClientHydration, withEventReplay } from '@angular/platform-browser';
-import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
-import { providePrimeNG } from 'primeng/config';
-import Lara from '@primeng/themes/lara';
-import { InputTextModule } from 'primeng/inputtext';
+import { BrowserModule } from '@angular/platform-browser';
+import { AppComponent } from './app.component';
+import { AppRoutingModule } from './app-routing.module';
+import { HttpClientModule, provideHttpClient, withFetch } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+// PrimeNG modules
 import { ButtonModule } from 'primeng/button';
 import { CardModule } from 'primeng/card';
+import { InputTextModule } from 'primeng/inputtext';
 import { PasswordModule } from 'primeng/password';
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import {Button} from 'primeng/button';
-import {LoginComponent} from './Components/login/login.component';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {WindowMaximizeIcon} from 'primeng/icons';
-import {RippleModule} from 'primeng/ripple';
-import { HttpClientModule } from '@angular/common/http';
-import {DropdownModule} from 'primeng/dropdown';
+import { TableModule } from 'primeng/table';
+import { DropdownModule } from 'primeng/dropdown';
+import { MultiSelectModule } from 'primeng/multiselect';
+import { UIChart } from 'primeng/chart';
+import { ToastModule } from 'primeng/toast';
+import { BadgeModule } from 'primeng/badge';
+import { RippleModule } from 'primeng/ripple';
+import { InputGroupModule } from 'primeng/inputgroup';
+import { InputGroupAddonModule } from 'primeng/inputgroupaddon';
+import { Listbox } from 'primeng/listbox';
+import { StyleClass } from 'primeng/styleclass';
+import { SelectButton } from 'primeng/selectbutton';
+import { Fluid } from 'primeng/fluid';
+
+// Components
+import { TopbarComponent } from './Components/layout/component/topbar/topbar.component';
+import { SidebarComponent } from './Components/layout/component/sidebar/sidebar.component';
+import { MenuitemComponent } from './Components/layout/component/menuitem/menuitem.component';
+import { MenuComponent } from './Components/layout/component/menu/menu.component';
+import { FooterComponent } from './Components/layout/component/footer/footer.component';
+import { FloatingconfiguratorComponent } from './Components/layout/component/floatingconfigurator/floatingconfigurator.component';
+import { ConfiguratorComponent } from './Components/layout/component/configurator/configurator.component';
+import { LayoutComponent } from './Components/layout/component/layout/layout.component';
+// Pages and widgets
+import { DashboardComponent } from './Components/pages/dashboard/dashboard.component';
+import { HistoryWidgetComponent } from './Components/pages/dashboard/components/history-widget/history-widget.component';
+import { NotificationsWidgetComponent } from './Components/pages/dashboard/components/notifications-widget/notifications-widget.component';
+import { StatsWidgetComponent } from './Components/pages/dashboard/components/stats-widget/stats-widget.component';
+import { ValidationStreamWidgetComponent } from './Components/pages/dashboard/components/validation-stream-widget/validation-stream-widget.component';
+import { LandingComponent } from './Components/pages/landing/landing.component';
+import { FeatureswidgetComponent } from './Components/pages/landing/components/featureswidget/featureswidget.component';
+import { FooterwidgetComponent } from './Components/pages/landing/components/footerwidget/footerwidget.component';
+import { TopbarwidgetComponent } from './Components/pages/landing/components/topbarwidget/topbarwidget.component';
+
+// Add/modify components
+import { AddMatiereComponent } from './Components/add-matiere/add-matiere.component';
+import { ListMatieresComponent } from './Components/list-matieres/list-matieres.component';
+import { AddEnseignantComponent } from './Components/add-enseignant/add-enseignant.component';
+import { LoginComponent } from './Components/login/login.component';
 import { DepartementsComponent } from './Components/departements/departements.component';
 import { AddUserComponent } from './Components/add-user/add-user.component';
-import {ToastModule} from 'primeng/toast';
-import {MessageService} from 'primeng/api';
-import {InputGroup, InputGroupModule} from 'primeng/inputgroup';
-import {InputGroupAddon, InputGroupAddonModule} from 'primeng/inputgroupaddon';
 import { NiveauGroupeComponent } from './Components/niveau-groupe/niveau-groupe.component';
-import {Listbox} from 'primeng/listbox';
-import { DialogModule } from 'primeng/dialog';
 
-
+// PrimeNG Message Service
+import { MessageService } from 'primeng/api';
+import {Menu} from "primeng/menu";
+import {ChartInfoComponent} from "./Components/pages/Departments/dep-info/chart-info/chart-info.component";
+import {Dialog} from "primeng/dialog";
 
 @NgModule({
   bootstrap: [AppComponent],
   declarations: [
     AppComponent,
+    TopbarComponent,
+    SidebarComponent,
+    MenuitemComponent,
+    LayoutComponent,
+    MenuComponent,
+    FooterComponent,
+    FloatingconfiguratorComponent,
+    ConfiguratorComponent,
+    DashboardComponent,
+    HistoryWidgetComponent,
+    NotificationsWidgetComponent,
+    StatsWidgetComponent,
+    ValidationStreamWidgetComponent,
+    LandingComponent,
+    FeatureswidgetComponent,
+    FooterwidgetComponent,
+    TopbarwidgetComponent,
+    AddMatiereComponent,
+    ListMatieresComponent,
+    AddEnseignantComponent,
     LoginComponent,
     DepartementsComponent,
     AddUserComponent,
-    NiveauGroupeComponent
-
+    NiveauGroupeComponent,
+    ChartInfoComponent
   ],
   imports: [
-    DialogModule,
     BrowserModule,
-    HttpClientModule,
+    ButtonModule,
+    BadgeModule,
     AppRoutingModule,
-    Button,
-    BrowserModule,
+    TableModule,
     FormsModule,
     ReactiveFormsModule,
+    HttpClientModule,
+    DropdownModule,
+    MultiSelectModule,
     InputTextModule,
-    ButtonModule,
+    UIChart,
+    ToastModule,
+    RippleModule,
+    InputGroupModule,
+    InputGroupAddonModule,
+    StyleClass,
+    SelectButton,
+    Fluid,
     CardModule,
     PasswordModule,
-    WindowMaximizeIcon,
-    ButtonModule, RippleModule, DropdownModule, ToastModule, InputGroupAddon, InputGroup, Listbox
+    Listbox,
+    Menu,
+    Dialog
   ],
   providers: [
-    provideClientHydration(withEventReplay()),
-    provideAnimationsAsync(),
-    providePrimeNG({
-      theme: {
-        preset: Lara
-      }
-    }),
+    provideHttpClient(withFetch()),
     MessageService
-  ]
+  ],
 })
-export class AppModule { }
+export class AppModule {}

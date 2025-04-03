@@ -1,20 +1,39 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import {LoginComponent} from './Components/login/login.component';
+import { LayoutComponent } from './Components/layout/component/layout/layout.component';
+import { DashboardComponent } from './Components/pages/dashboard/dashboard.component';
+import { AddEnseignantComponent } from './Components/add-enseignant/add-enseignant.component';
+import { AddMatiereComponent } from './Components/add-matiere/add-matiere.component';
+import { ListMatieresComponent } from './Components/list-matieres/list-matieres.component';
+import { ChartInfoComponent } from './Components/pages/Departments/dep-info/chart-info/chart-info.component';
+import { LoginComponent } from './Components/login/login.component';
 import { DepartementsComponent } from './Components/departements/departements.component';
-import {AddUserComponent} from './Components/add-user/add-user.component';
-import {NiveauGroupeComponent} from './Components/niveau-groupe/niveau-groupe.component';
+import { AddUserComponent } from './Components/add-user/add-user.component';
+import { NiveauGroupeComponent } from './Components/niveau-groupe/niveau-groupe.component';
 
-
-const routes: Routes = [{ path: 'login', component: LoginComponent },
+const routes: Routes = [
+  // Public routes
+  { path: 'login', component: LoginComponent },
   { path: '', redirectTo: '/login', pathMatch: 'full' },
+
+  // Admin routes
   { path: 'departments', component: DepartementsComponent },
   { path: 'addusers', component: AddUserComponent },
   { path: 'niveau-groupe', component: NiveauGroupeComponent },
- ];
+
+  // Layout and Dashboard
+  { path: 'layout', component: LayoutComponent },
+  { path: 'dashboard', component: DashboardComponent },
+
+  // Other routes
+  { path: 'add-enseignant', component: AddEnseignantComponent },
+  { path: 'add-matiere', component: AddMatiereComponent },
+  { path: 'list-matiere', component: ListMatieresComponent },
+  { path: 'chartinfo', component: ChartInfoComponent }
+];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { useHash: false })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

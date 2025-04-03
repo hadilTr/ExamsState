@@ -7,7 +7,8 @@
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
-          "standalone": false
+          "standalone": false,
+          "style": "scss"
         },
         "@schematics/angular:directive": {
           "standalone": false
@@ -35,11 +36,11 @@
               {
                 "glob": "**/*",
                 "input": "public"
-              }
+              },
+              "src/favicon.ico"
             ],
             "styles": [
-              "src/styles.css"
-
+              "src/styles.scss"
             ],
             "scripts": [],
             "server": "src/main.server.ts",
@@ -62,7 +63,7 @@
                   "maximumError": "8kB"
                 }
               ],
-              "outputHashing": "all"
+              "outputHashing": "media"
             },
             "development": {
               "optimization": false,
@@ -95,6 +96,7 @@
               "zone.js/testing"
             ],
             "tsConfig": "tsconfig.spec.json",
+            "inlineStyleLanguage": "scss",
             "assets": [
               {
                 "glob": "**/*",
@@ -102,6 +104,7 @@
               }
             ],
             "styles": [
+              "src/styles.scss",
               "src/styles.css",
               "node_modules/primeng/themes/lara-light-blue/theme.css",
               "node_modules/primeng/primeng.min.css",
@@ -109,12 +112,23 @@
             ],
             "scripts": []
           }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "src/**/*.ts",
+              "src/**/*.html"
+            ]
+          }
         }
       }
     }
   },
   "cli": {
-    "analytics": "abe7110c-e865-4e39-9b8d-9cafd1aa1549"
-
+    "analytics": "592ee3fc-5042-4ab0-89e7-7013b4e1f92c",
+    "schematicCollections": [
+      "angular-eslint"
+    ]
   }
 }
