@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { LoginService } from '../../services/login.service';
 import { Router } from '@angular/router';
 import {LoginRequest} from '../../models/login-request.model';
 import {MessageService} from 'primeng/api';
+import { LoginService } from '../../Services/login.service';
 
 @Component({
   selector: 'login',
@@ -19,6 +19,10 @@ export class LoginComponent {
     private router: Router,
     private messageService: MessageService
   ) {}
+
+
+  showPassword: boolean = false;
+  
 
   login() {
     this.loading = true;

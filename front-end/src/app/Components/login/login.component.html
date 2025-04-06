@@ -1,16 +1,21 @@
-<div class="flex md:justify-content-center align-items-center min-h-screen">
-<p-card header=""  [style]="{width:'300px'}">
-   <h2 class="flex md:justify-content-center ">Connexion</h2>
 
-  <div class="flex flex-column gap-3 justify-content-center align-items-center">
-    <input pInputText [(ngModel)]="username" class="ng-invalid ng-dirty mt-3" placeholder="Nom d'utilisateur" [ngStyle]="{ 'width.px': 250 }" />
-    <p-password [(ngModel)]="password" class=" ng-invalid ng-dirty mt-2" placeholder="Mot de passe" [toggleMask]="true" />
-  </div>
+  <p-card class=" shadow-4 mt-5">
+    <ng-template pTemplate="header">
+      <h2 class="text-center">Welcome Back</h2>
+    </ng-template>
 
+    <form (ngSubmit)="login()" class="p-fluid">
+      <div class="p-field">
+        <label for="username">Username</label>
+        <input id="username" type="text" pInputText [(ngModel)]="username" name="username" required />
+      </div>
 
-  <div class="flex md:justify-content-center mt-5">
-    <p-button label="Se connecter" (onClick)="login()" />
-  </div>
-</p-card>
-</div>
+      <div class="p-field">
+        <label>Password</label>
+        <p-password [(ngModel)]="password" name="password" [toggleMask]="true" required></p-password>
+      </div>
+
+      <button pButton type="submit" label="Se connecter" icon="pi pi-sign-in" class="w-full"></button>
+    </form>
+  </p-card>
 

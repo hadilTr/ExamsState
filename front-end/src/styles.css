@@ -1,6 +1,6 @@
-<<<<<<< HEAD
+
 @import "primeflex/primeflex.css";
-=======
+
 /* You can add global styles to this file, and also import other style files */
 @import "primeflex/primeflex.css";
 /* Import de polices Google */
@@ -12,5 +12,16 @@ body {
   background-color: #f5f7fa;
   color: #333;
   line-height: 1.6;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+}
+.
 >>>>>>> feature-dashboard

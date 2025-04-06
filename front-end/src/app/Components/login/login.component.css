@@ -1,0 +1,36 @@
+html, body {
+  height: 100%;
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+.flex {
+  display: flex;
+}
+
+.justify-content-center {
+  justify-content: center;
+}
+
+.align-items-center {
+  align-items: center;
+}
+
+.min-h-screen {
+  min-height: 100vh;
+}
+
+.w-30rem {
+  width: 30rem;
+}
+/* Ensures no scrollbars appear unexpectedly */
+body {
+  margin: 0;
+  overflow-x: hidden;
+}
+
+/* Makes sure PrimeNG inputs match card width */
+.p-inputtext, .p-password {
+  width: 100% !important;
+}
+

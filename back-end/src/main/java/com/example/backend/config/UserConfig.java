@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Configuration;
 
 import java.util.List;
 
-@Configuration
+/*@Configuration
 public class UserConfig {
 
     @Bean
@@ -21,4 +21,4 @@ public class UserConfig {
         userRepository.saveAll(List.of(user1,user2));
         };
     }
-}
+}*/
