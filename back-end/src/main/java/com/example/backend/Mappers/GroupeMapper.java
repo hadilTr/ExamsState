@@ -1,7 +1,6 @@
 /*package com.example.backend.Mappers;
 
 import com.example.backend.dto.AddGroupeRequest;
-import com.example.backend.models.Groupe;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;
