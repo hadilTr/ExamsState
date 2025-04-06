@@ -13,7 +13,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/api/matieres")
-@CrossOrigin("*") // Autoriser les requêtes du frontend Angular
+@CrossOrigin(origins = "http://localhost:4200")
 
 public class MatiereController {
     private final MatiereService matiereService;
