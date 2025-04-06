@@ -13,13 +13,14 @@ import { NiveauGroupeComponent } from './Components/niveau-groupe/niveau-groupe.
 
 const routes: Routes = [
   // Public routes
-  { path: 'login', component: LoginComponent },
   { path: '', redirectTo: '/login', pathMatch: 'full' },
 
+  { path: 'login', component: LoginComponent },
+
   // Admin routes
-  { path: 'departments', component: DepartementsComponent },
+  //{ path: 'departments', component: DepartementsComponent },
   { path: 'addusers', component: AddUserComponent },
-  { path: 'niveau-groupe', component: NiveauGroupeComponent },
+ // { path: 'niveau-groupe', component: NiveauGroupeComponent },
 
   // Layout and Dashboard
   { path: 'layout', component: LayoutComponent },

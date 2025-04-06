@@ -14,7 +14,7 @@ export enum Role {
 @Component({
   selector: 'app-add-user',
   standalone: false,
-  templateUrl: './add-user.component.html',
+  templateUrl: 'add-user.component.html',
   styleUrl: './add-user.component.css'
 })
 export class AddUserComponent {

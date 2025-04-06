@@ -1,21 +1,54 @@
+<div class="platform-login-container">
+  <div class="login-card">
+    <div class="login-header">
+      <h1>Sign In</h1>
+      <p class="welcome-message">Accès sécurisé aux ressources académiques</p>
+    </div>
 
-  <p-card class=" shadow-4 mt-5">
-    <ng-template pTemplate="header">
-      <h2 class="text-center">Welcome Back</h2>
-    </ng-template>
+    <form class="login-form">
+      <div class="input-field">
+        <label for="username" >UserName</label>
 
-    <form (ngSubmit)="login()" class="p-fluid">
-      <div class="p-field">
-        <label for="username">Username</label>
-        <input id="username" type="text" pInputText [(ngModel)]="username" name="username" required />
+
+        <div class="input-with-icon">
+
+          <i class="pi pi-user"></i>
+          <input id="username" type="text" pInputText [(ngModel)]="username" name="username" required />
+        </div>
       </div>
 
-      <div class="p-field">
-        <label>Password</label>
-        <p-password [(ngModel)]="password" name="password" [toggleMask]="true" required></p-password>
+      <div class="input-field">
+        <label>Mot de passe</label>
+
+        <div class="input-with-icon">
+          <i class="pi pi-lock"></i>
+          <input id="password" type="text" pInputText   [(ngModel)]="password" name="password" required />
+
+          <i class="pi pi-eye toggle-password"></i>
+        </div>
       </div>
 
-      <button pButton type="submit" label="Se connecter" icon="pi pi-sign-in" class="w-full"></button>
+      <div class="remember-forgot">
+        <div class="remember-me">
+          <input type="checkbox" id="remember">
+          <label for="remember">Maintenir la connexion</label>
+        </div>
+        <a href="#" class="forgot-password">Mot de passe oublié ?</a>
+      </div>
+
+      <button  (click)="login()" class="login-button">
+        <span>Connexion</span>
+        <i class="pi pi-arrow-right"></i>
+      </button>
     </form>
-  </p-card>
 
+    <div class="login-footer">
+      <p>© 2025 École Nationale d'Ingénieurs de Carthage - Tous droits réservés</p>
+      <div class="footer-links">
+        <a href="#">Mentions légales</a>
+        <a href="#">Confidentialité</a>
+
+      </div>
+    </div>
+  </div>
+</div>

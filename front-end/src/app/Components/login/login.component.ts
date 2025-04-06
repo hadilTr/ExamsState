@@ -2,12 +2,15 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import {LoginRequest} from '../../models/login-request.model';
 import {MessageService} from 'primeng/api';
-import { LoginService } from '../../Services/login.service';
+import { LoginService } from '../../services/login.service';
 
 @Component({
   selector: 'login',
-  templateUrl: './login.component.html',
-  standalone:false
+  standalone:false,
+
+  templateUrl: 'login.component.html',
+  styleUrls: ['login.component.css']
+
 })
 export class LoginComponent {
   username: string = '';
@@ -22,7 +25,7 @@ export class LoginComponent {
 
 
   showPassword: boolean = false;
-  
+
 
   login() {
     this.loading = true;
@@ -34,7 +37,7 @@ export class LoginComponent {
 
     this.loginService.login(loginRequest).subscribe({
       next: () => {
-        this.router.navigate(['departments']);
+        this.router.navigate(['layout']);
         this.messageService.add({
           severity: 'success',
           summary: 'Connexion réussie',

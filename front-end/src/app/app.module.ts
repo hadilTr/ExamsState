@@ -87,7 +87,7 @@ import {Dialog} from "primeng/dialog";
     DepartementsComponent,
     AddUserComponent,
     NiveauGroupeComponent,
-    ChartInfoComponent
+    ChartInfoComponent,
   ],
   imports: [
     BrowserModule,
@@ -113,7 +113,11 @@ import {Dialog} from "primeng/dialog";
     PasswordModule,
     Listbox,
     Menu,
-    Dialog
+    Dialog,
+    PasswordModule,
+    InputTextModule,
+    ButtonModule,
+    CardModule,
   ],
   providers: [
     provideHttpClient(withFetch()),
