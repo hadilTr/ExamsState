@@ -22,7 +22,7 @@ export class LoginComponent {
 
 
   showPassword: boolean = false;
-  
+
 
   login() {
     this.loading = true;
@@ -34,7 +34,7 @@ export class LoginComponent {
 
     this.loginService.login(loginRequest).subscribe({
       next: () => {
-        this.router.navigate(['departments']);
+        this.router.navigate(['dashboard']);
         this.messageService.add({
           severity: 'success',
           summary: 'Connexion réussie',

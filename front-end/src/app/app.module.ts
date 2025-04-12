@@ -23,6 +23,7 @@ import { Listbox } from 'primeng/listbox';
 import { StyleClass } from 'primeng/styleclass';
 import { SelectButton } from 'primeng/selectbutton';
 import { Fluid } from 'primeng/fluid';
+import { provideAnimations } from '@angular/platform-browser/animations';
 
 // Components
 import { TopbarComponent } from './Components/layout/component/topbar/topbar.component';
@@ -108,6 +109,7 @@ import {Dialog} from "primeng/dialog";
     InputGroupAddonModule,
     StyleClass,
     SelectButton,
+    //provideAnimations(),
     Fluid,
     CardModule,
     PasswordModule,
