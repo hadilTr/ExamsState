@@ -13,6 +13,7 @@ import static org.hibernate.sql.ast.Clause.ORDER;
 
 public interface MatiereRepository extends JpaRepository<Matiere, Long> {
     List<Matiere> findByEnseignantId(Long enseignantId);
+    void deleteByEnseignant_Id(Long enseignantId); // Ajouté
 
 
 
