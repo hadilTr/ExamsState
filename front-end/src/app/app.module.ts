@@ -24,6 +24,7 @@ import { StyleClass } from 'primeng/styleclass';
 import { SelectButton } from 'primeng/selectbutton';
 import { Fluid } from 'primeng/fluid';
 import { provideAnimations } from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 // Components
 import { TopbarComponent } from './Components/layout/component/topbar/topbar.component';
@@ -93,6 +94,7 @@ import { EnseignantListComponent } from './Components/enseignant-list/enseignant
     EnseignantListComponent,
   ],
   imports: [
+    BrowserAnimationsModule,
     BrowserModule,
     ButtonModule,
     BadgeModule,
