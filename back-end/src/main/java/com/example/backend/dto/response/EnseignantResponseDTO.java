@@ -3,6 +3,8 @@ package com.example.backend.dto.response;
 import com.example.backend.enumeration.*;
 import lombok.Data;
 
+import java.util.List;
+
 @Data
 public class EnseignantResponseDTO {
     private Long id;
@@ -12,4 +14,6 @@ public class EnseignantResponseDTO {
     private SpecialiteEnum specialite;
     private NiveauEnum niveau;
     private GroupeEnum groupe;
+  //  private List<String> matieres; // Doit être rempli
+
 }

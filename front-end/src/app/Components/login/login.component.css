@@ -1,36 +1,193 @@
-html, body {
-  height: 100%;
-  margin: 0;
-  font-family: Arial, sans-serif;
+/* Nouvelle palette de couleurs professionnelles */
+:root {
+  --primary-color: #2a4b7c;  /* Bleu foncé professionnel */
+  --secondary-color: #5a8fbb; /* Bleu clair */
+  --accent-color: #e74c3c;   /* Rouge pour les accents */
+  --light-bg: #f5f7fa;       /* Fond clair */
+  --text-color: #ffd6d6;     /* Texte foncé */
+  --light-text: #7f8c8d;     /* Texte secondaire */
 }
 
-.flex {
+.platform-login-container {
   display: flex;
-}
-
-.justify-content-center {
   justify-content: center;
-}
-
-.align-items-center {
   align-items: center;
-}
-
-.min-h-screen {
   min-height: 100vh;
+  background-color: var(--light-bg);
+  padding: 2rem;
 }
 
-.w-30rem {
-  width: 30rem;
-}
-/* Ensures no scrollbars appear unexpectedly */
-body {
-  margin: 0;
-  overflow-x: hidden;
-}
-
-/* Makes sure PrimeNG inputs match card width */
-.p-inputtext, .p-password {
-  width: 100% !important;
+.login-card {
+  width: 100%;
+  max-width: 487px;
+  background: white;
+  border-radius: 40px;
+  box-shadow: 0 8px 24px rgba(42, 75, 124, 0.1);
+  padding: 2.5rem;
+  border: 20px solid rgba(90, 143, 187, 0.2)
 }
 
+.login-header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+
+  .platform-logo {
+    height: 70px;
+    margin-bottom: 1.5rem;
+  }
+
+  h1 {
+    color: var(--primary-color);
+    font-weight: 700;
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .welcome-message {
+    color: var(--light-text);
+    font-size: 1rem;
+  }
+}
+
+.input-field {
+  margin-bottom: 1.5rem;
+
+  label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--primary-color);
+    font-weight: 500;
+    font-size: 0.95rem;
+  }
+
+  .input-with-icon {
+    position: relative;
+    display: flex;
+    align-items: center;
+
+    i {
+      position: absolute;
+      left: 15px;
+      color: var(--secondary-color);
+      font-size: 1.1rem;
+    }
+
+    .toggle-password {
+      position: absolute;
+      right: 15px;
+      cursor: pointer;
+      color: var(--light-text);
+    }
+
+    input {
+      width: 100%;
+      padding: 0.9rem 1rem 0.9rem 45px;
+      border: 2px solid #e0e5ec;
+      border-radius: 8px;
+      font-size: 1rem;
+      transition: all 0.3s;
+      color: var(--text-color);
+
+      &:focus {
+        border-color: var(--secondary-color);
+        box-shadow: 0 0 0 3px rgba(90, 143, 187, 0.2);
+        outline: none;
+      }
+
+      &::placeholder {
+        color: #093c5f;
+      }
+    }
+  }
+}
+
+.remember-forgot {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 1.5rem 0;
+
+  .remember-me {
+    display: flex;
+    align-items: center;
+
+    input {
+      margin-right: 8px;
+      accent-color: var(--primary-color);
+    }
+
+    label {
+      color: var(--text-color);
+      font-size: 0.9rem;
+    }
+  }
+
+  .forgot-password {
+    color: var(--accent-color);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: all 0.3s;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.login-button {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 123, 255, 0.4);
+  background-color: #50c46a;
+  width: 100%;
+  padding: 1rem;
+  color: #040507;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  transition: all 0.3s;
+  margin-top: 1rem;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(42, 75, 124, 0.3);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+.login-footer {
+  text-align: center;
+  margin-top: 2.5rem;
+  color: var(--light-text);
+  font-size: 0.8rem;
+
+  p {
+    margin-bottom: 0.8rem;
+  }
+
+  .footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+
+    a {
+      color: var(--primary-color);
+      text-decoration: none;
+      transition: color 0.3s;
+      font-size: 0.8rem;
+
+      &:hover {
+        color: var(--accent-color);
+        text-decoration: underline;
+      }
+    }
+  }
+}

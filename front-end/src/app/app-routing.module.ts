@@ -10,16 +10,18 @@ import { LoginComponent } from './Components/login/login.component';
 import { DepartementsComponent } from './Components/departements/departements.component';
 import { AddUserComponent } from './Components/add-user/add-user.component';
 import { NiveauGroupeComponent } from './Components/niveau-groupe/niveau-groupe.component';
+import { EnseignantListComponent } from './Components/enseignant-list/enseignant-list.component';
 
 const routes: Routes = [
   // Public routes
-  { path: 'login', component: LoginComponent },
   { path: '', redirectTo: '/login', pathMatch: 'full' },
 
+  { path: 'login', component: LoginComponent },
+
   // Admin routes
-  { path: 'departments', component: DepartementsComponent },
+  //{ path: 'departments', component: DepartementsComponent },
   { path: 'addusers', component: AddUserComponent },
-  { path: 'niveau-groupe', component: NiveauGroupeComponent },
+ // { path: 'niveau-groupe', component: NiveauGroupeComponent },
 
   // Layout and Dashboard
   { path: 'layout', component: LayoutComponent },
@@ -34,6 +36,8 @@ const routes: Routes = [
   { path: 'matieres', component: AddMatiereComponent },
 
   { path: 'list-matiere', component: ListMatieresComponent },
+  { path: 'list-enseignants', component: EnseignantListComponent },
+
   { path: 'chartinfo', component: ChartInfoComponent }
 ];
 

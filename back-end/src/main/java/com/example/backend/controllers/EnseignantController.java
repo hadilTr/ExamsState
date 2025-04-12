@@ -44,4 +44,20 @@ public class EnseignantController {
     public List<EnseignantResponseDTO> getAllEnseignants() {
         return enseignantService.getAllEnseignants();
     }
+
+
+
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteEnseignant(@PathVariable Long id) {
+        try {
+            enseignantService.deleteEnseignant(id);
+            return ResponseEntity.ok().build();
+        } catch (jakarta.persistence.EntityNotFoundException e) {
+            return ResponseEntity.notFound().build();
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().build();
+        }
+    }
+
 }

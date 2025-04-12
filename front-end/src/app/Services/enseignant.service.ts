@@ -43,4 +43,10 @@ export class EnseignantService {
       })
     );
   }
+  deleteEnseignant(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/${id}`);
+  }
+  getMatieresByEnseignant(enseignantId: number): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/enseignant/${enseignantId}`);
+  }
 }

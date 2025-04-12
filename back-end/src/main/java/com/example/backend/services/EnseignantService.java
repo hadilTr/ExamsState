@@ -86,6 +86,8 @@ import com.example.backend.enumeration.*;
 import com.example.backend.mapper.EnseignantMapper;
 import com.example.backend.models.Enseignant;
 import com.example.backend.repositories.EnseignantRepository;
+import com.example.backend.repositories.MatiereRepository;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -95,11 +97,16 @@ import java.util.stream.Collectors;
 @Service
 public class EnseignantService {
     private final EnseignantRepository enseignantRepository;
+    private final MatiereRepository matiereRepository;
     private final EnseignantMapper enseignantMapper;
 
-    public EnseignantService(EnseignantRepository enseignantRepository,
-                             EnseignantMapper enseignantMapper) {
+    // Modifier le constructeur pour inclure MatiereRepository
+    public EnseignantService(
+            EnseignantRepository enseignantRepository,
+            MatiereRepository matiereRepository, // Ajouter ce paramètre
+            EnseignantMapper enseignantMapper) {
         this.enseignantRepository = enseignantRepository;
+        this.matiereRepository = matiereRepository; // Initialiser la variable
         this.enseignantMapper = enseignantMapper;
     }
 
@@ -127,5 +134,16 @@ public class EnseignantService {
         return enseignantRepository.findAll().stream()
                 .map(enseignantMapper::toResponseDTO)
                 .collect(Collectors.toList());
+    }
+
+
+
+    @Transactional
+    public void deleteEnseignant(Long id) {
+        if (!enseignantRepository.existsById(id)) {
+            throw new jakarta.persistence.EntityNotFoundException("Enseignant not found with id: " + id);
+        }
+        matiereRepository.deleteByEnseignant_Id(id); // Utiliser matiereRepository
+        enseignantRepository.deleteById(id);
     }
 }

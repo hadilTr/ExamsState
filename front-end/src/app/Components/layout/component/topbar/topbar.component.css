@@ -1,0 +1,23 @@
+/* Dans votre fichier SCSS correspondant */
+.layout-topbar {
+  .layout-topbar-logo {
+    .platform-logo {
+      height: 5rem; /* Ajustez selon vos besoins */
+      width: auto;
+      max-width: 250px; /* Pour contrôler la largeur max */
+      object-fit: contain;
+      transition: all 0.3s ease;
+
+      &:hover {
+        transform: scale(1.05);
+      }
+    }
+  }
+}
+
+/* Pour une meilleure intégration avec le thème existant */
+.layout-topbar-logo-container {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
