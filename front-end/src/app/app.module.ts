@@ -58,6 +58,7 @@ import { MessageService } from 'primeng/api';
 import {Menu} from "primeng/menu";
 import {ChartInfoComponent} from "./Components/pages/Departments/dep-info/chart-info/chart-info.component";
 import {Dialog} from "primeng/dialog";
+import { EnseignantListComponent } from './Components/enseignant-list/enseignant-list.component';
 
 @NgModule({
   bootstrap: [AppComponent],
@@ -88,6 +89,7 @@ import {Dialog} from "primeng/dialog";
     AddUserComponent,
     NiveauGroupeComponent,
     ChartInfoComponent,
+    EnseignantListComponent,
   ],
   imports: [
     BrowserModule,
