@@ -12,6 +12,7 @@ import {MatiereBackend, MatiereFrontend} from '../../models/matiere';
   templateUrl: './list-matieres.component.html',
   styleUrls: ['./list-matieres.component.css']
 })
+
 export class ListMatieresComponent implements OnInit {
   matieres: MatiereFrontend[] = [];
   enseignants: Enseignant[] = [];
