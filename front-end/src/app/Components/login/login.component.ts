@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import {LoginRequest} from '../../models/login-request.model';
 import {MessageService} from 'primeng/api';
-import { LoginService } from '../../Services/login.service';
+import { LoginService } from '../../services/login.service';
 
 
 @Component({
@@ -25,8 +25,20 @@ export class LoginComponent {
   ) {}
 
 
-  showPassword: boolean = false;
+  passwordVisible: boolean = false;
 
+  togglePasswordVisibility() {
+    this.passwordVisible = !this.passwordVisible;
+    const passwordField = document.getElementById('password') as HTMLInputElement;
+    if (passwordField) {
+      passwordField.type = this.passwordVisible ? 'text' : 'password';
+      const icon = document.querySelector('.toggle-password');
+      if (icon) {
+        icon.classList.toggle('pi-eye', this.passwordVisible);
+        icon.classList.toggle('pi-eye-slash', !this.passwordVisible);
+      }
+    }
+  }
 
   login() {
     this.loading = true;
@@ -39,7 +51,7 @@ export class LoginComponent {
     this.loginService.login(loginRequest).subscribe({
       next: () => {
 
-        this.router.navigate(['dashboard']);
+
 
         this.router.navigate(['layout']);
 
