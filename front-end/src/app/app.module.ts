@@ -26,6 +26,7 @@ import { Fluid } from 'primeng/fluid';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+
 // Components
 import { TopbarComponent } from './Components/layout/component/topbar/topbar.component';
 import { SidebarComponent } from './Components/layout/component/sidebar/sidebar.component';
