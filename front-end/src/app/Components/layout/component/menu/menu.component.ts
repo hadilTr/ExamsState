@@ -18,7 +18,7 @@ export class MenuComponent {
           { label: 'Dashboard', icon: 'pi pi-fw pi-home', routerLink: ['/layout'] },
         ],
       },
-      /*{
+      {
         label: 'Subjects',
         items: [
           {
@@ -27,7 +27,7 @@ export class MenuComponent {
             routerLink: ['/add-matiere'],
           }
         ],
-      },*/
+      },
       {
         label: 'Teachers',
         items: [
@@ -49,12 +49,12 @@ export class MenuComponent {
         ],
       },
       {
-        label: 'Departments',
+        label: 'Teachers',
         items: [
           {
-            label: 'Info',
+            label: 'Teachers List',
             icon: 'pi pi-fw pi-book',
-            routerLink: ['/lchartinfo'],
+            routerLink: ['/list-enseignants'],
           }
         ],
       }
