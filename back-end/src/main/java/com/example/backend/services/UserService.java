@@ -2,6 +2,7 @@ package com.example.backend.services;
 
 import com.example.backend.Mappers.UserMapper;
 import com.example.backend.dto.AddUserRequest;
+
 import com.example.backend.dto.AddUserResponse;
 import com.example.backend.models.User;
 import com.example.backend.repositories.UserRepository;
@@ -9,6 +10,8 @@ import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 
@@ -19,12 +22,14 @@ import java.util.Optional;
 public class UserService {
 
     private final UserRepository userRepository;
-    private final UserMapper userMapper; // Injected mapper
+    private final UserMapper userMapper;// Injected mapper
+    private final PasswordEncoder passwordEncoder;
 
     @Autowired
-    public UserService(UserRepository userRepository, UserMapper userMapper) {
+    public UserService(UserRepository userRepository, UserMapper userMapper, PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
         this.userMapper = userMapper;
+        this.passwordEncoder = passwordEncoder;
     }
 
     public List<User> getUsers() {
@@ -41,6 +46,8 @@ public class UserService {
 
         // Convert DTO to Entity using MapStruct
         User user = userMapper.toEntity(request);
+
+        user.setPassword(passwordEncoder.encode(request.getPassword()));
 
         userRepository.save(user);
 

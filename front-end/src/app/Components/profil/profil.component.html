@@ -1,0 +1,61 @@
+<div class="container mx-auto py-10">
+  <div class="max-w-3xl mx-auto">
+    <div class="space-y-4">
+      <div>
+        <h3 class="text-lg font-medium">Profile</h3>
+        <p class="text-sm text-muted-foreground">View and manage your profile information</p>
+      </div>
+
+      <div *ngIf="user" class="flex flex-col md:flex-row gap-8">
+        <div class="flex flex-col items-center gap-4">
+          <div class="w-32 h-32 rounded-full overflow-hidden bg-muted">
+            <img
+              [src]="user.profilePicture || '/placeholder.svg'"
+              [alt]="user.firstname + ' ' + user.lastname"
+              class="w-full h-full object-cover"
+            >
+            <div *ngIf="!user.profilePicture" class="w-full h-full flex items-center justify-center bg-muted">
+              {{ user.firstname[0] }}{{ user.lastname[0] }}
+            </div>
+          </div>
+
+          <!--<app-profile-picture-upload [userId]="user.id"></app-profile-picture-upload>-->
+        </div>
+
+        <div class="flex-1 space-y-4">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="space-y-2">
+              <label class="text-sm font-medium leading-none">First Name</label>
+              <div class="p-2 border rounded-md bg-muted/50">{{ user.firstname }}</div>
+            </div>
+
+            <div class="space-y-2">
+              <label class="text-sm font-medium leading-none">Last Name</label>
+              <div class="p-2 border rounded-md bg-muted/50">{{ user.lastname }}</div>
+            </div>
+
+            <div class="space-y-2">
+              <label class="text-sm font-medium leading-none">Username</label>
+              <div class="p-2 border rounded-md bg-muted/50">{{ user.username }}</div>
+            </div>
+
+            <div class="space-y-2">
+              <label class="text-sm font-medium leading-none">Email</label>
+              <div class="p-2 border rounded-md bg-muted/50">{{ user.mail }}</div>
+            </div>
+
+            <div class="space-y-2">
+              <label class="text-sm font-medium leading-none">Phone</label>
+              <div class="p-2 border rounded-md bg-muted/50">{{ user.tel }}</div>
+            </div>
+
+            <div class="space-y-2">
+              <label class="text-sm font-medium leading-none">Role</label>
+              <div class="p-2 border rounded-md bg-muted/50">{{ user.role }}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
