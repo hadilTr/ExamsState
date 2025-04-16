@@ -49,6 +49,16 @@ export class MenuComponent {
         ],
       },
       {
+        label: 'Profile',
+        items: [
+          {
+            label: 'Consulter profile',
+            icon: 'pi pi-user',
+            routerLink: ['/profile'],
+          }
+        ],
+      },
+      {
         label: 'Departments',
         items: [
           {
