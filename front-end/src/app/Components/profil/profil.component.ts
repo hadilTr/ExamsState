@@ -15,9 +15,10 @@ export class ProfileComponent implements OnInit {
 
   constructor(private profileService: ProfileService) {}
 
-  ngOnInit(): void {
-    this.profileService.getUser().subscribe(user => {
-      this.user = user;
+  ngOnInit() {
+    this.profileService.getProfile().subscribe({
+      next: (data) => this.user = data,
+      error: (err) => console.error('Error loading profile:', err)
     });
   }
 }
