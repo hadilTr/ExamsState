@@ -11,10 +11,15 @@ import org.springframework.stereotype.Service;
 public class AuthService {
 
     private final UserRepository userRepository;
+    private final JwtService jwtService;
 
 
     @Autowired
-    public AuthService(UserRepository userRepository) {this.userRepository = userRepository;}
+    public AuthService(UserRepository userRepository,JwtService jwtService)
+
+    {   this.userRepository = userRepository;
+        this.jwtService = jwtService;
+    }
 
     public LoginResponse login(LoginRequest loginRequest) {
 
@@ -24,7 +29,7 @@ public class AuthService {
             throw new RuntimeException("Wrong password");
         }
 
-
-        return new LoginResponse(user.getUsername(), user.getRole());
+        String token = jwtService.generateToken(user);
+        return new LoginResponse(user.getUsername(), user.getRole(),token);
     }
 }
