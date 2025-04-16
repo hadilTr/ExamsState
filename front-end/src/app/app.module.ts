@@ -26,6 +26,7 @@ import { Fluid } from 'primeng/fluid';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+
 // Components
 import { TopbarComponent } from './Components/layout/component/topbar/topbar.component';
 import { SidebarComponent } from './Components/layout/component/sidebar/sidebar.component';
@@ -61,6 +62,8 @@ import {Menu} from "primeng/menu";
 import {ChartInfoComponent} from "./Components/pages/Departments/dep-info/chart-info/chart-info.component";
 import {Dialog} from "primeng/dialog";
 import { EnseignantListComponent } from './Components/enseignant-list/enseignant-list.component';
+import { ProfileComponent } from './Components/profil/profil.component';
+import { ProfilePictureUploadComponent } from './Components/profile-picture-upload/profile-picture-upload.component';
 
 @NgModule({
   bootstrap: [AppComponent],
@@ -92,6 +95,8 @@ import { EnseignantListComponent } from './Components/enseignant-list/enseignant
     NiveauGroupeComponent,
     ChartInfoComponent,
     EnseignantListComponent,
+    ProfileComponent,
+    ProfilePictureUploadComponent,
   ],
   imports: [
     BrowserAnimationsModule,

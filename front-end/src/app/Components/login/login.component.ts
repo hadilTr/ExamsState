@@ -49,9 +49,10 @@ export class LoginComponent {
     };
 
     this.loginService.login(loginRequest).subscribe({
-      next: () => {
+      next: (res) => {
 
-
+        localStorage.setItem('token', res.token);
+        localStorage.setItem('role', res.role);
 
         this.router.navigate(['layout']);
 

@@ -1,5 +1,6 @@
 import { Component, model } from '@angular/core';
 import { MenuItem } from 'primeng/api';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-menu',
@@ -18,7 +19,7 @@ export class MenuComponent {
           { label: 'Dashboard', icon: 'pi pi-fw pi-home', routerLink: ['/layout'] },
         ],
       },
-      {
+      /*{
         label: 'Subjects',
         items: [
           {
@@ -27,7 +28,7 @@ export class MenuComponent {
             routerLink: ['/add-matiere'],
           }
         ],
-      },
+      },*/
       {
         label: 'Teachers',
         items: [
@@ -49,15 +50,31 @@ export class MenuComponent {
         ],
       },
       {
-        label: 'Teachers',
+        label: 'Profile',
         items: [
           {
-            label: 'Teachers List',
-            icon: 'pi pi-fw pi-book',
-            routerLink: ['/list-enseignants'],
+            label: 'Consulter profile',
+            icon: 'pi pi-user',
+            routerLink: ['/profile'],
           }
         ],
-      }
+      },
+      {
+        label: 'Departments',
+        items: [
+          {
+            label: 'Info',
+            icon: 'pi pi-fw pi-book',
+            routerLink: ['/lchartinfo'],
+          }
+        ],
+      },
+
     ];
   }
+
+
+
+
+
 }
