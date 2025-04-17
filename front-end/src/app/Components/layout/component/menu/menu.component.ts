@@ -20,37 +20,50 @@ export class MenuComponent {
         ],
       },
       {
-        label: 'Subjects',
+        label: '👨‍🏫 ENSEIGNANTS',
         items: [
           {
-            label: 'Add Subject',
-            icon: 'pi pi-fw pi-plus',
-            routerLink: ['/add-matiere'],
-          }
-        ],
-      },
-      {
-        label: 'Teachers',
-        items: [
-          {
-            label: 'Add Teacher',
+            label: ' Ajouter des Enseignants',
             icon: 'pi pi-fw pi-plus',
             routerLink: ['/add-enseignant'],
           }
         ],
       },
       {
-        label: 'Matrix',
+        label: '',
         items: [
           {
-            label: 'Matrix Consultation',
+            label: 'Liste des Enseignants',
+            icon: 'pi pi-fw pi-plus',
+            routerLink: ['/list-enseignants'],
+          }
+        ],
+      },
+
+      {
+        label: '📚 MATIERES',
+        items: [
+          {
+            label: ' Ajouter Les Matieres',
+            icon: 'pi pi-fw pi-plus',
+            routerLink: ['/add-matiere'],
+          }
+        ],
+      },
+
+
+      {
+        label: ' 🖥️ MATRICES',
+        items: [
+          {
+            label: 'Consultation des Matrices',
             icon: 'pi pi-fw pi-book',
             routerLink: ['/list-matiere'],
           }
         ],
       },
       {
-        label: 'Profile',
+        label: '👥 Profile',
         items: [
           {
             label: 'Consulter profile',
@@ -59,16 +72,7 @@ export class MenuComponent {
           }
         ],
       },
-      {
-        label: 'Departments',
-        items: [
-          {
-            label: 'Info',
-            icon: 'pi pi-fw pi-book',
-            routerLink: ['/lchartinfo'],
-          }
-        ],
-      },
+
 
     ];
   }
