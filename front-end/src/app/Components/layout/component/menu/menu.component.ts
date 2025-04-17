@@ -1,5 +1,6 @@
 import { Component, model } from '@angular/core';
 import { MenuItem } from 'primeng/api';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-menu',
@@ -49,6 +50,16 @@ export class MenuComponent {
         ],
       },
       {
+        label: 'Profile',
+        items: [
+          {
+            label: 'Consulter profile',
+            icon: 'pi pi-user',
+            routerLink: ['/profile'],
+          }
+        ],
+      },
+      {
         label: 'Departments',
         items: [
           {
@@ -57,7 +68,13 @@ export class MenuComponent {
             routerLink: ['/lchartinfo'],
           }
         ],
-      }
+      },
+
     ];
   }
+
+
+
+
+
 }

@@ -11,6 +11,7 @@ import { DepartementsComponent } from './Components/departements/departements.co
 import { AddUserComponent } from './Components/add-user/add-user.component';
 import { NiveauGroupeComponent } from './Components/niveau-groupe/niveau-groupe.component';
 import { EnseignantListComponent } from './Components/enseignant-list/enseignant-list.component';
+import {ProfileComponent} from './Components/profil/profil.component';
 
 const routes: Routes = [
   // Public routes
@@ -38,7 +39,9 @@ const routes: Routes = [
   { path: 'list-matiere', component: ListMatieresComponent },
   { path: 'list-enseignants', component: EnseignantListComponent },
 
-  { path: 'chartinfo', component: ChartInfoComponent }
+  { path: 'chartinfo', component: ChartInfoComponent },
+
+  {path:'profile', component: ProfileComponent }
 ];
 
 @NgModule({

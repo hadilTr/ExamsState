@@ -2,15 +2,15 @@ package com.example.backend.Mappers;
 
 import com.example.backend.dto.AddUserRequest;
 import com.example.backend.models.User;
-import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
+import org.mapstruct.*;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Mapper(
         componentModel = "spring"
-
 )
 public interface UserMapper {
+
 
     @Mapping(target = "id", ignore = true) // Ignore ID as it's auto-generated
     @Mapping(source = "firstname", target = "firstname")
@@ -19,8 +19,9 @@ public interface UserMapper {
     @Mapping(source = "role", target = "role")
     @Mapping(source = "tel", target = "tel")
     @Mapping(source = "username", target = "username")
-    @Mapping(source = "password", target = "password")
+    @Mapping(target = "password",ignore = true)
     User toEntity(AddUserRequest dto);
+
 
     @Mapping(source = "firstname", target = "firstname")
     @Mapping(source = "lastname", target = "lastname")
