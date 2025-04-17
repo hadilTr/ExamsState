@@ -33,8 +33,7 @@ export class MenuComponent {
         label: '',
         items: [
           {
-            label: 'Liste des Enseignants',
-            icon: 'pi pi-fw pi-plus',
+            label: '📶 Liste des Enseignants',
             routerLink: ['/list-enseignants'],
           }
         ],
