@@ -5,12 +5,14 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 import static org.hibernate.sql.ast.Clause.ORDER;
-
+@Repository
 public interface MatiereRepository extends JpaRepository<Matiere, Long> {
     List<Matiere> findByEnseignantId(Long enseignantId);
     void deleteByEnseignant_Id(Long enseignantId); // Ajouté
@@ -36,6 +38,12 @@ public interface MatiereRepository extends JpaRepository<Matiere, Long> {
     long countUnvalidatedSubjects();
     @Query("SELECT COUNT(m) FROM Matiere m WHERE m.recu = false")
     long countUnsubmittedSubjects();
+
+
+
+    /////////////////////////
+    Optional<Matiere> findByIdAndEnseignantId(Long matiereId, Long enseignantId);
+
 
 
 }

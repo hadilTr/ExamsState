@@ -81,4 +81,17 @@ public class MatiereService {
         return matiereRepository.findByRecuTrueOrValideTrueOrderByUpdatedAtDesc();
     }
 
+
+    public void updateMatiereStatus(Long matiereId,boolean recu,boolean valide) {
+        Matiere matiere = matiereRepository.findById(matiereId).orElseThrow(() -> new RuntimeException("Matiere introuvable"));
+        matiere.setRecu(recu);
+        if(!recu){
+            matiere.setValide(false);
+        } else{
+            matiere.setValide(valide);
+        }
+
+        matiereRepository.save(matiere);
+    }
+
 }

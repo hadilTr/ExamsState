@@ -1,5 +1,6 @@
 package com.example.backend.controllers;
 
+import com.example.backend.dto.UpdateStatusRequest;
 import com.example.backend.dto.request.MatiereDTO;
 import com.example.backend.dto.response.MatiereResponseDTO;
 import com.example.backend.mapper.MatiereMapper;
@@ -52,6 +53,15 @@ public class MatiereController {
     public ResponseEntity<List<Matiere>> getRecentUpdates() {
         List<Matiere> recentMatieres = matiereService.findRecentUpdates();
         return ResponseEntity.ok(recentMatieres);
+    }
+
+    @PutMapping("/{id}/status")
+    public ResponseEntity<?> updateStatus(
+            @PathVariable Long id,
+            @RequestBody UpdateStatusRequest request
+    ) {
+        matiereService.updateMatiereStatus(id, request.isRecu(), request.isValide());
+        return ResponseEntity.ok().body("Statut mis à jour avec succès.");
     }
 
 
