@@ -74,7 +74,7 @@ export class AddUserComponent {
         this.isLoading = false;
         this.showNotificationMessage('Utilisateur ajouté avec succès!', false);
         setTimeout(() => {
-          this.router.navigate(['/users']); // Rediriger vers la liste des utilisateurs
+          this.router.navigate(['/addusers']);
         }, 2000);
       },
       error: (err) => {
