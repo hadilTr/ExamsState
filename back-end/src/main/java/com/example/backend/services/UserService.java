@@ -24,12 +24,15 @@ public class UserService {
     private final UserRepository userRepository;
     private final UserMapper userMapper;// Injected mapper
     private final PasswordEncoder passwordEncoder;
+    private final EmailService emailService;
 
     @Autowired
-    public UserService(UserRepository userRepository, UserMapper userMapper, PasswordEncoder passwordEncoder) {
+    public UserService(UserRepository userRepository, UserMapper userMapper, PasswordEncoder passwordEncoder,EmailService emailService) {
         this.userRepository = userRepository;
         this.userMapper = userMapper;
         this.passwordEncoder = passwordEncoder;
+        this.emailService = emailService;
+
     }
 
     public List<User> getUsers() {
@@ -49,6 +52,12 @@ public class UserService {
 
         user.setPassword(passwordEncoder.encode(request.getPassword()));
 
+
+        emailService.sendCredentials(
+                user.getMail(),
+                user.getUsername(),
+                "changeme" // Send the initial password
+        );
         userRepository.save(user);
 
         return new AddUserResponse("User added successfully!");
