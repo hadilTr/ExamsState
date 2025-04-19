@@ -26,4 +26,18 @@ public class EmailService {
         );
         mailSender.send(message);
     }
+
+
+    public void sendNotificationToTeacher(String toEmail, String teacherName) {
+        SimpleMailMessage message = new SimpleMailMessage();
+        message.setTo(toEmail);
+        message.setSubject("Notification  ENICarthage - Matières Assignées");
+        message.setText(
+                "Dear " + teacherName + ",\n\n" +
+                        ".\n\n" +
+                        "SVP rajaaa3 l examen.\n\n" +
+                        "ENICarthage Administration"
+        );
+        mailSender.send(message);
+    }
 }
