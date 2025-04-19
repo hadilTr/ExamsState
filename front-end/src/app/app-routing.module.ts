@@ -16,6 +16,7 @@ import {
   ListMatieresComponentWithMail
 } from './Components/list-matieres-component-with-mail/list-matieres-component-with-mail.component';
 import { CalendarComponent } from './Components/calendar/calendar.component';
+import { EmailLogsComponent } from './Components/email-logs/email-logs.component';
 
 const routes: Routes = [
   // Public routes
@@ -50,7 +51,10 @@ const routes: Routes = [
 
   {path:'profile', component: ProfileComponent },
 
-  {path:'calendar', component: CalendarComponent }
+  {path:'calendar', component: CalendarComponent },
+
+  {path:'Emails', component: EmailLogsComponent }
+
 
 
 ];
