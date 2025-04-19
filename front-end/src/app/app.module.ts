@@ -65,6 +65,7 @@ import { EnseignantListComponent } from './Components/enseignant-list/enseignant
 import { ProfileComponent } from './Components/profil/profil.component';
 import { ProfilePictureUploadComponent } from './Components/profile-picture-upload/profile-picture-upload.component';
 import { ListMatieresComponentWithMail } from './Components/list-matieres-component-with-mail/list-matieres-component-with-mail.component';
+import { CalendarComponent } from './Components/calendar/calendar.component';
 
 @NgModule({
   bootstrap: [AppComponent],
@@ -99,6 +100,7 @@ import { ListMatieresComponentWithMail } from './Components/list-matieres-compon
     ProfileComponent,
     ProfilePictureUploadComponent,
     ListMatieresComponentWithMail,
+    CalendarComponent,
   ],
   imports: [
     BrowserAnimationsModule,

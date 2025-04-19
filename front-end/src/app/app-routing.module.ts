@@ -15,6 +15,7 @@ import {ProfileComponent} from './Components/profil/profil.component';
 import {
   ListMatieresComponentWithMail
 } from './Components/list-matieres-component-with-mail/list-matieres-component-with-mail.component';
+import { CalendarComponent } from './Components/calendar/calendar.component';
 
 const routes: Routes = [
   // Public routes
@@ -47,7 +48,11 @@ const routes: Routes = [
 
   { path: 'chartinfo', component: ChartInfoComponent },
 
-  {path:'profile', component: ProfileComponent }
+  {path:'profile', component: ProfileComponent },
+
+  {path:'calendar', component: CalendarComponent }
+
+
 ];
 
 @NgModule({
