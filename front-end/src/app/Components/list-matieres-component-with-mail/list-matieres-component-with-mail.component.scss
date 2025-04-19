@@ -379,3 +379,26 @@ tr:hover {
   color: #666;
   margin-top: 4px;
 }
+
+.email-btn {
+  background-color: #2196F3;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.9em;
+}
+
+.email-btn:hover {
+  background-color: #0b7dda;
+}
+
+.email-btn .emoji-btn {
+  font-size: 1.1em;
+}
+
+/* Le reste du CSS peut être identique au composant original */

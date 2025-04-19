@@ -12,6 +12,9 @@ import { AddUserComponent } from './Components/add-user/add-user.component';
 import { NiveauGroupeComponent } from './Components/niveau-groupe/niveau-groupe.component';
 import { EnseignantListComponent } from './Components/enseignant-list/enseignant-list.component';
 import {ProfileComponent} from './Components/profil/profil.component';
+import {
+  ListMatieresComponentWithMail
+} from './Components/list-matieres-component-with-mail/list-matieres-component-with-mail.component';
 
 const routes: Routes = [
   // Public routes
@@ -37,6 +40,9 @@ const routes: Routes = [
   { path: 'matieres', component: AddMatiereComponent },
 
   { path: 'list-matiere', component: ListMatieresComponent },
+  { path: 'list-matiere-withmail', component: ListMatieresComponentWithMail },
+
+
   { path: 'list-enseignants', component: EnseignantListComponent },
 
   { path: 'chartinfo', component: ChartInfoComponent },
