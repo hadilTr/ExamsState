@@ -67,6 +67,7 @@ import { ProfilePictureUploadComponent } from './Components/profile-picture-uplo
 import { ListMatieresComponentWithMail } from './Components/list-matieres-component-with-mail/list-matieres-component-with-mail.component';
 import { CalendarComponent } from './Components/calendar/calendar.component';
 import { EmailLogsComponent } from './Components/email-logs/email-logs.component';
+import { DateGlobaleFormComponent } from './Components/pages/dashboard/components/date-globale-form/date-globale-form.component';
 
 @NgModule({
   bootstrap: [AppComponent],
@@ -103,7 +104,7 @@ import { EmailLogsComponent } from './Components/email-logs/email-logs.component
     ListMatieresComponentWithMail,
     CalendarComponent,
     EmailLogsComponent,
-  ],
+    DateGlobaleFormComponent],
   imports: [
     BrowserAnimationsModule,
     BrowserModule,

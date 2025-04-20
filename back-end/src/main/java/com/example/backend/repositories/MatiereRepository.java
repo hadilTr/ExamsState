@@ -43,7 +43,7 @@ public interface MatiereRepository extends JpaRepository<Matiere, Long> {
 
     /////////////////////////
     Optional<Matiere> findByIdAndEnseignantId(Long matiereId, Long enseignantId);
-
-
+    long countByRecuFalse();
+    long countByValideFalse();
 
 }

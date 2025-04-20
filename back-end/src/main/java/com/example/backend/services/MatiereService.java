@@ -1,4 +1,6 @@
 package com.example.backend.services;
+import com.example.backend.dto.response.StatistiqueDTO;
+import com.example.backend.models.DateGlobale;
 import org.springframework.http.ResponseEntity;
 import org.springframework.scheduling.annotation.Scheduled;
 import com.example.backend.dto.request.MatiereDTO;
@@ -13,24 +15,25 @@ import com.example.backend.models.Matiere;
 import com.example.backend.repositories.EnseignantRepository;
 import com.example.backend.repositories.MatiereRepository;
 import org.springframework.stereotype.Service;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import com.example.backend.repositories.DateGlobaleRepository;
+import java.time.LocalDateTime;
+import java.util.*;
 import java.util.stream.Collectors;
 @Service
 public class MatiereService {
     private final MatiereRepository matiereRepository;
     private final EnseignantRepository enseignantRepository;
     private final MatiereMapper matiereMapper;
+    private final DateGlobaleRepository dateGlobaleRepository;
 
     public MatiereService(MatiereRepository matiereRepository,
                           EnseignantRepository enseignantRepository,
-                          MatiereMapper matiereMapper) {
+                          MatiereMapper matiereMapper,
+                          DateGlobaleRepository dateGlobaleRepository) {
         this.matiereRepository = matiereRepository;
         this.enseignantRepository = enseignantRepository;
         this.matiereMapper = matiereMapper;
+        this.dateGlobaleRepository = dateGlobaleRepository;
     }
 
     public Matiere saveMatiere(MatiereDTO matiereDTO) {
@@ -92,6 +95,60 @@ public class MatiereService {
         }
 
         matiereRepository.save(matiere);
+    }
+
+
+
+    public StatistiqueDTO getDashboardStats() {
+        StatistiqueDTO stats = new StatistiqueDTO();
+
+        // Nombre d'examens non soumis
+        long unsubmittedCount = matiereRepository.countUnsubmittedSubjects();
+        stats.setUnsubmittedExams(unsubmittedCount);
+
+        // Nombre de notes non validées
+        long unvalidatedCount = matiereRepository.countUnvalidatedSubjects();
+        stats.setUnvalidatedNotes(unvalidatedCount);
+
+        // Nombre total d'enseignants
+        long totalTeachers = enseignantRepository.count();
+        stats.setTotalTeachers(totalTeachers);
+
+        // Nombre d'enseignants en retard
+        long lateTeachers = countLateTeachers();
+        stats.setLateTeachers(lateTeachers);
+
+        return stats;
+
+    }
+
+    private long countLateTeachers() {
+        // Récupérer la date limite de réception
+        Optional<DateGlobale> dateReception = dateGlobaleRepository.findByNomAndActiveTrue(DateGlobale.DATE_RECEPTION);
+
+        if (!dateReception.isPresent()) {
+            return 0L; // Si pas de date limite, personne n'est en retard
+        }
+
+        LocalDateTime dateLimit = dateReception.get().getDate();
+
+        // Compter les enseignants qui ont des matières non reçues après la date limite
+        List<Enseignant> allTeachers = enseignantRepository.findAll();
+        long lateCount = 0;
+
+        for (Enseignant teacher : allTeachers) {
+            List<Matiere> matieres = matiereRepository.findByEnseignantId(teacher.getId());
+
+            // Un enseignant est en retard s'il a au moins une matière non reçue
+            boolean isLate = matieres.stream()
+                    .anyMatch(m -> !m.getRecu() && LocalDateTime.now().isAfter(dateLimit));
+
+            if (isLate) {
+                lateCount++;
+            }
+        }
+
+        return lateCount;
     }
 
 }
