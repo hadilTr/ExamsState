@@ -62,19 +62,19 @@ public class MatiereService {
 
     /// Asma Update
     ///
-     public List<Map<String,Object>> getFormattedMatiereStats(){
-         List<Object[]> results = matiereRepository.getMatiereValideByDepartementAndNiveau();
-         List<Map<String,Object>> formattedResults = new ArrayList<>();
+    public List<Map<String,Object>> getFormattedMatiereStats(){
+        List<Object[]> results = matiereRepository.getMatiereValideByDepartementAndNiveau();
+        List<Map<String,Object>> formattedResults = new ArrayList<>();
 
-         for (Object[] row : results) {
-             Map<String, Object> map = new HashMap<>();
-             map.put("departement", row[0] != null ? row[0].toString() : "Non spécifié");
-             map.put("niveau", row[1] != null ? row[1].toString() : "Non spécifié");
-             map.put("total", row[2] != null ? row[2] : 0);  // Assurer que "total" est un entier
-             formattedResults.add(map);
-         }
-         return formattedResults;
-     }
+        for (Object[] row : results) {
+            Map<String, Object> map = new HashMap<>();
+            map.put("departement", row[0] != null ? row[0].toString() : "Non spécifié");
+            map.put("niveau", row[1] != null ? row[1].toString() : "Non spécifié");
+            map.put("total", row[2] != null ? row[2] : 0);  // Assurer que "total" est un entier
+            formattedResults.add(map);
+        }
+        return formattedResults;
+    }
 
     // Récupérer toutes les matières mises à jour récemment
     public List<Matiere> findRecentUpdates() {

@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AddUserRequest } from '../../models/AddUser-request.model';
 import { AddUserResponse } from '../../models/AddUserResponse.model';
-import { addUserService } from '../../services/addUser.service';
+import { addUserService} from '../../Services/addUser.service';
 
 export enum Role {
   Responsable_etudes = 'Responsable_etudes',
@@ -11,6 +11,8 @@ export enum Role {
   Responsable_examens = 'Responsable_examens',
   Responsable_Deliberation = 'Responsable_Deliberation'
 }
+
+
 
 @Component({
   selector: 'app-add-user',

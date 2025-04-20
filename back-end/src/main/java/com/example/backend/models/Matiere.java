@@ -25,6 +25,7 @@ public class Matiere {
 
     @Enumerated(EnumType.STRING)
     private SpecialiteEnum specialite;
+
     private Boolean recu = false;
     private Boolean valide = false;
 

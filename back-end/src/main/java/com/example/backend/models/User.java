@@ -30,6 +30,9 @@ public class User {
     private String username;
     private String password;
 
+    @Lob
+    private byte[] profilePicture;
+
     public User(String firstname, String lastname, String mail, Role role, Long tel, String username, String password) {
         this.firstname = firstname;
         this.lastname = lastname;

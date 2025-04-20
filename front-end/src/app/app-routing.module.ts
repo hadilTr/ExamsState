@@ -12,6 +12,7 @@ import { AddUserComponent } from './Components/add-user/add-user.component';
 import { NiveauGroupeComponent } from './Components/niveau-groupe/niveau-groupe.component';
 import { EnseignantListComponent } from './Components/enseignant-list/enseignant-list.component';
 import {ProfileComponent} from './Components/profil/profil.component';
+import { ProfilePictureUploadComponent } from './Components/profile-picture-upload/profile-picture-upload.component';
 
 const routes: Routes = [
   // Public routes
@@ -41,7 +42,9 @@ const routes: Routes = [
 
   { path: 'chartinfo', component: ChartInfoComponent },
 
-  {path:'profile', component: ProfileComponent }
+  {path:'profile', component: ProfileComponent },
+
+  {path:'profile-picture', component: ProfilePictureUploadComponent}
 ];
 
 @NgModule({

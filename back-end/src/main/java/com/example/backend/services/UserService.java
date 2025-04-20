@@ -6,6 +6,8 @@ import com.example.backend.dto.AddUserRequest;
 import com.example.backend.dto.AddUserResponse;
 import com.example.backend.models.User;
 import com.example.backend.repositories.UserRepository;
+import jakarta.persistence.Column;
+import jakarta.persistence.Lob;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,8 +15,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 
@@ -62,4 +66,19 @@ public class UserService {
 
         return new AddUserResponse("User added successfully!");
     }
+
+
+
+    public void saveProfilePicture(String username, MultipartFile file) {
+        User user = userRepository.findUserByUsername(username)
+                .orElseThrow(() -> new RuntimeException("User not found"));
+
+        try {
+            user.setProfilePicture(file.getBytes());
+            userRepository.save(user);
+        } catch (IOException e) {
+            throw new RuntimeException("Failed to store profile picture", e);
+        }
+    }
+
 }

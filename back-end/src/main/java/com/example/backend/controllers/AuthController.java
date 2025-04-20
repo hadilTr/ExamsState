@@ -35,6 +35,7 @@ public class AuthController {
         LoginResponse response = authService.login(loginRequest);
         return ResponseEntity.ok(response);
     }
+
     @GetMapping("/me")
     public ResponseEntity<User> getUserProfile(@RequestHeader("Authorization") String authHeader) {
         String token = authHeader.replace("Bearer ", "");
