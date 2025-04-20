@@ -61,6 +61,16 @@ export class MenuComponent {
           }
         ],
       },
+
+      {
+        label: '📬 Emails',
+        items: [
+          {
+            label: '✉️  Liste des mails',
+            routerLink: ['/Emails'],
+          }
+        ],
+      },
       {
         label: '👥 Profile',
         items: [
@@ -71,6 +81,7 @@ export class MenuComponent {
           }
         ],
       },
+
 
 
     ];

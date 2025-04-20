@@ -64,6 +64,9 @@ import {Dialog} from "primeng/dialog";
 import { EnseignantListComponent } from './Components/enseignant-list/enseignant-list.component';
 import { ProfileComponent } from './Components/profil/profil.component';
 import { ProfilePictureUploadComponent } from './Components/profile-picture-upload/profile-picture-upload.component';
+import { ListMatieresComponentWithMail } from './Components/list-matieres-component-with-mail/list-matieres-component-with-mail.component';
+import { CalendarComponent } from './Components/calendar/calendar.component';
+import { EmailLogsComponent } from './Components/email-logs/email-logs.component';
 
 @NgModule({
   bootstrap: [AppComponent],
@@ -97,6 +100,9 @@ import { ProfilePictureUploadComponent } from './Components/profile-picture-uplo
     EnseignantListComponent,
     ProfileComponent,
     ProfilePictureUploadComponent,
+    ListMatieresComponentWithMail,
+    CalendarComponent,
+    EmailLogsComponent,
   ],
   imports: [
     BrowserAnimationsModule,

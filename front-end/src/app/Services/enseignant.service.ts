@@ -49,4 +49,8 @@ export class EnseignantService {
   getMatieresByEnseignant(enseignantId: number): Observable<any[]> {
     return this.http.get<any[]>(`${this.apiUrl}/enseignant/${enseignantId}`);
   }
+  getAllEmailLogs(): Observable<any[]> {
+    return this.http.get<any[]>('http://localhost:8083/api/email-logs');
+  }
+
 }

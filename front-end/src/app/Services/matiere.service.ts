@@ -40,4 +40,15 @@ export class MatiereService {
   updateMatiereStatus(id: number, recu: boolean, valide: boolean): Observable<any> {
     return this.http.put(`${this.apiUrl}/${id}/status`, { recu, valide });
   }
+
+
+
+  // Dans matiere.service.ts
+  sendEmail(toEmail: string, subject: string, message: string): Observable<any> {
+    return this.http.post(`${this.apiUrl}/send-email`, {
+      toEmail,
+      subject,
+      message
+    });
+  }
 }
