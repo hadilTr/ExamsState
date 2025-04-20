@@ -21,3 +21,12 @@
   align-items: center;
   gap: 1rem;
 }
+
+.navbar-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+  cursor: pointer;
+  border: 1px solid #ccc;
+}

@@ -10,6 +10,9 @@
     </a>
   </div>
 
+
+
+
   <div class="layout-topbar-actions">
     <div class="layout-config-menu">
       <!-- Bouton mode sombre (commenté) -->
@@ -47,10 +50,12 @@
           <i class="pi pi-inbox"></i>
           <span>Messages</span>
         </button>
-        <button type="button" class="layout-topbar-action">
-          <i class="pi pi-user"></i>
-          <span>Profile</span>
-        </button>
+        <img
+          [src]="profilePictureUrl || defaultImageUrl"
+          alt="Profile"
+          class="navbar-avatar"
+          (error)="profilePictureUrl = defaultImageUrl"
+        />
       </div>
     </div>
   </div>
