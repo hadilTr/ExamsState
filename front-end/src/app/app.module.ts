@@ -67,6 +67,8 @@ import { ProfilePictureUploadComponent } from './Components/profile-picture-uplo
 import { ListMatieresComponentWithMail } from './Components/list-matieres-component-with-mail/list-matieres-component-with-mail.component';
 import { CalendarComponent } from './Components/calendar/calendar.component';
 import { EmailLogsComponent } from './Components/email-logs/email-logs.component';
+import { UnauthorizedComponent } from './Components/unauthorized/unauthorized.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   bootstrap: [AppComponent],
@@ -103,8 +105,10 @@ import { EmailLogsComponent } from './Components/email-logs/email-logs.component
     ListMatieresComponentWithMail,
     CalendarComponent,
     EmailLogsComponent,
+    UnauthorizedComponent,
   ],
   imports: [
+    MatSnackBarModule,
     BrowserAnimationsModule,
     BrowserModule,
     ButtonModule,

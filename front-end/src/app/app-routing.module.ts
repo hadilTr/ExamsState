@@ -20,6 +20,8 @@ import {
 } from './Components/list-matieres-component-with-mail/list-matieres-component-with-mail.component';
 import { CalendarComponent } from './Components/calendar/calendar.component';
 import { EmailLogsComponent } from './Components/email-logs/email-logs.component';
+import { RoleGuard } from './guards/role.guard';
+import { UnauthorizedComponent } from './Components/unauthorized/unauthorized.component';
 
 
 const routes: Routes = [
@@ -30,17 +32,28 @@ const routes: Routes = [
 
   // Admin routes
   //{ path: 'departments', component: DepartementsComponent },
-  { path: 'addusers', component: AddUserComponent },
+
+  { path: 'addusers',
+    component: AddUserComponent,
+    canActivate: [RoleGuard],
+    data: { expectedRole: 'Responsable_etudes' }
+
+  },
  // { path: 'niveau-groupe', component: NiveauGroupeComponent },
 
   // Layout and Dashboard
   { path: 'layout', component: LayoutComponent },
   { path: 'dashboard', component: DashboardComponent },
+  { path: 'unauthorized', component: UnauthorizedComponent },
+
 
   // Other routes
   { path: 'enseignants', component: AddEnseignantComponent },
 
-  { path: 'add-enseignant', component: AddEnseignantComponent },
+  { path: 'add-enseignant',
+    component: AddEnseignantComponent,
+    canActivate: [RoleGuard],
+    data: { expectedRole: 'Responsable_etudes'}},
 
   { path: 'add-matiere', component: AddMatiereComponent },
   { path: 'matieres', component: AddMatiereComponent },

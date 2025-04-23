@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import {LoginRequest} from '../../models/login-request.model';
 import {MessageService} from 'primeng/api';
 import { LoginService } from '../../Services/login.service';
+import { TokenService } from '../../Services/token.service';
 
 
 
@@ -52,8 +53,11 @@ export class LoginComponent {
     this.loginService.login(loginRequest).subscribe({
       next: (res) => {
 
-        localStorage.setItem('token', res.token);
-        localStorage.setItem('role', res.role);
+        const token = res.token;
+        localStorage.setItem('token', token);
+
+        const role = TokenService.getRoleFromToken(token);
+        console.log('User Role:', role);
 
         this.router.navigate(['layout']);
 
