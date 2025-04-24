@@ -21,4 +21,6 @@ public interface EnseignantRepository extends JpaRepository<Enseignant, Long> {
 
     @Query("SELECT COUNT(e) FROM Enseignant e WHERE e.isLate = true")
     long countLateTeachers(); */
+
+
 }
