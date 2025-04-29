@@ -16,8 +16,12 @@ export class AppComponent {
     this.router.events.subscribe((event)=>{
       if ( event instanceof NavigationEnd)
       {this.showside=!event.url.includes('/login');
+
+        //this.showside=!event.url.includes('/layout');
+
       }
     })
+
 
   }
 

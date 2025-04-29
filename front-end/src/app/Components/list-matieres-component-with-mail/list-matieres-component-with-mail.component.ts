@@ -75,6 +75,8 @@ export class ListMatieresComponentWithMail implements OnInit {
       specialite: matiere.specialite,
       niveau: matiere.niveau,
       groupe: matiere.groupe,
+      semester: matiere.semester,
+      typeMatiere: matiere.typeMatiere,
       recu: matiere.recu ?? false,
       valide: matiere.valide ?? false,
       enseignant: {

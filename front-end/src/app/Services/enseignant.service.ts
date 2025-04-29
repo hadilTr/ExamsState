@@ -23,17 +23,21 @@ export class EnseignantService {
     departement: string,
     specialite: string,
     niveau: string,
-    groupe: string
+    groupe: string,
+    semester: string,
+    TypeMatiere: string
   ): Observable<any> {
     // Ajoutez des logs pour débogage
-    console.log('Params envoyés:', { departement, specialite, niveau, groupe });
+    console.log('Params envoyés:', { departement, specialite, niveau, groupe ,semester,TypeMatiere});
 
     return this.http.get(`${this.apiUrl}/filter`, {
       params: {
         departement: departement,
         specialite: specialite,
         niveau: niveau,
-        groupe: groupe
+        groupe: groupe,
+        semester:semester,
+        TypeMatiere:TypeMatiere
       }
     }).pipe(
       tap(response => console.log('Réponse API:', response)),

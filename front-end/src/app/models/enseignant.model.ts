@@ -1,3 +1,5 @@
+import { typeMatiereEnum } from './enums';
+
 export enum GroupeEnum {
   Groupe_A = 'Groupe_A',
   Groupe_B = 'Groupe_B',
@@ -25,6 +27,18 @@ export enum DepartementEnum {
   INDUS = 'INDUS'
 }
 
+export enum SemesterEnum {
+  SEMESTER1='SEMESTER1',
+  SEMESTER2='SEMESTER2',
+  RATTRAPAGE='RATTRAPAGE'
+
+}
+export enum TypeMatiereEnum{
+  DS='DS',
+  EXAMEN='EXAMEN',
+  TP='TP',
+  PROJET='PROJET'
+}
 export interface Enseignant {
   id?: number;
   nom: string;
@@ -34,4 +48,6 @@ export interface Enseignant {
   niveau: NiveauEnum;
   specialite: SpecialiteEnum;
   departement: DepartementEnum;
+  semester: SemesterEnum;
+  typeMatiere: typeMatiereEnum;
 }

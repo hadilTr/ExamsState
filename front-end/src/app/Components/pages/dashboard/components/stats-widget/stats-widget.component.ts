@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DashboardStats, StatistiqueService } from '../../../../../services/statistique.service';
+import { DashboardStats, StatistiqueService } from '../../../../../Services/statistique.service';
 
 @Component({
   selector: 'app-stats-widget',

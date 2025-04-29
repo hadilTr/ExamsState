@@ -23,7 +23,9 @@ export class ListMatieresComponent implements OnInit {
     departement: '',
     specialite: '',
     niveau: '',
-    groupe: ''
+    groupe: '',
+    semester: '',
+    typeMatiere: ''
   };
 
   // Options pour les selects
@@ -31,7 +33,8 @@ export class ListMatieresComponent implements OnInit {
   specialites = ['INFORMATIQUE', 'MECATRONIQUE', 'INDUS', 'INFOTRONIQUE'];
   niveaux = ['NIVEAU_1', 'NIVEAU_2', 'NIVEAU_3'];
   groupes = ['Groupe_A', 'Groupe_B', 'Groupe_C', 'Groupe_D', 'Groupe_E'];
-
+  semesters=['SEMESTER1','SEMESTER2','RATTRAPAGE'];
+  typeMatiere=['DS','EXAMEN','TP','PROJET'];
   // Chargement
   isLoading = true;
 
@@ -79,6 +82,8 @@ export class ListMatieresComponent implements OnInit {
       specialite: matiere.specialite,
       niveau: matiere.niveau,
       groupe: matiere.groupe,
+      semester: matiere.semester,
+      typeMatiere: matiere.typeMatiere,
       recu: matiere.recu ?? false, // Initialisé à false si undefined/null
       valide: matiere.valide ?? false, // Initialisé à false si undefined/null
 
@@ -94,7 +99,7 @@ export class ListMatieresComponent implements OnInit {
   }
 
 
-  groupMatieres(): void {
+ /* groupMatieres(): void {
     this.groupedMatieres = [];
 
     // Création des groupes basés sur les enseignants
@@ -103,15 +108,20 @@ export class ListMatieresComponent implements OnInit {
         (!this.filters.departement || ens.departement === this.filters.departement) &&
         (!this.filters.specialite || ens.specialite === this.filters.specialite) &&
         (!this.filters.niveau || ens.niveau === this.filters.niveau) &&
-        (!this.filters.groupe || ens.groupe === this.filters.groupe)
+        (!this.filters.groupe || ens.groupe === this.filters.groupe) &&
+        (!this.filters.semester || ens.semester === this.filters.semester) &&
+        (!this.filters.typeMatiere || ens.typeMatiere === this.filters.typeMatiere)
       ) {
-        const groupKey = `${ens.departement}_${ens.specialite}_${ens.niveau}_${ens.groupe}`;
+        const groupKey = `${ens.departement}_${ens.specialite}_${ens.niveau}_${ens.groupe}_${ens.semester}`;
 
         let group = this.groupedMatieres.find((g: any) =>
           g.departement === ens.departement &&
           g.specialite === ens.specialite &&
           g.niveau === ens.niveau &&
-          g.groupe === ens.groupe
+          g.groupe === ens.groupe &&
+          g.semester === ens.semester &&
+          g.typeMatiere === ens.typeMatiere
+
         );
 
         if (!group) {
@@ -120,11 +130,14 @@ export class ListMatieresComponent implements OnInit {
             specialite: ens.specialite,
             niveau: ens.niveau,
             groupe: ens.groupe,
+            semester: ens.semester,
             matieres: this.matieres.filter((m: MatiereFrontend) =>
               m.departement === ens.departement &&
               m.specialite === ens.specialite &&
               m.niveau === ens.niveau &&
-              m.groupe === ens.groupe
+              m.groupe === ens.groupe &&
+              m.semester === ens.semester &&
+              m.typeMatiere === ens.typeMatiere
             ),
             enseignants: []
           };
@@ -136,15 +149,69 @@ export class ListMatieresComponent implements OnInit {
         }
       }
     });
+  }*/
+
+  groupMatieres(): void {
+    this.groupedMatieres = [];
+
+    // Création des groupes basés sur les matières (pas les enseignants)
+    this.matieres.forEach((matiere: MatiereFrontend) => {
+      if (
+        (!this.filters.departement || matiere.departement === this.filters.departement) &&
+        (!this.filters.specialite || matiere.specialite === this.filters.specialite) &&
+        (!this.filters.niveau || matiere.niveau === this.filters.niveau) &&
+        (!this.filters.groupe || matiere.groupe === this.filters.groupe) &&
+        (!this.filters.semester || matiere.semester === this.filters.semester) &&
+        (!this.filters.typeMatiere || matiere.typeMatiere === this.filters.typeMatiere)
+      ) {
+        const groupKey = `${matiere.departement}_${matiere.specialite}_${matiere.niveau}_${matiere.groupe}_${matiere.semester}_${matiere.typeMatiere}`;
+
+        let group = this.groupedMatieres.find((g: any) =>
+          g.departement === matiere.departement &&
+          g.specialite === matiere.specialite &&
+          g.niveau === matiere.niveau &&
+          g.groupe === matiere.groupe &&
+          g.semester === matiere.semester &&
+          g.typeMatiere === matiere.typeMatiere
+        );
+
+        if (!group) {
+          group = {
+            departement: matiere.departement,
+            specialite: matiere.specialite,
+            niveau: matiere.niveau,
+            groupe: matiere.groupe,
+            semester: matiere.semester,
+            typeMatiere: matiere.typeMatiere,
+            matieres: [],
+            enseignants: []
+          };
+          this.groupedMatieres.push(group);
+        }
+
+        // Ajouter la matière au groupe si elle n'existe pas déjà
+        if (!group.matieres.some((m: MatiereFrontend) => m.id === matiere.id)) {
+          group.matieres.push(matiere);
+        }
+
+        // Ajouter l'enseignant s'il n'existe pas déjà
+        const enseignant = this.enseignants.find(e => e.id === matiere.enseignant.id);
+        if (enseignant && !group.enseignants.some((e: Enseignant) => e.id === enseignant.id)) {
+          group.enseignants.push(enseignant);
+        }
+      }
+    });
   }
 
 
-  getEnseignantsForGroup(departement: string, specialite: string, niveau: string, groupe: string): any[] {
+  getEnseignantsForGroup(departement: string, specialite: string, niveau: string, groupe: string, semester:string, typeMatiere:string): any[] {
     return this.enseignants.filter(ens =>
       ens.departement === departement &&
       ens.specialite === specialite &&
       ens.niveau === niveau &&
-      ens.groupe === groupe
+      ens.groupe === groupe &&
+      ens.semester === semester &&
+      ens.typeMatiere === typeMatiere
     );
   }
   /*getMatieresForEnseignant(matieres: MatiereFrontend[], enseignantId: number): MatiereFrontend[] {

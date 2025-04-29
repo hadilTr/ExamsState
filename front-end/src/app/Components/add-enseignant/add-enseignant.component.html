@@ -76,6 +76,26 @@
       </div>
     </div>
 
+    <div class="form-grid">
+      <!-- Semestre -->
+      <div class="form-group">
+        <label for="semester">📅 Semestre</label>
+        <select id="semester" formControlName="semester">
+          <option value="" disabled selected>Choisir un semestre</option>
+          <option *ngFor="let sem of semesters" [value]="sem">{{sem}}</option>
+        </select>
+      </div>
+
+      <!-- Type de Matière -->
+      <!--<div class="form-group">
+        <label for="TypeMatiere">🏷️ Type de Matière</label>
+        <select id="TypeMatiere" formControlName="TypeMatiere">
+          <option value="" disabled selected>Choisir un type</option>
+          <option *ngFor="let type of TypeMatiere" [value]="type">{{type}}</option>
+        </select>
+      </div>-->
+    </div>
+
     <button type="submit" class="submit-btn" [disabled]="!enseignantForm.valid">
       ✅ Enregistrer l'Enseignant
     </button>

@@ -2,8 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import {LoginRequest} from '../../models/login-request.model';
 import {MessageService} from 'primeng/api';
-import { LoginService } from '../../Services/login.service';
-
+import { LoginService } from '../../services/login.service';
 
 
 @Component({

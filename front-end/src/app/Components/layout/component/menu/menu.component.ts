@@ -62,7 +62,7 @@ export class MenuComponent {
         ],
       },
 
-      {
+        {
         label: '📬 Emails',
         items: [
           {
@@ -70,6 +70,7 @@ export class MenuComponent {
             routerLink: ['/Emails'],
           }
         ],
+
       },
       {
         label: '👥 Profile',

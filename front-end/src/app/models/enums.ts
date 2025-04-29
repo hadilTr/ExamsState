@@ -16,7 +16,17 @@ export enum NiveauEnum {
   NIVEAU_2 = 'NIVEAU_2',
   NIVEAU_3 = 'NIVEAU_3'
 }
-
+export enum SemesterEnum{
+  SEMESTER1='SEMESTER1',
+  SEMESTER2='SEMESTER2',
+  RATTRAPAGE='RATTRAPAGE'
+}
+export enum typeMatiereEnum{
+  DS='DS',
+  EXAMEN='EXAMEN',
+  TP='TP',
+  PROJET='PROJET'
+}
 export enum GroupeEnum {
   Groupe_A = 'Groupe_A',
   Groupe_B = 'Groupe_B',

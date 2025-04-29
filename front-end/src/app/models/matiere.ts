@@ -5,6 +5,8 @@ export interface MatiereBackend {
   specialite: string;
   niveau: string;
   groupe: string;
+  semester: string;
+  typeMatiere: string;
   enseignantId: number;
   enseignantNom: string;
   enseignantEmail: string;
@@ -25,6 +27,8 @@ export interface MatiereFrontend {
   specialite: string;
   niveau: string;
   groupe: string;
+  semester: string;
+  typeMatiere: string;
   enseignant: EnseignantInMatiere;
   recu: boolean;
   valide: boolean;
