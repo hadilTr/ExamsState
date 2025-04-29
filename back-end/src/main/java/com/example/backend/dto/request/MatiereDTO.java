@@ -12,6 +12,8 @@ public class MatiereDTO {
     private String specialite;
     private String niveau;
     private String groupe;
+    private String semester;
+    private String typeMatiere;
     private Long enseignantId;
     private Boolean recu ;
     private Boolean valide ;

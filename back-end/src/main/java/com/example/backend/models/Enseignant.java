@@ -79,6 +79,8 @@ public class Enseignant {
     @Enumerated(EnumType.STRING)
     private GroupeEnum groupe;
 
+    @Enumerated(EnumType.STRING)
+    private SemesterEnum semester;
 
 
 }

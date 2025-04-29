@@ -120,10 +120,11 @@ public class EnseignantService {
             DepartementEnum departement,
             SpecialiteEnum specialite,
             NiveauEnum niveau,
-            GroupeEnum groupe) {
+            GroupeEnum groupe,
+            SemesterEnum semester) {
 
-        List<Enseignant> enseignants = enseignantRepository.findByDepartementAndSpecialiteAndNiveauAndGroupe(
-                departement, specialite, niveau, groupe);
+        List<Enseignant> enseignants = enseignantRepository.findByDepartementAndSpecialiteAndNiveauAndGroupeAndSemester(
+                departement, specialite, niveau, groupe,semester);
 
         return enseignants.stream()
                 .map(enseignantMapper::toResponseDTO)

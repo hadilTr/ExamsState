@@ -14,6 +14,7 @@ public class EnseignantResponseDTO {
     private SpecialiteEnum specialite;
     private NiveauEnum niveau;
     private GroupeEnum groupe;
+    private SemesterEnum semester;
   //  private List<String> matieres; // Doit être rempli
 
 }
