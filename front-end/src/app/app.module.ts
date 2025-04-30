@@ -67,12 +67,13 @@ import { ProfilePictureUploadComponent } from './Components/profile-picture-uplo
 import { ListMatieresComponentWithMail } from './Components/list-matieres-component-with-mail/list-matieres-component-with-mail.component';
 import { CalendarComponent } from './Components/calendar/calendar.component';
 import { EmailLogsComponent } from './Components/email-logs/email-logs.component';
-<<<<<<< HEAD
+import { BaseChartDirective } from 'ng2-charts';
 import { UnauthorizedComponent } from './Components/unauthorized/unauthorized.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-=======
 import { DateGlobaleFormComponent } from './Components/pages/dashboard/components/date-globale-form/date-globale-form.component';
->>>>>>> origin/dev
+
+import { DashboardInfoComponent } from './Components/dashboard-info/dashboard-info.component';
+
 
 @NgModule({
   bootstrap: [AppComponent],
@@ -109,13 +110,13 @@ import { DateGlobaleFormComponent } from './Components/pages/dashboard/component
     ListMatieresComponentWithMail,
     CalendarComponent,
     EmailLogsComponent,
-<<<<<<< HEAD
+
     UnauthorizedComponent,
-  ],
-=======
-    DateGlobaleFormComponent],
->>>>>>> origin/dev
+    DateGlobaleFormComponent,
+    DashboardInfoComponent],
+
   imports: [
+    BaseChartDirective,
     MatSnackBarModule,
     BrowserAnimationsModule,
     BrowserModule,

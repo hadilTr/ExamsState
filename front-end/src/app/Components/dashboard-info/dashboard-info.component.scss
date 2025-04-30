@@ -1,0 +1,73 @@
+.dashboard-container {
+  padding: 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+h1 {
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.dashboard-content {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.chart-container {
+  flex: 2;
+  min-width: 300px;
+}
+
+.stats-container {
+  flex: 1;
+  min-width: 250px;
+}
+
+.card {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+h2 {
+  color: #555;
+  font-size: 18px;
+  margin-bottom: 15px;
+}
+
+.chart-wrapper {
+  height: 300px;
+  position: relative;
+}
+
+.pending-professors {
+  background-color: #f8f9fa;
+  border-left: 4px solid #dc3545;
+}
+
+.stat-value {
+  font-size: 48px;
+  font-weight: bold;
+  color: #dc3545;
+  text-align: center;
+  margin: 10px 0;
+}
+
+.stat-label {
+  text-align: center;
+  color: #6c757d;
+  font-size: 14px;
+}
+
+@media (max-width: 768px) {
+  .dashboard-content {
+    flex-direction: column;
+  }
+
+  .chart-container, .stats-container {
+    width: 100%;
+  }
+}

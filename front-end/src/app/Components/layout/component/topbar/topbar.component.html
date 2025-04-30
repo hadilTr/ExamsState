@@ -3,7 +3,7 @@
     <button class="layout-menu-button layout-topbar-action" (click)="layoutService.onMenuToggle()">
       <i class="pi pi-bars"></i>
     </button>
-    <a class="layout-topbar-logo" routerLink="/">
+    <a class="layout-topbar-logo" >
       <!-- Remplacement du SVG par une balise img -->
       <img src="./assets/images/logoplatyyy.png" alt="Logo Plateforme" class="platform-logo">
       <span></span>
@@ -50,12 +50,14 @@
           <i class="pi pi-inbox"></i>
           <span>Messages</span>
         </button>
+        <a [routerLink]="['/profile']">
         <img
           [src]="profilePictureUrl || defaultImageUrl"
           alt="Profile"
           class="navbar-avatar"
           (error)="profilePictureUrl = defaultImageUrl"
         />
+        </a>
       </div>
     </div>
   </div>

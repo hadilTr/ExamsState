@@ -1,0 +1,26 @@
+<div class="dashboard-container">
+  <h1>Exam Dashboard</h1>
+  <app-topbar class="topbar"></app-topbar>
+
+  <div class="dashboard-content">
+    <div class="chart-container"
+         *ngFor="let lvl of levelsData; let i = index">
+      <div class="card">
+        <h2>{{ lvl.group }}</h2>
+        <div class="chart-wrapper">
+          <canvas #chartCanvas></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="stats-container">
+      <div class="card pending-professors">
+        <h2>Pending Professors</h2>
+        <div class="stat-value">{{ pendingProfessors }}</div>
+        <div class="stat-label">professors haven't returned exams yet</div>
+      </div>
+    </div>
+  </div>
+
