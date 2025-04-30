@@ -35,9 +35,10 @@ public class EnseignantController {
             @RequestParam DepartementEnum departement,
             @RequestParam SpecialiteEnum specialite,
             @RequestParam NiveauEnum niveau,
-            @RequestParam GroupeEnum groupe) {
+            @RequestParam GroupeEnum groupe,
+            @RequestParam SemesterEnum semester ) {
 
-        return enseignantService.getEnseignantsByFilters(departement, specialite, niveau, groupe);
+        return enseignantService.getEnseignantsByFilters(departement, specialite, niveau, groupe,semester);
     }
 
     @GetMapping

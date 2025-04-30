@@ -15,6 +15,8 @@ export class AddEnseignantComponent {
   specialites = ['INFORMATIQUE', 'MECATRONIQUE', 'INDUS', 'INFOTRONIQUE'];
   niveaux = ['NIVEAU_1', 'NIVEAU_2', 'NIVEAU_3'];
   groupes = ['Groupe_A', 'Groupe_B', 'Groupe_C', 'Groupe_D', 'Groupe_E'];
+  semesters=['SEMESTER1','SEMESTER2','RATTRAPAGE'];
+  TypeMatiere=['DS','EXAMEN','TP'];
 
   constructor(
     private fb: FormBuilder,
@@ -27,7 +29,10 @@ export class AddEnseignantComponent {
       departement: ['', Validators.required],
       specialite: ['', Validators.required],
       niveau: ['', Validators.required],
-      groupe: ['', Validators.required]
+      groupe: ['', Validators.required],
+      semester:['',Validators.required],
+      //TypeMatiere:['',Validators.required]
+
     });
   }
   showSuccessNotification = false;

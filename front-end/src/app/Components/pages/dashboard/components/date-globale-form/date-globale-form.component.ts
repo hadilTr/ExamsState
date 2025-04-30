@@ -1,6 +1,6 @@
 import { Component, type OnInit } from "@angular/core"
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { DateGlobaleService } from "../../../../../services/date-globale.service";
+import { DateGlobaleService } from '../../../../../Services/date-globale.service';
 import { GlobalDate } from "../../../../../models/global-date.models"
 
 @Component({

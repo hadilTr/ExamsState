@@ -72,6 +72,8 @@ public interface EnseignantMapper {
     @Mapping(target = "specialite", source = "specialite")
     @Mapping(target = "niveau", source = "niveau")
     @Mapping(target = "groupe", source = "groupe")
+    @Mapping(target = "semester", source = "semester")
+
 
     Enseignant toEntity(EnseignantDTO dto);
     EnseignantResponseDTO toResponseDTO(Enseignant enseignant);

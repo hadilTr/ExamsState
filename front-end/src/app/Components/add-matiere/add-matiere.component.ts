@@ -20,6 +20,8 @@ export class AddMatiereComponent implements OnInit {
   specialites = ['INFORMATIQUE', 'MECATRONIQUE', 'INDUS', 'INFOTRONIQUE'];
   niveaux = ['NIVEAU_1', 'NIVEAU_2', 'NIVEAU_3'];
   groupes = ['Groupe_A', 'Groupe_B', 'Groupe_C', 'Groupe_D', 'Groupe_E'];
+  semesters=['SEMESTER1','SEMESTER2','RATTRAPAGE'];
+  typeMatiere=['DS','EXAMEN','TP','PROJET'];
 
   // Notification
   showNotification = false;
@@ -38,6 +40,8 @@ export class AddMatiereComponent implements OnInit {
       specialite: ['', Validators.required],
       niveau: ['', Validators.required],
       groupe: ['', Validators.required],
+      semester:['',Validators.required],
+      typeMatiere:['',Validators.required],
       enseignantId: ['', Validators.required]
     });
   }
@@ -62,14 +66,16 @@ export class AddMatiereComponent implements OnInit {
   }
 
   filterEnseignants(): void {
-    const { departement, specialite, niveau, groupe } = this.matiereForm.value;
+    const { departement, specialite, niveau, groupe , semester  } = this.matiereForm.value;
 
-    if (departement && specialite && niveau && groupe) {
+    if (departement && specialite && niveau && groupe && semester ) {
       this.filteredEnseignants = this.enseignants.filter(ens =>
         ens.departement === departement &&
         ens.specialite === specialite &&
         ens.niveau === niveau &&
-        ens.groupe === groupe
+        ens.groupe === groupe &&
+        ens.semester === semester
+        //ens.TypeMatiere === TypeMatiere
       );
     } else {
       this.filteredEnseignants = [];
@@ -78,6 +84,7 @@ export class AddMatiereComponent implements OnInit {
 
   onSubmit(): void {
     if (this.matiereForm.valid) {
+
       this.matiereService.saveMatiere(this.matiereForm.value).subscribe({
         next: () => {
           this.showNotification = true;

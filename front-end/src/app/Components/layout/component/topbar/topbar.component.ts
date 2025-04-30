@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { MenuItem } from 'primeng/api';
 import { LayoutService } from '../../layout.service';
-import { addUserService } from '../../../../Services/addUser.service';
+import { addUserService } from '../../../../services/addUser.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-topbar',
@@ -14,7 +15,7 @@ export class TopbarComponent {
   profilePictureUrl: string | null = null;
   defaultImageUrl = 'assets/images/user.png';
 
-  constructor(public layoutService: LayoutService,private userService:addUserService) {}
+  constructor(public layoutService: LayoutService,private userService:addUserService,private router:Router) {}
 
   ngOnInit() {
     this.userService.getProfilePicture().subscribe({
@@ -37,5 +38,6 @@ export class TopbarComponent {
       darkTheme: !state.darkTheme,
     }));
   }
+
 
 }

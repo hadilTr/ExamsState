@@ -1,14 +1,11 @@
 package com.example.backend.services;
 import com.example.backend.dto.response.StatistiqueDTO;
+import com.example.backend.enumeration.*;
 import com.example.backend.models.DateGlobale;
 import org.springframework.http.ResponseEntity;
 import org.springframework.scheduling.annotation.Scheduled;
 import com.example.backend.dto.request.MatiereDTO;
 import com.example.backend.dto.response.MatiereResponseDTO;
-import com.example.backend.enumeration.DepartementEnum;
-import com.example.backend.enumeration.GroupeEnum;
-import com.example.backend.enumeration.NiveauEnum;
-import com.example.backend.enumeration.SpecialiteEnum;
 import com.example.backend.mapper.MatiereMapper;
 import com.example.backend.models.Enseignant;
 import com.example.backend.models.Matiere;
@@ -43,6 +40,8 @@ public class MatiereService {
         matiere.setSpecialite(SpecialiteEnum.valueOf(matiereDTO.getSpecialite()));
         matiere.setNiveau(NiveauEnum.valueOf(matiereDTO.getNiveau()));
         matiere.setGroupe(GroupeEnum.valueOf(matiereDTO.getGroupe()));
+        matiere.setSemester(SemesterEnum.valueOf(matiereDTO.getSemester()));
+        matiere.setTypeMatiere(TypeMatiereEnum.valueOf(matiereDTO.getTypeMatiere()));
 
         Enseignant enseignant = enseignantRepository.findById(matiereDTO.getEnseignantId())
                 .orElseThrow(() -> new RuntimeException("Enseignant not found"));
@@ -73,7 +72,7 @@ public class MatiereService {
             Map<String, Object> map = new HashMap<>();
             map.put("departement", row[0] != null ? row[0].toString() : "Non spécifié");
             map.put("niveau", row[1] != null ? row[1].toString() : "Non spécifié");
-            map.put("total", row[2] != null ? row[2] : 0);  // Assurer que "total" est un entier
+            map.put("total", row[2] != null ? row[2] : 0);
             formattedResults.add(map);
         }
         return formattedResults;

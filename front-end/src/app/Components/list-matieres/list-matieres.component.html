@@ -59,6 +59,28 @@
           <option *ngFor="let grp of groupes" [value]="grp">{{grp}}</option>
         </select>
       </div>
+
+      <div class="filter-group">
+        <label for="semester">
+          <span class="emoji-label">📅</span>
+          Semestre
+        </label>
+        <select id="semester" [(ngModel)]="filters.semester" (change)="onFilterChange()">
+          <option value="">Tous les semestres</option>
+          <option *ngFor="let sem of semesters" [value]="sem">{{sem}}</option>
+        </select>
+      </div>
+
+      <div class="filter-group">
+        <label for="typeMatiere">
+          <span class="emoji-label">📝</span>
+          Type de matière
+        </label>
+        <select id="typeMatiere" [(ngModel)]="filters.typeMatiere" (change)="onFilterChange()">
+          <option value="">Tous les types</option>
+          <option *ngFor="let type of typeMatiere" [value]="type">{{type}}</option>
+        </select>
+      </div>
     </div>
   </div>
 
@@ -75,7 +97,7 @@
 
     <div *ngFor="let group of groupedMatieres" class="group-card">
       <div class="group-header">
-        <h3>{{group.departement}} / {{group.specialite}} / {{group.niveau}} / {{group.groupe}}</h3>
+        <h3>{{group.departement}} / {{group.specialite}} / {{group.niveau}} / {{group.groupe}} / {{group.semester}} / {{group.typeMatiere}}</h3>
       </div>
 
       <div class="matieres-table">
@@ -87,7 +109,6 @@
             <th>📋 Matières-Enseigner</th>
             <th>✅ Reçu</th>
             <th>✔️ Validé</th>
-
           </tr>
           </thead>
           <tbody>
@@ -130,5 +151,4 @@
       </div>
     </div>
   </div>
-
-</div>8
+</div>

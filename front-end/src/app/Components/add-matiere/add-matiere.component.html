@@ -79,6 +79,31 @@
       </div>
     </div>
 
+    <!-- Nouvelle section pour le semestre et type de matière -->
+    <div class="form-grid">
+      <div class="form-group">
+        <label for="semester">
+          <span class="emoji-label">📅</span>
+          Semestre
+        </label>
+        <select id="semester" formControlName="semester">
+          <option value="" disabled selected>Choisir un semestre</option>
+          <option *ngFor="let sem of semesters" [value]="sem">{{sem}}</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="typeMatiere">
+          <span class="emoji-label">🏷️</span>
+          Type de matière
+        </label>
+        <select id="typeMatiere" formControlName="typeMatiere">
+          <option value="" disabled selected>Choisir un type</option>
+          <option *ngFor="let type of typeMatiere" [value]="type">{{type}}</option>
+        </select>
+      </div>
+    </div>
+
     <!-- Section Enseignant -->
     <div class="enseignant-section">
       <div class="form-group">

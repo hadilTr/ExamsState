@@ -8,11 +8,12 @@ import org.springframework.data.jpa.repository.Query;
 import java.util.List;
 
 public interface EnseignantRepository extends JpaRepository<Enseignant, Long> {
-    List<Enseignant> findByDepartementAndSpecialiteAndNiveauAndGroupe(
+    List<Enseignant> findByDepartementAndSpecialiteAndNiveauAndGroupeAndSemester(
             DepartementEnum departement,
             SpecialiteEnum specialite,
             NiveauEnum niveau,
-            GroupeEnum groupe);
+            GroupeEnum groupe,
+            SemesterEnum semester);
 
     // Update Asma
 /*

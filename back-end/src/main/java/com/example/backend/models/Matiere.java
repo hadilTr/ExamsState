@@ -35,6 +35,12 @@ public class Matiere {
     @Enumerated(EnumType.STRING)
     private GroupeEnum groupe;
 
+    @Enumerated(EnumType.STRING)
+    private SemesterEnum semester;
+
+    @Enumerated(EnumType.STRING)
+    private TypeMatiereEnum TypeMatiere;
+
     @UpdateTimestamp
     private LocalDateTime updatedAt;
 

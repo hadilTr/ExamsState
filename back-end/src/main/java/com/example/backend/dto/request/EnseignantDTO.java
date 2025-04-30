@@ -11,4 +11,5 @@ public class EnseignantDTO {
     private SpecialiteEnum specialite;
     private NiveauEnum niveau;
     private GroupeEnum groupe;
+    private SemesterEnum semester;
 }

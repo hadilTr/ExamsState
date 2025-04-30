@@ -12,6 +12,8 @@ export class MatiereService {
   constructor(private http: HttpClient) { }
 
   saveMatiere(matiereData: any): Observable<any> {
+    console.log('Sending matiere data:', matiereData); // Add this line
+
     return this.http.post(this.apiUrl, matiereData);
   }
 
@@ -26,13 +28,15 @@ export class MatiereService {
     return this.http.get<MatiereFrontend[]>(`${this.apiUrl}/enseignant/${enseignantId}`);
   }
 
-  getMatieresByFilters(departement: string, specialite: string, niveau: string, groupe: string): Observable<MatiereFrontend[]> {
+  getMatieresByFilters(departement: string, specialite: string, niveau: string, groupe: string, semester: string, typeMatiere: string): Observable<MatiereFrontend[]> {
     return this.http.get<MatiereFrontend[]>(`${this.apiUrl}/filter`, {
       params: {
         departement,
         specialite,
         niveau,
-        groupe
+        groupe,
+        semester,
+        typeMatiere
       }
     });
   }
