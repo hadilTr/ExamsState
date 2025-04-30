@@ -2,6 +2,7 @@ import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot } from
 import { TokenService } from '../Services/token.service';
 import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { RoleService } from '../Services/role.service';
 
 
 @Injectable({
@@ -10,10 +11,12 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class RoleGuard implements CanActivate {
   constructor(
     private router: Router,
-    private snackBar: MatSnackBar // <-- Inject MatSnackBar
+    private snackBar: MatSnackBar,
+    private roleservice:RoleService// <-- Inject MatSnackBar
   ) {}
 
-  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
+  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean
+  {
     const expectedRole = route.data['expectedRole'];
     const token = localStorage.getItem('token');
 
@@ -35,7 +38,7 @@ export class RoleGuard implements CanActivate {
       });
 
       // Redirect to user's appropriate dashboard based on their actual role
-      const dashboardRoute = this.getDashboardRoute(userRole);
+      const dashboardRoute = this.roleservice.getDashboardRoute(userRole);
       this.router.navigate([dashboardRoute]);
       return false;
     }
@@ -43,10 +46,5 @@ export class RoleGuard implements CanActivate {
     return true;
   }
 
-  private getDashboardRoute(role: string): string {
-    // Customize these routes based on your application
-    const roleRoutes: {[key: string]: string} = {
-      'Chef_Dep_info' :'/layout'};
-    return roleRoutes[role] || '/layout';
-  }
+
 }

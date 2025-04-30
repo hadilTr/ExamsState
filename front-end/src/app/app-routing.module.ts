@@ -51,11 +51,15 @@ const routes: Routes = [
   { path: 'enseignants', component: AddEnseignantComponent },
 
   { path: 'add-enseignant',
-    component: AddEnseignantComponent/*
+    component: AddEnseignantComponent,
     canActivate: [RoleGuard],
-    data: { expectedRole: 'Responsable_etudes'}*/},
+    data: { expectedRole: 'Responsable_etudes'}},
 
-  { path: 'add-matiere', component: AddMatiereComponent },
+  { path: 'add-matiere',
+    component: AddMatiereComponent,
+    canActivate: [RoleGuard] ,
+    data: { expectedRole: 'Responsable_etudes'}}
+  ,
   { path: 'matieres', component: AddMatiereComponent },
 
   { path: 'list-matiere', component: ListMatieresComponent },

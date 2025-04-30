@@ -4,6 +4,7 @@ import {LoginRequest} from '../../models/login-request.model';
 import {MessageService} from 'primeng/api';
 import { LoginService } from '../../Services/login.service';
 import { TokenService } from '../../Services/token.service';
+import {RoleService} from '../../Services/role.service';
 
 
 
@@ -25,7 +26,8 @@ export class LoginComponent {
   constructor(
     private loginService: LoginService,
     private router: Router,
-    private messageService: MessageService
+    private messageService: MessageService,
+    private roleService: RoleService
   ) {}
 
 
@@ -59,9 +61,12 @@ export class LoginComponent {
         localStorage.setItem('token', token);
 
         const role = TokenService.getRoleFromToken(token);
+
+        const dashboardRoute = this.roleService.getDashboardRoute(role);
+
         console.log('User Role:', role);
 
-        this.router.navigate(['layout']);
+        this.router.navigate([dashboardRoute]);
 
         this.messageService.add({
           severity: 'success',
