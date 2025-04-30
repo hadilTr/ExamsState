@@ -1,5 +1,8 @@
 package com.example.backend.repositories;
 
+import com.example.backend.enumeration.DepartementEnum;
+import com.example.backend.enumeration.NiveauEnum;
+import com.example.backend.enumeration.SpecialiteEnum;
 import com.example.backend.models.Matiere;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
@@ -43,7 +46,28 @@ public interface MatiereRepository extends JpaRepository<Matiere, Long> {
 
     /////////////////////////
     Optional<Matiere> findByIdAndEnseignantId(Long matiereId, Long enseignantId);
+
     long countByRecuFalse();
+
     long countByValideFalse();
 
+
+
+    //statistique pour differents departmements
+
+    Optional<List<Matiere>> findMatiereByDepartementAndSpecialiteAndNiveau( DepartementEnum departement,
+                                                                            SpecialiteEnum specialite,
+                                                                            NiveauEnum niveau);
+
+    Optional<List<Matiere>> findMatiereByDepartementAndSpecialiteAndNiveauAndRecuFalse( DepartementEnum departement,
+                                                                            SpecialiteEnum specialite,
+                                                                            NiveauEnum niveau);
+
+    Optional<List<Matiere>> findMatiereByDepartementAndSpecialiteAndNiveauAndValideFalse( DepartementEnum departement,
+                                                                                          SpecialiteEnum specialite,
+                                                                                          NiveauEnum niveau);
+
 }
+
+
+

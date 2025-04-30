@@ -71,8 +71,14 @@ import { BaseChartDirective } from 'ng2-charts';
 import { UnauthorizedComponent } from './Components/unauthorized/unauthorized.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { DateGlobaleFormComponent } from './Components/pages/dashboard/components/date-globale-form/date-globale-form.component';
-
+import ChartDataLabels from 'chartjs-plugin-datalabels';
 import { DashboardInfoComponent } from './Components/dashboard-info/dashboard-info.component';
+import { Chart } from 'chart.js';
+import { DashboardIndusComponent } from './Components/dashboard-indus/dashboard-indus.component';
+import { ElectriqueSpecialiteComponent } from './Components/electrique-specialite/electrique-specialite.component';
+import { DashboardMecaComponent } from './Components/dashboard-meca/dashboard-meca.component';
+import { DashboardInfotrComponent } from './Components/dashboard-infotr/dashboard-infotr.component';
+Chart.register(ChartDataLabels);
 
 
 @NgModule({
@@ -113,7 +119,11 @@ import { DashboardInfoComponent } from './Components/dashboard-info/dashboard-in
 
     UnauthorizedComponent,
     DateGlobaleFormComponent,
-    DashboardInfoComponent],
+    DashboardInfoComponent,
+    DashboardIndusComponent,
+    ElectriqueSpecialiteComponent,
+    DashboardMecaComponent,
+    DashboardInfotrComponent],
 
   imports: [
     BaseChartDirective,
@@ -147,11 +157,14 @@ import { DashboardInfoComponent } from './Components/dashboard-info/dashboard-in
     PasswordModule,
     InputTextModule,
     ButtonModule,
-    CardModule,
+    CardModule
   ],
   providers: [
     provideHttpClient(withFetch()),
     MessageService
   ],
+  exports: [
+    TopbarComponent
+  ]
 })
 export class AppModule {}

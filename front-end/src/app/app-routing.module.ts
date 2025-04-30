@@ -22,6 +22,10 @@ import { RoleGuard } from './guards/role.guard';
 import { UnauthorizedComponent } from './Components/unauthorized/unauthorized.component';
 
 import { DashboardInfoComponent } from './Components/dashboard-info/dashboard-info.component';
+import { DashboardIndusComponent } from './Components/dashboard-indus/dashboard-indus.component';
+import { ElectriqueSpecialiteComponent } from './Components/electrique-specialite/electrique-specialite.component';
+import { DashboardMecaComponent } from './Components/dashboard-meca/dashboard-meca.component';
+import { DashboardInfotrComponent } from './Components/dashboard-infotr/dashboard-infotr.component';
 
 
 const routes: Routes = [
@@ -73,14 +77,17 @@ const routes: Routes = [
   {path:'profile', component: ProfileComponent },
 
   {path:'dashboard-info', component: DashboardInfoComponent },
-
+  {path:'dashboard-idus', component: DashboardIndusComponent },
+  {path:'dashboard-meca', component: DashboardMecaComponent },
+  {path:'dashboard-infotr',component:DashboardInfotrComponent,},
 
   {path:'profile-picture', component: ProfilePictureUploadComponent},
 
   {path:'calendar', component: CalendarComponent },
 
-  {path:'Emails', component: EmailLogsComponent }
+  {path:'Emails', component: EmailLogsComponent },
 
+  {path:'electrique-specialite', component: ElectriqueSpecialiteComponent }
 
 
 ];

@@ -67,4 +67,13 @@ public class EnseignantController {
         return ResponseEntity.noContent().build();
     }
 
+    @GetMapping("/stat")
+    public ResponseEntity<Integer> getEnseignantStats(
+            @RequestParam DepartementEnum dep,
+            @RequestParam SpecialiteEnum spec)
+     {
+        Integer stats = enseignantService.enseignant_stat(dep, spec);
+        return ResponseEntity.ok(stats);
+    }
+
 }

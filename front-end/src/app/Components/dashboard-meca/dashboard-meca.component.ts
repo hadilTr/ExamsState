@@ -1,12 +1,8 @@
-import { AfterViewInit, Component, ElementRef, NgIterable, OnInit, QueryList, ViewChildren } from '@angular/core';
-import { animate, style, transition, trigger } from '@angular/animations';
-import { Chart, ChartConfiguration, ChartData, ChartOptions } from 'chart.js';
-import { DashboardService } from '../../Services/dashboard.service';
+import { Component, OnInit } from '@angular/core';
+import { ChartConfiguration } from 'chart.js';
 import { StatDepService } from '../../Services/StatDep.service';
-import { AppModule } from '../../app.module';
 import ChartDataLabels from 'chartjs-plugin-datalabels';
-
-Chart.register(ChartDataLabels);
+import { animate, style, transition, trigger } from '@angular/animations';
 
 interface ExamLevel {
   niveau: string;
@@ -15,11 +11,10 @@ interface ExamLevel {
 }
 
 @Component({
-  selector: 'app-dashboard-info',
-  templateUrl: './dashboard-info.component.html',
-  styleUrls: ['./dashboard-info.component.scss'],
+  selector: 'app-dashboard-meca',
   standalone: false,
-
+  templateUrl: './dashboard-meca.component.html',
+  styleUrl: './dashboard-meca.component.scss',
   animations: [
     trigger('fadeIn', [
       transition(':enter', [
@@ -29,7 +24,10 @@ interface ExamLevel {
     ])
   ]
 })
-export class DashboardInfoComponent implements OnInit {
+
+
+export class DashboardMecaComponent implements OnInit {
+
   niveauLabels = ['NIVEAU_1', 'NIVEAU_2', 'NIVEAU_3'];
   levelsData: ExamLevel[] = [];
   enseignantStat: number = 0;
@@ -45,7 +43,7 @@ export class DashboardInfoComponent implements OnInit {
 
   fetchAllMatiereStats(): void {
     this.niveauLabels.forEach(niveau => {
-      this.service.getMatiereStats('INFORMATIQUE', 'INFORMATIQUE', niveau)
+      this.service.getMatiereStats('ELECTRIQUE', 'MECATRONIQUE', niveau)
         .subscribe(stats => {
           const levelStats: ExamLevel = {
             niveau: niveau,
@@ -104,7 +102,7 @@ export class DashboardInfoComponent implements OnInit {
 
 
   fetchEnseignantStats(): void {
-    this.service.getEnseignantStats('INFORMATIQUE', 'INFORMATIQUE')
+    this.service.getEnseignantStats('ELECTRIQUE', 'MECATRONIQUE')
       .subscribe(stat => {
         this.enseignantStat = stat;
       });

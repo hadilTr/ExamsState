@@ -3,6 +3,9 @@ package com.example.backend.controllers;
 import com.example.backend.dto.UpdateStatusRequest;
 import com.example.backend.dto.request.MatiereDTO;
 import com.example.backend.dto.response.MatiereResponseDTO;
+import com.example.backend.enumeration.DepartementEnum;
+import com.example.backend.enumeration.NiveauEnum;
+import com.example.backend.enumeration.SpecialiteEnum;
 import com.example.backend.mapper.MatiereMapper;
 import com.example.backend.models.Matiere;
 import com.example.backend.services.MatiereService;
@@ -62,6 +65,17 @@ public class MatiereController {
     ) {
         matiereService.updateMatiereStatus(id, request.isRecu(), request.isValide());
         return ResponseEntity.ok().body("Statut mis à jour avec succès.");
+    }
+
+    @GetMapping("/stats")
+
+    public ResponseEntity<List<Double>> getMatiereStats(
+            @RequestParam DepartementEnum dep,
+            @RequestParam SpecialiteEnum spec,
+            @RequestParam NiveauEnum niv
+    ) {
+        List<Double> stats = matiereService.matieres_stat(dep, spec, niv);
+        return ResponseEntity.ok(stats);
     }
 
 

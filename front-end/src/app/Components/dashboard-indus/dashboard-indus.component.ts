@@ -1,10 +1,9 @@
-import { AfterViewInit, Component, ElementRef, NgIterable, OnInit, QueryList, ViewChildren } from '@angular/core';
-import { animate, style, transition, trigger } from '@angular/animations';
-import { Chart, ChartConfiguration, ChartData, ChartOptions } from 'chart.js';
-import { DashboardService } from '../../Services/dashboard.service';
-import { StatDepService } from '../../Services/StatDep.service';
-import { AppModule } from '../../app.module';
+import { Component, OnInit } from '@angular/core';
+
 import ChartDataLabels from 'chartjs-plugin-datalabels';
+import { animate, style, transition, trigger } from '@angular/animations';
+import { Chart, ChartConfiguration } from 'chart.js';
+import { StatDepService } from '../../Services/StatDep.service';
 
 Chart.register(ChartDataLabels);
 
@@ -13,13 +12,11 @@ interface ExamLevel {
   NoreturnedPercentage: number;
   NoverifiedPercentage: number;
 }
-
 @Component({
-  selector: 'app-dashboard-info',
-  templateUrl: './dashboard-info.component.html',
-  styleUrls: ['./dashboard-info.component.scss'],
+  selector: 'app-dashboard-indus',
   standalone: false,
-
+  templateUrl: './dashboard-indus.component.html',
+  styleUrl: './dashboard-indus.component.scss',
   animations: [
     trigger('fadeIn', [
       transition(':enter', [
@@ -29,7 +26,10 @@ interface ExamLevel {
     ])
   ]
 })
-export class DashboardInfoComponent implements OnInit {
+
+
+export class DashboardIndusComponent implements OnInit {
+
   niveauLabels = ['NIVEAU_1', 'NIVEAU_2', 'NIVEAU_3'];
   levelsData: ExamLevel[] = [];
   enseignantStat: number = 0;
@@ -45,7 +45,7 @@ export class DashboardInfoComponent implements OnInit {
 
   fetchAllMatiereStats(): void {
     this.niveauLabels.forEach(niveau => {
-      this.service.getMatiereStats('INFORMATIQUE', 'INFORMATIQUE', niveau)
+      this.service.getMatiereStats('INDUS', 'INDUS', niveau)
         .subscribe(stats => {
           const levelStats: ExamLevel = {
             niveau: niveau,
@@ -104,7 +104,7 @@ export class DashboardInfoComponent implements OnInit {
 
 
   fetchEnseignantStats(): void {
-    this.service.getEnseignantStats('INFORMATIQUE', 'INFORMATIQUE')
+    this.service.getEnseignantStats('INDUS', 'INDUS')
       .subscribe(stat => {
         this.enseignantStat = stat;
       });
