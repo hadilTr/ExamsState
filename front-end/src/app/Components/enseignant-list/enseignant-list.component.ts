@@ -46,4 +46,19 @@ export class EnseignantListComponent {
       });
     }
   }
+  deleteAll() {
+    this.enseignantService.deleteAllEnseignants().subscribe({
+      next: () => {
+        alert('All enseignants deleted successfully!');
+      },
+      error: (err) => {
+        if (err.status === 404) {
+          alert('No enseignants found to delete.');
+        } else {
+          alert('An error occurred.');
+        }
+      }
+    });
+  }
+
 }

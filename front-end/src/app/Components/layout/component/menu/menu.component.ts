@@ -82,6 +82,16 @@ export class MenuComponent {
           }
         ],
       },
+      {
+        label: '👤 Utilisateur',
+        items: [
+          {
+            label: 'Ajouter un Utilisateur',
+            icon: 'pi pi-user',
+            routerLink: ['/addusers'],
+          }
+        ],
+      },
 
 
 
