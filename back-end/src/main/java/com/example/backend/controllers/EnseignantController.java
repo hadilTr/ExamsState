@@ -61,4 +61,10 @@ public class EnseignantController {
         }
     }
 
+    @DeleteMapping
+    public ResponseEntity<Void> deleteAllEnseignant() {
+        enseignantService.deleteAllEnseignants();
+        return ResponseEntity.noContent().build();
+    }
+
 }

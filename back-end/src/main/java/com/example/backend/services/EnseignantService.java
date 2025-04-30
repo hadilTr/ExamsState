@@ -147,4 +147,14 @@ public class EnseignantService {
         matiereRepository.deleteByEnseignant_Id(id); // Utiliser matiereRepository
         enseignantRepository.deleteById(id);
     }
+
+    public void deleteAllEnseignants() {
+        List<Enseignant> enseignants = enseignantRepository.findAll();
+
+        if (enseignants.isEmpty()) {
+            throw new jakarta.persistence.EntityNotFoundException("No enseignants found to delete.");
+        }
+        matiereRepository.deleteAll();
+        enseignantRepository.deleteAll();
+    }
 }

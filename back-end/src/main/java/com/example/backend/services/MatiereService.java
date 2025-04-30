@@ -150,4 +150,13 @@ public class MatiereService {
         return lateCount;
     }
 
+    public void deleteAllMatieres() {
+        List<Matiere> matieres = matiereRepository.findAll();
+
+        if (matieres.isEmpty()) {
+            throw new jakarta.persistence.EntityNotFoundException("No matieres found to delete.");
+        }
+        matiereRepository.deleteAll();
+    }
+
 }
