@@ -26,6 +26,7 @@ import { DashboardIndusComponent } from './Components/dashboard-indus/dashboard-
 import { ElectriqueSpecialiteComponent } from './Components/electrique-specialite/electrique-specialite.component';
 import { DashboardMecaComponent } from './Components/dashboard-meca/dashboard-meca.component';
 import { DashboardInfotrComponent } from './Components/dashboard-infotr/dashboard-infotr.component';
+import {SidebarDepComponent} from './Components/sidebar-dep/sidebar-dep.component';
 
 
 const routes: Routes = [
@@ -87,8 +88,9 @@ const routes: Routes = [
 
   {path:'Emails', component: EmailLogsComponent },
 
-  {path:'electrique-specialite', component: ElectriqueSpecialiteComponent }
+  {path:'electrique-specialite', component: ElectriqueSpecialiteComponent },
 
+  {path:'sidebardep', component: SidebarDepComponent },
 
 ];
 

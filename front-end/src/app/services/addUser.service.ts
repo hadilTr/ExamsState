@@ -1,8 +1,9 @@
-import { Injectable } from '@angular/core';
+import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { Observable } from 'rxjs';
 import {AddUserRequest} from '../models/AddUser-request.model';
 import {AddUserResponse} from '../models/AddUserResponse.model';
+import { isPlatformBrowser } from '@angular/common';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,7 @@ import {AddUserResponse} from '../models/AddUserResponse.model';
 export class addUserService {
   private apiUrl = 'http://localhost:8083/api/user'; // Spring Boot endpoint
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient,@Inject(PLATFORM_ID) private platformId: Object) {}
 
   adduser(credentials: AddUserRequest): Observable<AddUserResponse>
   { const headers = new HttpHeaders(
@@ -34,14 +35,18 @@ export class addUserService {
   }
 
   getProfilePicture(): Observable<Blob> {
-    const headers = new HttpHeaders().set(
-      'Authorization',
-      'Bearer ' + localStorage.getItem('token') // adjust how you store token
-    );
+    let headers = new HttpHeaders();
+
+    if (isPlatformBrowser(this.platformId)) {
+      const token = localStorage.getItem('token');
+      if (token) {
+        headers = headers.set('Authorization', `Bearer ${token}`);
+      }
+    }
 
     return this.http.get('http://localhost:8083/api/user/profile-picture', {
       headers,
-      responseType: 'blob' // we expect a binary image
+      responseType: 'blob'
     });
   }
 }
