@@ -50,12 +50,14 @@
           <i class="pi pi-inbox"></i>
           <span>Mail</span>
         </button>
+        <a [routerLink]="['/profile']">
         <img
           [src]="profilePictureUrl || defaultImageUrl"
           alt="Profile"
           class="navbar-avatar"
           (error)="profilePictureUrl = defaultImageUrl"
         />
+        </a>
       </div>
     </div>
   </div>
