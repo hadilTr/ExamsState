@@ -78,6 +78,7 @@ import { DashboardIndusComponent } from './Components/dashboard-indus/dashboard-
 import { ElectriqueSpecialiteComponent } from './Components/electrique-specialite/electrique-specialite.component';
 import { DashboardMecaComponent } from './Components/dashboard-meca/dashboard-meca.component';
 import { DashboardInfotrComponent } from './Components/dashboard-infotr/dashboard-infotr.component';
+import { SidebarDepComponent } from './Components/sidebar-dep/sidebar-dep.component';
 Chart.register(ChartDataLabels);
 
 
@@ -123,7 +124,8 @@ Chart.register(ChartDataLabels);
     DashboardIndusComponent,
     ElectriqueSpecialiteComponent,
     DashboardMecaComponent,
-    DashboardInfotrComponent],
+    DashboardInfotrComponent,
+    SidebarDepComponent],
 
   imports: [
     BaseChartDirective,
