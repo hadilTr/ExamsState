@@ -56,5 +56,9 @@ export class EnseignantService {
   getAllEmailLogs(): Observable<any[]> {
     return this.http.get<any[]>('http://localhost:8083/api/email-logs');
   }
+  deleteAllEnseignants() {
+    return this.http.delete(this.apiUrl);
+  }
+
 
 }

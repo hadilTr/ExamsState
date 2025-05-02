@@ -9,6 +9,14 @@
     <div class="notification-progress" *ngIf="showSuccessNotification"></div>
   </div>
 
+  <div class="card-actions" style="position: absolute; top:150px; right: 50px; padding: 50px;">
+    <button style="background-color: #28a745; color: white; border: none; padding: 8px 16px; border-radius: 5px;"
+            [routerLink]="['/add-matiere']">
+      <i class="bi bi-plus-circle"></i> Ajouter une matière
+    </button>
+  </div>
+
+
   <h2 class="form-title">Ajouter un Enseignant</h2>
 
   <form [formGroup]="enseignantForm" (ngSubmit)="onSubmit()">
@@ -103,5 +111,7 @@
     <button type="button" class="submit-btn cancel-btn" routerLink="/enseignants">
       ❌ Annuler
     </button>
+
+
   </form>
 </div>

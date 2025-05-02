@@ -3,6 +3,11 @@ import { Router } from '@angular/router';
 import {LoginRequest} from '../../models/login-request.model';
 import {MessageService} from 'primeng/api';
 import { LoginService } from '../../services/login.service';
+import { TokenService } from '../../Services/token.service';
+import {RoleService} from '../../Services/role.service';
+
+
+
 
 
 @Component({
@@ -21,7 +26,8 @@ export class LoginComponent {
   constructor(
     private loginService: LoginService,
     private router: Router,
-    private messageService: MessageService
+    private messageService: MessageService,
+    private roleService: RoleService
   ) {}
 
 
@@ -51,10 +57,16 @@ export class LoginComponent {
     this.loginService.login(loginRequest).subscribe({
       next: (res) => {
 
-        localStorage.setItem('token', res.token);
-        localStorage.setItem('role', res.role);
+        const token = res.token;
+        localStorage.setItem('token', token);
 
-        this.router.navigate(['layout']);
+        const role = TokenService.getRoleFromToken(token);
+
+        const dashboardRoute = this.roleService.getDashboardRoute(role);
+
+        console.log('User Role:', role);
+
+        this.router.navigate([dashboardRoute]);
 
         this.messageService.add({
           severity: 'success',

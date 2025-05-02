@@ -15,11 +15,17 @@ import {ProfileComponent} from './Components/profil/profil.component';
 
 import { ProfilePictureUploadComponent } from './Components/profile-picture-upload/profile-picture-upload.component';
 
-import {
-  ListMatieresComponentWithMail
-} from './Components/list-matieres-component-with-mail/list-matieres-component-with-mail.component';
+import { ListMatieresComponentWithMail } from './Components/list-matieres-component-with-mail/list-matieres-component-with-mail.component';
 import { CalendarComponent } from './Components/calendar/calendar.component';
 import { EmailLogsComponent } from './Components/email-logs/email-logs.component';
+import { RoleGuard } from './guards/role.guard';
+import { UnauthorizedComponent } from './Components/unauthorized/unauthorized.component';
+
+import { DashboardInfoComponent } from './Components/dashboard-info/dashboard-info.component';
+import { DashboardIndusComponent } from './Components/dashboard-indus/dashboard-indus.component';
+import { ElectriqueSpecialiteComponent } from './Components/electrique-specialite/electrique-specialite.component';
+import { DashboardMecaComponent } from './Components/dashboard-meca/dashboard-meca.component';
+import { DashboardInfotrComponent } from './Components/dashboard-infotr/dashboard-infotr.component';
 
 
 const routes: Routes = [
@@ -30,19 +36,34 @@ const routes: Routes = [
 
   // Admin routes
   //{ path: 'departments', component: DepartementsComponent },
-  { path: 'addusers', component: AddUserComponent },
+
+  { path: 'addusers',
+    component: AddUserComponent,
+    canActivate: [RoleGuard],
+    data: { expectedRole: 'Responsable_etudes' }
+
+  },
  // { path: 'niveau-groupe', component: NiveauGroupeComponent },
 
   // Layout and Dashboard
   { path: 'layout', component: LayoutComponent },
   { path: 'dashboard', component: DashboardComponent },
+  { path: 'unauthorized', component: UnauthorizedComponent },
+
 
   // Other routes
   { path: 'enseignants', component: AddEnseignantComponent },
 
-  { path: 'add-enseignant', component: AddEnseignantComponent },
+  { path: 'add-enseignant',
+    component: AddEnseignantComponent,
+    canActivate: [RoleGuard],
+    data: { expectedRole: 'Responsable_etudes'}},
 
-  { path: 'add-matiere', component: AddMatiereComponent },
+  { path: 'add-matiere',
+    component: AddMatiereComponent,
+    canActivate: [RoleGuard] ,
+    data: { expectedRole: 'Responsable_etudes'}}
+  ,
   { path: 'matieres', component: AddMatiereComponent },
 
   { path: 'list-matiere', component: ListMatieresComponent },
@@ -55,13 +76,18 @@ const routes: Routes = [
 
   {path:'profile', component: ProfileComponent },
 
+  {path:'dashboard-info', component: DashboardInfoComponent },
+  {path:'dashboard-idus', component: DashboardIndusComponent },
+  {path:'dashboard-meca', component: DashboardMecaComponent },
+  {path:'dashboard-infotr',component:DashboardInfotrComponent,},
 
   {path:'profile-picture', component: ProfilePictureUploadComponent},
 
   {path:'calendar', component: CalendarComponent },
 
-  {path:'Emails', component: EmailLogsComponent }
+  {path:'Emails', component: EmailLogsComponent },
 
+  {path:'electrique-specialite', component: ElectriqueSpecialiteComponent }
 
 
 ];

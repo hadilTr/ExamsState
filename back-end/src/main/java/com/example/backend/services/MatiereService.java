@@ -150,4 +150,48 @@ public class MatiereService {
         return lateCount;
     }
 
+    public void deleteAllMatieres() {
+        List<Matiere> matieres = matiereRepository.findAll();
+
+        if (matieres.isEmpty()) {
+            throw new jakarta.persistence.EntityNotFoundException("No matieres found to delete.");
+        }
+        matiereRepository.deleteAll();
+    }
+
+
+    // statistique pour differnets departements
+
+    public List<Double> matieres_stat(DepartementEnum dep,
+                                 SpecialiteEnum spec,
+                                 NiveauEnum niv)
+    {
+            int size=0,sizeNR=0,sizeNV=0;
+            double pNR=0, pNV=0;
+
+        Optional<List<Matiere>> list =matiereRepository.findMatiereByDepartementAndSpecialiteAndNiveau(dep, spec, niv);
+        if (list.isPresent()) {
+            size = list.get().size();
+        }
+
+        Optional<List<Matiere>> listNR =matiereRepository.findMatiereByDepartementAndSpecialiteAndNiveauAndRecuFalse(dep, spec, niv);
+        if (listNR.isPresent())
+        {
+            sizeNR = listNR.get().size();
+        }
+
+        Optional<List<Matiere>> listNV =matiereRepository.findMatiereByDepartementAndSpecialiteAndNiveauAndValideFalse(dep, spec, niv);
+        if (listNV.isPresent())
+        {
+            sizeNV = listNV.get().size();
+        }
+         if(size!=0) {
+             pNR = (double) sizeNR *100/ size;
+             pNV = (double) sizeNV *100 / size;
+         }
+         return Arrays.asList(pNR, pNV);
+
+
+    }
+
 }
