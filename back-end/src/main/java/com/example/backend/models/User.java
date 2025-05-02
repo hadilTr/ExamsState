@@ -10,7 +10,7 @@ import lombok.*;
 @Getter
 @Setter
 @ToString
-
+@Builder
 @Entity
 @Table
 public class User {
@@ -24,9 +24,11 @@ public class User {
     private String mail;
 
     @Enumerated(EnumType.STRING)
-    private Role role;
+    @Builder.Default // Initialize with default role
+    private Role role=Role.Responsable_etudes;
 
     private Long tel ;
+    @Column(unique = true)
     private String username;
     private String password;
 
