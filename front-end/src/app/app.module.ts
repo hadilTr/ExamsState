@@ -86,6 +86,14 @@ import { CalendarModule } from 'primeng/calendar';
 
 
 @NgModule({
+  imports: [CalendarModule]
+})
+export class TopbarModule {}
+
+
+
+
+@NgModule({
   bootstrap: [AppComponent],
   declarations: [
     CalendarPopupComponent,

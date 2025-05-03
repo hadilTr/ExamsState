@@ -42,8 +42,8 @@
         <button
           type="button"
           class="layout-topbar-action"
-          (click)="toggleCalendar()"
-        >
+          (click)="toggleCalendar()">
+
           <i class="pi pi-calendar"></i>
           <span>Calendar</span>
         </button>
@@ -56,10 +56,12 @@
       </div>
     </div>
 
+    <a [routerLink]="['/Emails']">
     <button type="button" class="layout-topbar-action">
       <i class="pi pi-inbox"></i>
       <span>Mail</span>
     </button>
+    </a>
 
     <a [routerLink]="['/profile']">
       <img
