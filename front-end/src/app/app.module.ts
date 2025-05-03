@@ -25,7 +25,7 @@ import { SelectButton } from 'primeng/selectbutton';
 import { Fluid } from 'primeng/fluid';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import { CalendarModule } from 'primeng/calendar';
 
 // Components
 import { TopbarComponent } from './Components/layout/component/topbar/topbar.component';
@@ -57,6 +57,7 @@ import { AddUserComponent } from './Components/add-user/add-user.component';
 import { NiveauGroupeComponent } from './Components/niveau-groupe/niveau-groupe.component';
 
 // PrimeNG Message Service
+
 import { MessageService } from 'primeng/api';
 import {Menu} from "primeng/menu";
 import {ChartInfoComponent} from "./Components/pages/Departments/dep-info/chart-info/chart-info.component";
@@ -79,14 +80,17 @@ import { ElectriqueSpecialiteComponent } from './Components/electrique-specialit
 import { DashboardMecaComponent } from './Components/dashboard-meca/dashboard-meca.component';
 import { DashboardInfotrComponent } from './Components/dashboard-infotr/dashboard-infotr.component';
 import { SidebarDepComponent } from './Components/sidebar-dep/sidebar-dep.component';
+import { CommonModule } from '@angular/common';
+import { AppCalendarComponent } from './Components/app-calendar/app-calendar.component';
 Chart.register(ChartDataLabels);
-import {CalendarPopupComponent } from './Components/app-calendar/app-calendar.component';
-import { CalendarModule } from 'primeng/calendar';
+
+
+
 
 
 
 @NgModule({
-  imports: [CalendarModule]
+
 })
 export class TopbarModule {}
 
@@ -96,7 +100,7 @@ export class TopbarModule {}
 @NgModule({
   bootstrap: [AppComponent],
   declarations: [
-    CalendarPopupComponent,
+    AppCalendarComponent,
     AppComponent,
     TopbarComponent,
     SidebarComponent,
@@ -140,6 +144,8 @@ export class TopbarModule {}
     SidebarDepComponent],
 
   imports: [
+    CommonModule,
+    FormsModule,
     CalendarModule,
     BaseChartDirective,
     MatSnackBarModule,

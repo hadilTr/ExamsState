@@ -27,6 +27,8 @@ import { ElectriqueSpecialiteComponent } from './Components/electrique-specialit
 import { DashboardMecaComponent } from './Components/dashboard-meca/dashboard-meca.component';
 import { DashboardInfotrComponent } from './Components/dashboard-infotr/dashboard-infotr.component';
 import {SidebarDepComponent} from './Components/sidebar-dep/sidebar-dep.component';
+import { AppCalendarComponent } from './Components/app-calendar/app-calendar.component';
+
 
 
 const routes: Routes = [
@@ -84,7 +86,7 @@ const routes: Routes = [
 
   {path:'profile-picture', component: ProfilePictureUploadComponent},
 
-  {path:'calendar', component: CalendarComponent },
+  {path:'appcalendar', component: AppCalendarComponent },
 
   {path:'Emails', component: EmailLogsComponent },
 
