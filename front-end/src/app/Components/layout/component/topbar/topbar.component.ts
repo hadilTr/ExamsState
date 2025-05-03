@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { MenuItem } from 'primeng/api';
 import { LayoutService } from '../../layout.service';
-import { addUserService } from '../../../../services/addUser.service';
 import { Router } from '@angular/router';
+import { addUserService } from '../../../../Services/addUser.service';
 
 @Component({
   selector: 'app-topbar',
@@ -14,6 +14,7 @@ export class TopbarComponent {
   items!: MenuItem[];
   profilePictureUrl: string | null = null;
   defaultImageUrl = 'assets/images/user.png';
+  showCalendar = false;
 
   constructor(public layoutService: LayoutService,private userService:addUserService,private router:Router) {}
 
@@ -30,7 +31,19 @@ export class TopbarComponent {
         this.profilePictureUrl = this.defaultImageUrl;
       }
     });
+
+
   }
+  toggleCalendar(): void {
+    this.showCalendar = !this.showCalendar;
+  }
+
+  onDateSelected(date: Date) {
+    console.log('Selected date:', date);
+    // your logic here
+  }
+
+
 
   toggleDarkMode() {
     this.layoutService.layoutConfig.update((state) => ({
@@ -38,6 +51,8 @@ export class TopbarComponent {
       darkTheme: !state.darkTheme,
     }));
   }
+
+
 
 
 }

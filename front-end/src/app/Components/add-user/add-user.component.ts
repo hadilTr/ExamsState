@@ -2,11 +2,12 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AddUserRequest } from '../../models/AddUser-request.model';
 import { AddUserResponse } from '../../models/AddUserResponse.model';
-import { addUserService } from '../../services/addUser.service';
+import{addUserService} from '../../Services/addUser.service';
 
 export enum Role {
   Responsable_etudes = 'Responsable_etudes',
   Chef_Dep_info = 'Chef_Dep_info',
+  Chef_Dep_indus = 'Chef_Dep_indus',
   Chef_Dep_electrique = 'Chef_Dep_electrique',
   Responsable_examens = 'Responsable_examens',
   Responsable_Deliberation = 'Responsable_Deliberation'

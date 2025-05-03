@@ -80,11 +80,15 @@ import { DashboardMecaComponent } from './Components/dashboard-meca/dashboard-me
 import { DashboardInfotrComponent } from './Components/dashboard-infotr/dashboard-infotr.component';
 import { SidebarDepComponent } from './Components/sidebar-dep/sidebar-dep.component';
 Chart.register(ChartDataLabels);
+import {CalendarPopupComponent } from './Components/app-calendar/app-calendar.component';
+import { CalendarModule } from 'primeng/calendar';
+
 
 
 @NgModule({
   bootstrap: [AppComponent],
   declarations: [
+    CalendarPopupComponent,
     AppComponent,
     TopbarComponent,
     SidebarComponent,
@@ -117,7 +121,7 @@ Chart.register(ChartDataLabels);
     ListMatieresComponentWithMail,
     CalendarComponent,
     EmailLogsComponent,
-
+    ChartInfoComponent,
     UnauthorizedComponent,
     DateGlobaleFormComponent,
     DashboardInfoComponent,
@@ -128,6 +132,7 @@ Chart.register(ChartDataLabels);
     SidebarDepComponent],
 
   imports: [
+    CalendarModule,
     BaseChartDirective,
     MatSnackBarModule,
     BrowserAnimationsModule,

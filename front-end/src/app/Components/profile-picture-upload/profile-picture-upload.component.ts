@@ -1,7 +1,8 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
-import { addUserService } from '../../services/addUser.service';
+import { addUserService } from '../../Services/addUser.service';
+
 
 
 @Component({

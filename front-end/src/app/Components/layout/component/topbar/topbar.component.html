@@ -3,15 +3,12 @@
     <button class="layout-menu-button layout-topbar-action" (click)="layoutService.onMenuToggle()">
       <i class="pi pi-bars"></i>
     </button>
-    <a class="layout-topbar-logo" >
+    <a class="layout-topbar-logo">
       <!-- Remplacement du SVG par une balise img -->
       <img src="./assets/images/logoplatyyy.png" alt="Logo Plateforme" class="platform-logo">
       <span></span>
     </a>
   </div>
-
-
-
 
   <div class="layout-topbar-actions">
     <div class="layout-config-menu">
@@ -32,7 +29,7 @@
         >
           <i class="pi pi-palette"></i>
         </button>-->
-        <app-configurator />
+        <app-configurator></app-configurator>
       </div>
     </div>
 
@@ -42,23 +39,35 @@
 
     <div class="layout-topbar-menu hidden lg:block">
       <div class="layout-topbar-menu-content">
-        <button type="button" class="layout-topbar-action" >
+        <button
+          type="button"
+          class="layout-topbar-action"
+          (click)="toggleCalendar()"
+        >
           <i class="pi pi-calendar"></i>
           <span>Calendar</span>
         </button>
-        <button type="button" class="layout-topbar-action">
-          <i class="pi pi-inbox"></i>
-          <span>Mail</span>
-        </button>
-        <a [routerLink]="['/profile']">
-        <img
-          [src]="profilePictureUrl || defaultImageUrl"
-          alt="Profile"
-          class="navbar-avatar"
-          (error)="profilePictureUrl = defaultImageUrl"
-        />
-        </a>
+
+        <app-app-calendar
+          *ngIf="showCalendar"
+          (dateSelected)="onDateSelected($event)"
+        ></app-app-calendar>
+
       </div>
     </div>
+
+    <button type="button" class="layout-topbar-action">
+      <i class="pi pi-inbox"></i>
+      <span>Mail</span>
+    </button>
+
+    <a [routerLink]="['/profile']">
+      <img
+        [src]="profilePictureUrl || defaultImageUrl"
+        alt="Profile"
+        class="navbar-avatar"
+        (error)="profilePictureUrl = defaultImageUrl"
+      />
+    </a>
   </div>
 </div>
