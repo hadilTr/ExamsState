@@ -26,12 +26,11 @@ public class EmailService {
 
 
         message.setTo(toEmail);
-        message.setSubject("Your ENICarthage Account Credentials");
+        message.setSubject("Coordonnées de votre compte ENICarthage");
         message.setText(
-                "Your account has been created by the admin.\n\n" +
-                        "Username: " + username + "\n" +
-                        "Temporary Password: " + rawPassword + "\n\n" +
-                        "Please change your password after logging in.\n"
+                "Votre compte est crée avec succée.\n\n" +
+                        "Nom d'utilisateur: " + username + "\n" +
+                        "Mot de passe: " + rawPassword + "\n\n"
 
         );
 
@@ -55,8 +54,8 @@ public class EmailService {
             message.setTo(toEmail);
             message.setSubject("Notification ENICarthage - Matières Assignées");
             message.setText(
-                    "Dear " + teacherName + ",\n\n" +
-                            "SVP rajaaa3 l examen.\n\n" +
+                    "Bonjour, " + teacherName + ",\n\n" +
+                            "Veuillez retourner les feuilles d'examens.\n\n" +
                             "ENICarthage Administration"
             );
             mailSender.send(message);

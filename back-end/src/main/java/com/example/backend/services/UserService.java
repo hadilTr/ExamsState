@@ -60,7 +60,7 @@ public class UserService {
         emailService.sendCredentials(
                 user.getMail(),
                 user.getUsername(),
-                "changeme" // Send the initial password
+                request.getPassword() // Send the initial password
         );
         userRepository.save(user);
 
