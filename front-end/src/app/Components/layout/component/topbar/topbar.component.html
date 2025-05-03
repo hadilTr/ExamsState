@@ -39,24 +39,39 @@
 
     <div class="layout-topbar-menu hidden lg:block">
       <div class="layout-topbar-menu-content">
-        <button
-          type="button"
-          class="layout-topbar-action"
-          (click)="toggleCalendar()">
 
-          <i class="pi pi-calendar"></i>
-          <span>Calendar</span>
-        </button>
+        <!-- Wrap the calendar icon and popup in a relative container -->
+        <div style="position: relative; display: inline-block;">
+          <!-- Calendar Icon Button -->
+          <button type="button" class="layout-topbar-action" (click)="toggleCalendar()">
+            <i class="pi pi-calendar"></i>
+            <span>Calendar</span>
+          </button>
 
-        <app-app-calendar
-          *ngIf="showCalendar"
-          (dateSelected)="onDateSelected($event)"
-        ></app-app-calendar>
+          <!-- Calendar Popup -->
+          <div
+            class="calendar-popup"
+            *ngIf="showCalendar"
+            style="
+      position: absolute;
+      top: 100%;
+      right: 0;
+      margin-top: 0px;
 
-      </div>
-    </div>
+      z-index: 9999;
+      background: transparent; /* changed */
+      box-shadow: none;         /* optional */
+      border-radius: 0;         /* optional */
+      overflow: visible;
+    "
+          >
+            <app-calendar></app-calendar>
+          </div>
+        </div>
 
-    <a [routerLink]="['/Emails']">
+
+
+        <a [routerLink]="['/Emails']">
     <button type="button" class="layout-topbar-action">
       <i class="pi pi-inbox"></i>
       <span>Mail</span>

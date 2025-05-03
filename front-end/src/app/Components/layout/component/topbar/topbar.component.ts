@@ -34,13 +34,13 @@ export class TopbarComponent {
 
 
   }
-  toggleCalendar(): void {
+  toggleCalendar() {
     this.showCalendar = !this.showCalendar;
   }
 
   onDateSelected(date: Date) {
-    console.log('Selected date:', date);
-    // your logic here
+    console.log('Date picked:', date);
+    this.showCalendar = false; // Close popup after selection
   }
 
 
