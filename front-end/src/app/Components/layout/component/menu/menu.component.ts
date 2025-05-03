@@ -71,7 +71,27 @@ export class MenuComponent {
           }
         ],
 
+
       },
+      {
+        label: '',
+        items: [
+          {
+            label: '✉️  Envoyer des emails',
+            routerLink: ['/list-matiere-withmail'],
+          }
+        ],
+
+
+      },
+
+
+
+
+
+
+
+
       {
         label: '👥 Profile',
         items: [

@@ -40,6 +40,27 @@ export class SidebarDepComponent {
           }
         ],
       },
+      {
+        label: '📬 Emails',
+        items: [
+          {
+            label: '✉️  Liste des mails',
+            routerLink: ['/Emails'],
+          }
+        ],
+
+      },
+      {
+        label: '',
+        items: [
+          {
+            label: '✉️  Envoyer des emails',
+            routerLink: ['/list-matiere-withmail'],
+          }
+        ],
+
+
+      },
 
 
 
