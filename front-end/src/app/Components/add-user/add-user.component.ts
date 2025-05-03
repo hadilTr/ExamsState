@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AddUserRequest } from '../../models/AddUser-request.model';
 import { AddUserResponse } from '../../models/AddUserResponse.model';
-import{addUserService} from '../../Services/addUser.service';
+import{addUserService } from '../../services/addUser.service';
 
 export enum Role {
   Responsable_etudes = 'Responsable_etudes',

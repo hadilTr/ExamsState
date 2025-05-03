@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { MenuItem } from 'primeng/api';
 import { LayoutService } from '../../layout.service';
 import { Router } from '@angular/router';
-import { addUserService } from '../../../../Services/addUser.service';
+import { addUserService } from '../../../../services/addUser.service';
 
 @Component({
   selector: 'app-topbar',
