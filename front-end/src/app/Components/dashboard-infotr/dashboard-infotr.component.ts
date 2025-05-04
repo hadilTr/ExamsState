@@ -54,7 +54,7 @@ export class DashboardInfotrComponent implements OnInit{
           this.chartData[niveau] = {
             type: 'bar',
             data: {
-              labels: ['Not Returned', 'Not Verified'],
+              labels: ['Non retournés', 'Non vérifiés'],
               datasets: [{
                 data: [stats[0], stats[1]],
                 label: niveau,
@@ -65,7 +65,7 @@ export class DashboardInfotrComponent implements OnInit{
               responsive: true,
               plugins: {
                 legend: { display: false },
-                title: { display: true, text: `Statistics for ${niveau}` },
+                title: { display: true, text: `Statistiques pour ${niveau}` },
                 datalabels: {
                   anchor: 'end',
                   align: 'start',
